@@ -1,0 +1,9 @@
+body { background-color: rgb(184, 172, 172); }
+
+header {
+    width: 100%;
+    background-color: lightgreen;
+    display: grid;
+    grid-template-columns: 10% auto;
+}
+
