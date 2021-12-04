@@ -1,56 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
     <title>Log-In</title>
-    <link rel="stylesheet" href="style/login_signup.css">
+    <link rel="stylesheet" href="style/signin_signup.css">
     <link rel="icon" href="images/Icon/logo.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
-
 </head>
-    
-    <div clas="form">
-        <form id="login_form">
-            
-            <div class="company_identity">
-                <img src="images/Icon/app_logo.png" class="app_logo_img">
-                <p class="company_font">Expell</p>
-            </div>
-
+<body> 
+    <div class="company_identity">
+        <img src="images/Icon/app_logo.png" class="app_logo_img">
+        <p class="company_font">Expell</p>
+    </div>
+    <div class="form_div">
+        <form>
             <h1 class="title_font">Sign In</h1>
-
-            <p class="grey_text_font">Hi there! Nice to see you again</p>
+            <p class="grey_text_font">Welcome back again!</p>
             <br>
-            <div class="formulario">
+            <div id="form_body">
                 <label class = "label_text_font" for="email"><b >Email</b></label>
-                <br>
+                <br><br>
                 <input type="text" placeholder="Introduce your email" name="email" required class="fields">
                 <br>
-                <label class = "label_text_font" for="password"><b class="text">Password</b></label>
-                <br>
+                <label class = "label_text_font" for="password"><b>Password</b></label>
+                <br><br>
                 <input type="text" placeholder="Introduce your password" name="password" required class="fields">
                 <br><br>
                 <button class="button_red" type="submit">Sing Up</button>
                 <br><br>
                 <p class="grey_text_font"> or enter as a guest</p>
-                <a href="main.html">
-                <button class="button_grey">Enter as a guest</button>
-                </a>
-            </div>
-            
-            <div class="bottom_login">
-                <label class="grey_text_font">Forgot Password?</label>
-                <label class="label_text_font"><strong>Sign In</strong></a></label>
+                <br>
+                
             </div>
 
         </form>
-    </div>
 
-    
+        <a href="main.html">
+            <button class="button_grey">Enter as a guest</button>
+        </a>
+        <div class="bottom_login">
+            <br>
+            <label class="grey_text_font">Forgot Password?</label>
+            <label class="label_text_font"><a href="signup.html"><strong>Sign up</strong></a></label>
+        </div>
 
-<body>
-
-
-    
+    </div>    
 </body>

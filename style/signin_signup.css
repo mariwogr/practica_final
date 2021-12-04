@@ -1,17 +1,11 @@
+/*[-----------------CSS FILE FOR SIGNIN-SIGNUP-----------------]*/
+
 body { 
     background-color: rgb(255, 255, 255);
 }
 
-a:link, a:visited, a:active {
+a{
     text-decoration: none;
-}
-
-.login_img_div{
-    text-align: center;
-}
-
-form {
-    text-align: center;
 }
 
 label {
@@ -22,22 +16,26 @@ strong {
     color: rgb(248, 75, 106);
 }
 
+/*[---------Classes---------]*/
+
+.company_identity{
+    text-align: center;
+}
+
 .app_logo_img{
     margin: 3% auto 0px auto;
     width: 5%;
 }
 
-#forgot{
-    margin-right: 5%;
+.form_div {
+    text-align: center;
 }
 
 .fields {
     width: 20%;
     padding: 12px;
-    display: inline-block;
-    border: 0px solid rgb(120, 158, 142);
+    border: 0px ;
     border-bottom: 1px solid rgb(120, 158, 142);
-    box-sizing: border-box;
     text-align: center;
     margin-bottom: 1%;
 }
@@ -50,13 +48,9 @@ strong {
     background-color: rgb(248, 75, 106);
     color: rgb(255, 255, 255);
     padding: 14px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    /*border: 1px solid rgb(169, 228, 135);*/
     cursor: pointer;
     width: 20%;
     border-radius: 10px;
-    margin-top: 2%;
     filter: drop-shadow(5px 5px 10px #444);
     font-family: 'Quicksand',sans-serif;
     font-style: normal;
@@ -67,13 +61,9 @@ strong {
     background-color: rgb(88, 87, 87);
     color: rgb(255, 255, 255);
     padding: 14px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    /*border: 1px solid rgb(169, 228, 135);*/
     cursor: pointer;
     width: 20%;
     border-radius: 10px;
-    margin-top: 2%;
     filter: drop-shadow(5px 5px 10px #444);
     font-family: 'Quicksand',sans-serif;
     font-style: normal;
@@ -83,10 +73,6 @@ strong {
 button:hover{
     background-color: rgb(77, 240, 150);
     opacity: 0.6;
-}
-
-.company_identity{
-    text-align: center;
 }
 
 /*[-----------Fonts-----------]*/
@@ -120,7 +106,3 @@ button:hover{
     font-weight: 400;
     margin: 0px auto 0px auto;
 }
-
-
-
-

@@ -3,45 +3,50 @@
 <head>
     <meta charset="utf-8">
     <title>Expell</title>
-    <meta charset="UTF-8">
     <link rel="icon" href="images/Icon/logo.svg">
-    <link rel="stylesheet" href="style/login_signup.css">
+    <link rel="stylesheet" href="style/signin_signup.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
 </head>
 <body>
-
     <div class="company_identity">
         <img src="images/Icon/app_logo.png" class="app_logo_img">
         <p class="company_font">Expell</p>
     </div>
+    <div class="form_div">
+        <form >
+            <h1 class="title_font">Sign Up</h1>
+            <br>
+            <div id="form_body">
+                <label class = "label_text_font" for="username"><b>Username</b></label>
+                <br>
+                <input type="text" placeholder="Enter username" name="username" id="signup_uname" required class="fields">
+                <br>
+                <label class = "label_text_font" for="email"><b>Email</b></label>
+                <br>
+                <input type="text" placeholder="Enter email" name="email" required id="signup_email" required class="fields">
+                <br>
+                <label class = "label_text_font" for="pwd"><b>Password</b></label>
+                <br>
+                <input type="text" placeholder="Enter password" name="pwd" required id="signup_pwd" class="fields">
+                <br><br>
+                <label class = "grey_text_font">
+                    <input type="checkbox" checked="checked" name="Terms"> I agree to the <strong>Terms of Services</strong> and <strong>Privacy Policy</strong>.
+                </label>
+                <br><br>
+                <button class ="button_red" type="submit" onclick="createCookie(365)">Sign Up</button>
+                <br><br>
+                <label class = "grey_text_font">Have an account? <a href="signin.html"><strong>Sign In</strong></a></label>
+            </div>
+            <br>       
 
-    <form id="login_form">
-        <div class="formulario">
-            <label class = "label_text_font" for="username"><b>Username</b></label>
-            <br>
-            <input type="text" placeholder="Enter username" name="username" required class="fields">
-            <br>
-            <label class = "label_text_font" for="email"><b>Email</b></label>
-            <br>
-            <input type="text" placeholder="Enter email" name="email" required class="fields">
-            <br>
-            <label class = "label_text_font" for="password1"><b>Password</b></label>
-            <br>
-            <input type="text" placeholder="Enter password" name="password1" required class="fields">
-            <br>
-            <label class = "grey_text_font">
-                <input type="checkbox" checked="checked" name="Terms"> I agree to the <strong>Terms of Services</strong> and <strong>Privacy Policy</strong>.
-            </label>
-            <br>
-            <button class ="button_red" type="submit">Sign Up</button>
-            <br>
-            <label class = "grey_text_font">Have an account? <a href="login.html"><strong>Sign In</strong></a></label>
-        </div>
-        <br>       
-
-    </form>
+        </form>
+    </div>
     
 </body>
+
+<script src="script/cookies.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 </html>

@@ -2,6 +2,7 @@
 In feed section, there will be posts, identified by the string 'feed_post_(postId)'.
 Inside a post there is a section for comments, where comments are appended.
 A comment is identified by the string 'feed_post_comment_(commentId)'.
+Comments have a pointer to tell which post they belong to.
 Inside comments there is a section for replies, where they are appended.
 Replies do not have identification, but class. The replies.json file have a pointer
 to identify the comment they are pointing to.
@@ -20,8 +21,7 @@ window.onclick = function(event){
     // Checks if dropdown is clicked
     if (!event.target.matches('.dropbtn')) {
         var dropdowns = document.getElementsByClassName("dropdown_content");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
+        for (let i = 0; i < dropdowns.length; i++) {
           var openDropdown = dropdowns[i];
           if (openDropdown.classList.contains('show')) {
             openDropdown.classList.remove('show');
@@ -32,7 +32,6 @@ window.onclick = function(event){
 
 //------------------[Cookie´s Functions]------------------
 function createCookie(expdays){
-
     const time = new Date();
     time.setTime(time.getTime() + (expdays * 24*60*60*1000));
     let expires = "expires=" + time.toUTCString();
@@ -120,36 +119,6 @@ function checkCookie() {
     }
 }
 
-function searchElem(){
-    
-    var input, filter, search, hidden;
-    input = document.getElementById("input_search");
-
-    filter = input.value.toUpperCase();
-    
-    if (filter.length == 0){
-        alert("Debe introducir al menos un caracter");
-    }
-
-    search = document.getElementsByClassName("div_exp");
-
-    hidden = search.length;
-       
-    for(var i=0; i<search.length; i++){
-        
-        if(!search[i].innerHTML.toUpperCase().includes(filter)){
-            search[i].style.display = "none";
-            hidden--;
-        }
-        else{
-            search[i].style.display = "";
-        }
-    }
-    if (hidden == 0){
-        alert("Ningun elemento satisface su busqueda");
-    }
-}
-
 function setTextUser(){
     var user = getCookie("usuario");
     var nombre = getCookie("name");
@@ -192,7 +161,9 @@ function changeData(expdays){
 
 function load_feed(how_many = 3){
     // Load feed posts and their comments
-    var feed = JSON.parse("../jsons/feed.json");
+    var feed_file = $.get("../jsons/feed.json");
+    console.log(feed_file);
+    var feed = JSON.parse(feed_file);
     var comments = JSON.parse("../jsons/comments.json");
     var replies = JSON.parse("../jsons/replies.json");
 
