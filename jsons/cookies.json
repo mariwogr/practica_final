@@ -1,0 +1,23 @@
+[
+    {
+        "username":"",
+        "password":"",
+        "email":"",
+        "profile_img":"",
+        "total_likes":"",
+        "experiences":[
+            {
+                "experience_id": 1,
+                "name": "",
+                "description": "",
+                "images_path": []
+            },
+            {
+                "experience_id": 1,
+                "name": "",
+                "description": "",
+                "images_path": []
+            }
+        ]
+    }
+]

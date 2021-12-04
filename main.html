@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Expell</title>
+    <meta charset="UTF-8">
+    <link rel="icon" href="images/Icon/logo.svg">
+    <link rel="stylesheet" href="style/main.css">
+    <link rel="stylesheet" href="style/pop_up.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+</head>
+<body onload="load_feed();">
+    <!---------------------------------------------HEADER---------------------------------------------------->
+    <header>
+        <nav>
+            <img src="images/Icon/logo.svg" alt="Icon" class="icon">
+            <b class="text_align">Expell</b>
+            <menu id="menu_margin">
+                <a href="" class="customfont_links">Home</a>
+                <a href="" class="customfont_links">Experiences</a>
+                <a href="" class="customfont_links">Ranking</a>
+            </menu>
+            <div class="auto_margin">
+                <a href="login.html" id="LogIn">
+                    <button>Log In</button>
+                </a>
+                <a href="signup.html" id="SignUp">
+                    <button>Sing Up</button>
+                </a>
+                
+            </div>
+            
+        </nav>
+    </header>
+    
+    <p class="title_text_font">Most popular experiences</p>
+    <div id="feed" class="button_br_more">
+        <button id="browse_more_button" onclick="load_feed('3')">Browse more experiences</button>
+    </div>
+
+    <br><br><br><br>
+    <footer>
+        <img class="icon_footer_logo" src="images/icon/logo.svg">
+        <b class="text_align">Expell</b>
+        <div class="item">
+            <a href="#" target="_blank">
+                <img class="icon_footer" src="images/icon/twitter_icon.png" title="Twitter">
+            </a>
+            <a href="#" target="_blank">
+                <img class="icon_footer" src="images/icon/instagram_icon.png" title="Instagram">
+            </a>
+            <a href="#" target="_blank">
+                <img class="icon_footer" src="images/icon/question_icon.png" title="FAQ">
+            </a>
+            <a href="https://www.tuabogadodefensor.com/derechos-autor-web/" target="_blank">
+                <img class="icon_footer" src="images/icon/copyright_icon.png" title="Copyright">
+            </a>     
+        </div>           
+    </footer>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="script/main.js"></script>
+</html>

@@ -1,9 +1,227 @@
-body { background-color: rgb(184, 172, 172); }
+body { background-color: rgb(243, 237, 237); }
 
-header {
+nav{
+    background-color: rgb(233, 227, 227);
+    display: flex;
+    height: 125px;
+    font-size: 25px;
+    position: fixed;
+    top: 0px;
     width: 100%;
-    background-color: lightgreen;
-    display: grid;
-    grid-template-columns: 10% auto;
+    justify-content: center;
 }
 
+
+button {
+    background-color: rgb(248, 75, 106);
+    color: rgb(255, 255, 255);
+    padding: 14px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    /*border: 1px solid rgb(169, 228, 135);*/
+    cursor: pointer;
+    width: auto;
+    border-radius: 10px;
+    margin-top: 2%;
+    filter: drop-shadow(5px 5px 10px #444);
+}
+
+footer{
+    background-color: rgb(155, 151, 151);
+    display: flex;
+    height: 125px;
+    font-size: 25px;
+    
+}
+
+/*----------------------Clases-----------------------*/
+
+.icon{
+    height: 125px;
+    width: 200.76px;
+}
+
+.icon_footer{
+    margin:auto;
+    height: 40px;
+    width: 40px;
+}
+
+.icon_footer_logo{
+    margin:auto;
+    height: 100px;
+    width: 100px;
+}
+
+.item{
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    margin: auto;
+}
+
+.text_align { 
+    text-align: center;
+    color:rgb(119, 212, 169);
+    margin:auto;
+    font-size: 50px;
+}
+
+.title_text_font{  
+    margin: auto;
+    width: 50%;
+    margin-top: 150px;  
+    color: rgb(0, 0, 0);
+    font-size: 45px;
+    text-align: center;
+    font-family: 'Quicksand',sans-serif;
+    font-style: normal;
+    font-weight: 600;
+}
+
+
+.customfont_links{
+    font-family: 'Quicksand',sans-serif;
+    color: rgb(0, 0, 0);
+    margin-left: 45px;
+    margin-right: 45px;
+    text-decoration: none
+}
+
+.dropdown_content{
+    display: none;
+    position: absolute;
+    width: 100%;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0,2);
+    z-index: 1;
+    background-color: rgb(0, 0, 0);
+}
+
+.dropdown_content a{
+    display: block;
+    color: rgb(200,3,3);
+    font-size: 16px;
+    font-family:'Quicksand',sans-serif;
+    padding: 12px 16px;
+    text-decoration: none;
+}
+
+.subtitle_text_font{    
+    margin: auto;
+    color: rgb(2, 2, 2);
+    font-size: 26px;
+    text-align: justify;
+    font-family:'Quicksand',sans-serif;
+}
+
+.text_center{
+    text-align: center;
+}
+
+.auto_margin {
+    margin: auto;
+}
+
+.img_settings{
+    margin-top: 30px;
+    width: 23vw;
+}
+
+.overlay {
+    overflow: scroll;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    padding: 50px;
+    color: black;
+}
+
+/*    Actions to take when overlay is targeted    */
+.overlay:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+.popup_body {
+    border-width: 5px;
+    border-style: solid;
+    border-radius: 5px;
+    text-align: center;
+    font-family: 'Quicksand',sans-serif;
+    font-size: 15px;
+    background: wheat;
+    padding: 20px;
+}
+
+.button_br_more{
+    margin: auto;
+    text-align: center;
+}
+
+/*--------------------id-------------------------------*/
+
+#UserImProfile{
+    width:80px;
+    height: 80px;
+    visibility: hidden;
+    display: none;
+    margin: auto 20px auto auto;
+}
+
+#button_settings{
+    color: rgb(0, 0, 0);
+    font-family:'Quicksand',sans-serif;
+    border-color: white;
+    border-width: 3px;
+    background-color: black;
+    text-align: center;
+    font-size: 20px;
+    text-decoration: none;
+    line-height: 30px;
+    align-content: center;
+    height: 35px;
+    cursor: pointer;
+}
+
+#button_settings:hover{
+    color: ivory;
+}
+
+#NameUser{
+    visibility: hidden;
+    display: none;
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    font-family:'Quicksand',sans-serif;
+    margin: auto 20px auto auto;
+}
+
+#dropdown{
+    visibility: hidden;
+    display: none
+}
+
+#user_div{
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+#menu_margin{
+    margin: auto 166px auto 113px;
+}
+
+#header {
+    background-color: aliceblue;
+}
+
+#header_options {
+    list-style-type: none;
+}
