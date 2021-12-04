@@ -23,6 +23,8 @@ footer{
     width: 100%;
 }
 
+
+
 /*[----------------------Classes----------------------]*/
 
 
@@ -81,6 +83,7 @@ button:hover{
     background-color: rgb(77, 240, 150);
     opacity: 0.6;
 }
+
 
 /*[--------Footer--------]*/
 
@@ -174,7 +177,7 @@ button:hover{
 
 .button_br_more{
     margin: auto;
-    text-align: center;
+    text-align: center;   
 }
 
 /*[-----------Fonts-----------]*/
@@ -261,4 +264,17 @@ button:hover{
 
 #header_options {
     list-style-type: none;
+}
+
+.browse_more_button2{
+    background-color: rgb(248, 75, 106);
+    color: rgb(255, 255, 255);
+    padding: 14px 20px;
+    cursor: pointer;
+    width: 20%;
+    border-radius: 10px;
+    filter: drop-shadow(5px 5px 10px #444);
+    font-family: 'Quicksand',sans-serif;
+    font-style: normal;
+    font-weight: 400;
 }

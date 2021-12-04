@@ -1,10 +1,7 @@
 /* This file contains the functions that will build the sign in and sign up */
-
 console.log("hola");
-window.txt;
 
 function createCookie(expdays){
-
     console.log(expdays);
     const time = new Date();
     time.setTime(time.getTime() + (expdays * 24*60*60*1000));
@@ -19,14 +16,15 @@ function createCookie(expdays){
     }
 
     $.get("jsons/cookies.json", (data) => {
-        window.txt = data;
+        globalThis.txt = data;
     });
 
     let dict = {"username": user, "password": pwd, "email": email, "profile_img": "", "total_likes":"", "experiences":[]};
-    window.txt.append(dict);
+    console.log(globalThis.txt)
+    globalThis.txt.push(dict);
 
     $.post("jsons/cookies.json", (data) => {
-        data = window.txt;
+        data = globalThis.txt;
         console.log(data);
     });
 
@@ -51,17 +49,20 @@ function createCookie(expdays){
 }
 
 function getCookie(user){
-    // Returns a specific cookie passed as paramete
+    // Returns a specific cookie passed as parameter
+
+    console.log("hola");
     console.log(user);
     $.get("jsons/cookies.json", (data) => {
-        window.txt = data;
+        globalThis.txt = data;
     });
     
-    for(let i = 0; i < window.txt.length;i++){
-        let u = window.txt[i];
+    for(let i = 0; i < globalThis.txt.length;i++){
+        let u = globalThis.txt[i];
         if (u["username"] == user) {return u;}
     }
     return false;
+    
 }
 /*
     let name = cname + "=";
