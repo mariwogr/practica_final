@@ -31,14 +31,18 @@ footer{
     display: flex;
     height: 125px;
     font-size: 25px;
-    
 }
 
 /*----------------------Clases-----------------------*/
 
-.icon{
-    height: 125px;
-    width: 200.76px;
+.company_identity{
+    display: flex;
+    width: 25%;
+}
+
+.app_logo_img{
+    margin: 2% auto 2% 8%;
+    width: 20%;
 }
 
 .icon_footer{
@@ -67,17 +71,7 @@ footer{
     font-size: 50px;
 }
 
-.title_text_font{  
-    margin: auto;
-    width: 50%;
-    margin-top: 150px;  
-    color: rgb(0, 0, 0);
-    font-size: 45px;
-    text-align: center;
-    font-family: 'Quicksand',sans-serif;
-    font-style: normal;
-    font-weight: 600;
-}
+
 
 
 .customfont_links{
@@ -164,7 +158,30 @@ footer{
     text-align: center;
 }
 
-/*--------------------id-------------------------------*/
+/*[-----------Fonts-----------]*/
+
+.company_font{
+    font-family: 'Quicksand',sans-serif;
+    font-style: normal;
+    font-size: 40px;
+    font-weight: 600;
+    color:rgb(83, 231, 231);
+    margin-top: 0px;
+}
+
+.title_text_font{  
+    margin: auto;
+    width: 50%;
+    margin-top: 150px;  
+    color: rgb(0, 0, 0);
+    font-size: 45px;
+    text-align: center;
+    font-family: 'Quicksand',sans-serif;
+    font-style: normal;
+    font-weight: 600;
+}
+
+/*[-----------IDs-----------]*/
 
 #UserImProfile{
     width:80px;

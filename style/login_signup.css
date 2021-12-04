@@ -22,10 +22,9 @@ strong {
     color: rgb(248, 75, 106);
 }
 
-.login_img{
-    width: 25%;
-    border-radius: 50%;
-    background-color: transparent;
+.app_logo_img{
+    margin: 3% auto 0px auto;
+    width: 5%;
 }
 
 #forgot{
@@ -59,6 +58,9 @@ strong {
     border-radius: 10px;
     margin-top: 2%;
     filter: drop-shadow(5px 5px 10px #444);
+    font-family: 'Quicksand',sans-serif;
+    font-style: normal;
+    font-weight: 400;
 }
 
 .button_grey {
@@ -73,6 +75,9 @@ strong {
     border-radius: 10px;
     margin-top: 2%;
     filter: drop-shadow(5px 5px 10px #444);
+    font-family: 'Quicksand',sans-serif;
+    font-style: normal;
+    font-weight: 400;
 }
 
 button:hover{
@@ -80,10 +85,26 @@ button:hover{
     opacity: 0.6;
 }
 
+.company_identity{
+    text-align: center;
+}
+
+/*[-----------Fonts-----------]*/
+
+.company_font{
+    font-family: 'Quicksand',sans-serif;
+    font-style: normal;
+    font-size: 40px;
+    font-weight: 600;
+    color:rgb(83, 231, 231);
+    margin-top: 0px;
+}
+
 .title_font{
     font-family: 'Quicksand',sans-serif;
     font-style: normal;
     font-weight: 600;
+    
 }
 
 .label_text_font{
@@ -97,6 +118,7 @@ button:hover{
     font-family: 'Quicksand',sans-serif;
     font-style: normal;
     font-weight: 400;
+    margin: 0px auto 0px auto;
 }
 
 
