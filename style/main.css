@@ -121,8 +121,9 @@ button:hover{
     overflow: auto;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0,2);
     z-index: 1;
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(233, 227, 227);
 }
+
 
 .dropdown_content a{
     display: block;
@@ -193,6 +194,19 @@ button:hover{
 }
 
 /*[--------Experiences--------]*/
+
+.dropbtn{
+    background-color: rgb(233, 227, 227);
+    color: white;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #2980B9;
+}
+
 
 #feed{
     margin: auto 20% auto 20%;
@@ -323,6 +337,7 @@ button:hover{
     height: 150px;
 }
 
+
 ::-moz-placeholder {
     font-family: 'Quicksand',sans-serif;
     font-style: normal;
@@ -330,6 +345,7 @@ button:hover{
     font-size: 15px;
     font-style: italic;;
   }
+  
 
 /*[-----------Fonts-----------]*/
 
@@ -370,6 +386,32 @@ button:hover{
 
 /*[-----------IDs-----------]*/
 
+#dropdown{
+    visibility: hidden;
+    display: none
+}
+
+#button_settings{
+    text-align: center;
+    font-size: 20px;
+    line-height: 30px;
+    align-content: center;
+    height: 35px;
+    background-color: rgb(248, 75, 106);
+    color: rgb(255, 255, 255);
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 10px;
+    font-family: 'Quicksand',sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    margin: 12px;
+}
+
+#button_settings:hover{
+    color: rgb(250, 242, 247);
+}
+
 #NameUser{
     visibility: hidden;
     display: none;
@@ -390,25 +432,6 @@ button:hover{
     margin: auto 20px auto auto;
 }
 
-#button_settings{
-    color: rgb(0, 0, 0);
-    font-family:'Quicksand',sans-serif;
-    border-color: white;
-    border-width: 3px;
-    background-color: black;
-    text-align: center;
-    font-size: 20px;
-    text-decoration: none;
-    line-height: 30px;
-    align-content: center;
-    height: 35px;
-    cursor: pointer;
-}
-
-#button_settings:hover{
-    color: ivory;
-}
-
 #NameUser{
     visibility: hidden;
     display: none;
@@ -418,10 +441,6 @@ button:hover{
     margin: auto 20px auto auto;
 }
 
-#dropdown{
-    visibility: hidden;
-    display: none
-}
 
 #user_div{
     margin: auto;
@@ -453,4 +472,20 @@ button:hover{
     font-family: 'Quicksand',sans-serif;
     font-style: normal;
     font-weight: 400;
+}
+
+.button_settings{
+    background-color: rgb(248, 75, 106);
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    border-radius: 10px;
+    filter: drop-shadow(5px 5px 10px #444);
+    font-family: 'Quicksand',sans-serif;
+    font-style: normal;
+    font-weight: 400;
+
+}
+
+.show{
+    display: block;
 }

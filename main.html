@@ -33,9 +33,29 @@
                 <a href="signin.html">
                     <button class="signin_button" id="signin__button">Sign In</button>
                 </a>
-
+                <div id="dropdown">
+                    <button id="button_settings" onclick ="myFunction()" class="dropbtn"> settings
+                        <!--<img src="images/icons/settings_icon.png">-->
+                    </button>
+                    <div id ="myDropdown" class = "dropdown_content">
+                        <a class="subtitle_text_font" href="#popupUserInf" >
+                            <button onclick="setTextUser()" class="button_settings">
+                                Profile
+                            </button>
+                        </a>
+                        <a class="subtitle_text_font" href="#popupExperiences">
+                            <button class="button_settings">
+                                Experiences 
+                            </button>
+                        </a>
+                        <a class="subtitle_text_font" href="#popupOut">
+                            <button class="button_settings">
+                                Log Out
+                            </button>
+                        </a>
+                    </div>
+                </div>
             </div>
-
         </nav>
     </header>
     
@@ -44,6 +64,7 @@
     <p class="title_text_font">Most popular experiences</p>
     <br><br>
     <div id="feed" class="button_br_more">
+        <button id="browse_more_button" class="browse_more_button2" onclick="load_new()">Browse new experiences</button>
         <div id="feed_experiences"></div>
         <button id="browse_more_button" class="browse_more_button2" onclick="load_older()">Browse more experiences</button>
         <br><br>

@@ -10,7 +10,7 @@ to identify the comment they are pointing to.
 
 var comments =  [
                     {
-                        feed_id: 0,
+                        feed_id: 2,
                         comment_id: 0,
                         usr: "jose",
                         date: "5/12/2021",
@@ -18,7 +18,7 @@ var comments =  [
                         likes: 0
                     },
                     {
-                        feed_id: 0,
+                        feed_id: 2,
                         comment_id: 1,
                         usr: "hasbulla",
                         date: "5/12/2021",
@@ -38,7 +38,7 @@ var feed =      [
                     },
                     {
                         id: 1,
-                        src: `https://pbs.twimg.com/media/FD33F3UXIAIe2bd.jpg`,
+                        src: "https://pbs.twimg.com/media/FD33F3UXIAIe2bd.jpg",
                         usr: "hashbulla",
                         descr: "de panafrescos",
                         date: "23/10/2020",
@@ -62,6 +62,15 @@ var feed =      [
                         date: "5/12/2021",
                         likes: 10,
                         comments: 0
+                    },
+                    {
+                        id: 4,
+                        src: "https://wallup.net/wp-content/uploads/2016/01/136128-mountain-lake-trees.jpg",
+                        usr: "juan",
+                        descr: "Enjoying the mountain",
+                        date: "6/12/2021",
+                        likes: 0,
+                        comments: 0
                     }
                 ];
 
@@ -71,7 +80,6 @@ var bottom_pointer = 1;
 function set_up(){
     checkCookie();
     load_feed(top_pointer, bottom_pointer);
-    //funcion del pibe carlos
 }
 
 //------------------[Ranking Functions]------------------
@@ -91,9 +99,11 @@ function showRanking(){
         }
     }
     
-    console.log(dict);
-
     sorted_dict = sortDict(dict);
+
+    for (let i = 0; i < 10 || i < Object.keys.sorted_dict.length;i++){ 
+        $('#feed_experiences').append(convert_to_html(sorted_dict[i], 'f'));
+    }
 }
 
 function sortDict(dict) {
@@ -101,23 +111,25 @@ function sortDict(dict) {
     //console.log(Object.keys(dict));
     //console.log(Object.values(dict));
 
+    let sorted_dict = {};
 
-    for (let i=0; i<Object.keys(dict).length; i++){
-        var max_likes_user = Object.keys(dict)[i];
-        var max_likes_list = Object.values(dict)[i];
-        console.log(max_likes_user, max_likes_list);
+    while (Object.keys(dict).length != 0){
+        var max_likes_user = Object.keys(dict)[0];
+        var max_likes_list = Object.values(dict)[0];
 
-        for (let j=1; j<dict.length; j++){
-            if (max_likes_user != Object.keys(dict)[j]){
-                if (Object.values(dict)[j][1] > max_likes_list[1]) {
+        for (let j=0; j<Object.keys(dict).length; j++){
+            if (max_likes_user != Object.keys(dict)[j] || Object.keys(dict).length == 1){
+                if (Object.values(dict)[j][0] > max_likes_list[0]) {
                     max_likes_user = Object.keys(dict)[j];
                     max_likes_list = Object.values(dict)[j];
                 }
             }
         }
 
-        console.log(max_likes_user, max_likes_list);
+        delete dict[max_likes_user];
+        sorted_dict[max_likes_user] = max_likes_list;
     }
+    return sorted_dict;
 }
 
 //------------------[Dropdown Function]------------------
@@ -125,11 +137,13 @@ function sortDict(dict) {
 function myFunction(){
     // Show dropdown
     document.getElementById("myDropdown").classList.toggle("show");
+    // $('#myDropdown').css('visibility', 'visible');
+    // $('#myDropdown').css('display', '');
 }
 
 window.onclick = function(event){
     // Checks if dropdown is clicked
-    if (!event.target.matches('.dropbtn')) {
+    if (event.target.matches('.dropbtn')) {
         var dropdowns = document.getElementsByClassName("dropdown_content");
         for (let i = 0; i < dropdowns.length; i++) {
           var openDropdown = dropdowns[i];
@@ -155,6 +169,9 @@ function checkCookie(){
         document.getElementById("NameUser").style.visibility = "visible";
         document.getElementById("NameUser").style.display = "inline";
         document.getElementById("NameUser").innerText = getCookie("usuario");
+        
+        document.getElementById("dropdown").style.display = "inline";
+        document.getElementById("dropdown").style.visibility = "visible";
 
         document.getElementById("user_signin").style.width = "372.75px";
 
@@ -163,6 +180,27 @@ function checkCookie(){
         }
     }
 }
+
+function myFunction(){
+    // Show dropdown
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+window.onclick = function(event){
+    // Checks if dropdown is clicked
+
+    if (!event.target.matches('.dropbtn')) {
+        var dropdowns = document.getElementsByClassName("dropdown_content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+    }
+}
+
 
 function getCookie(cname){
     // Returns a specific cookie passed as paramete
@@ -232,9 +270,10 @@ function post_comment(id) {
                     comment_id: get_comment_id(),
                     usr: "nolose",
                     date: "nolase",
-                    text: $(`comment_text_box_${feed_id}`).value,
+                    text: $(`comment_text_box_${id}`).value,
                     likes: 0
                   };
+    console.log("pepeppepepepepe");
     $(`#feed_comment_section_${id}`).append(convert_to_html(comment, 'c'));
 }
 
@@ -260,16 +299,29 @@ function read_file(path) {
 }
 
 function load_older(){
+    // get the "posts window" size
     let loaded_experiences = top_pointer - bottom_pointer + 1;
+    // adapt bottom pointer to the new situation (at most 3 more old posts)
     if(bottom_pointer >= 3){ bottom_pointer -= 3; } else { bottom_pointer = 0; }
-    load_feed(top_pointer - loaded_experiences, bottom_pointer - 3);
+    // already have bottom pointer set, now define the top of the new chunk to load
+    let new_load_top = top_pointer - loaded_experiences;
+
+    load_feed(new_load_top, bottom_pointer, false);
 }
 
-function browse_new(){
-    top += 3;
-    load_feed(top);
+function load_new(){
+    // get the "posts window" size
+    let loaded_experiences = top_pointer - bottom_pointer + 1;
+    // adapt top pointer to the new situation (at most 3 more new posts)
+    if(top_pointer <= feed.length - 4){ top_pointer += 3; } else { top_pointer = feed.length - 1; }
+    // already have top pointer set, now define the bottom of the new chunk to load
+    let new_load_bottom = bottom_pointer + loaded_experiences;
+    
+    load_feed(top_pointer, new_load_bottom, true);
+
 }
 /*
+[6]
 [5]
 [4]
 -----
@@ -279,11 +331,16 @@ function browse_new(){
 -----
 [0]
 */
-function load_feed(top_i, bottom_i){
+function load_feed(top_i, bottom_i, want_new){
+    /* 
+        This function writes to the html posts ranging from 'top_i' to 'bottom_i', which are 
+        valid indexes of the 'feed' array. These indexes define the "posts window", which is the
+        portion of the 'feed array' that is being shown.
+        'want_new' is a boolean: true means load new content; false means load old content
+    */
     // Create a HTML entry for each feed post
     for(let i = top_i; i >= bottom_i; i--){
-        //console.log(i, feed[i]);
-        $('#feed_experiences').append(convert_to_html(feed[i], 'f'));
+        want_new ? $('#feed_experiences').prepend(convert_to_html(feed[i], 'f')) : $('#feed_experiences').append(convert_to_html(feed[i], 'f'));
         // Find the comments of the ith post and append them
         for(let j = 0; j < comments.length; j++){
             if(comments[j].feed_id == feed[i].id){
@@ -291,12 +348,12 @@ function load_feed(top_i, bottom_i){
             }
         }
     }
-    // Update index to load next experiences when clicking 'browse_more' button
 }
 
 function convert_to_html(json_info, type){
-    /* Transforms into HTML the information of the json provided.
-       Current supported types: "f" for feed post; "c" for comment.*/
+    /* Transforms into HTML the information of the object provided.
+       Current supported types: "f" for feed post; "c" for comment;
+       "r" for ranking info.*/
     if(type === 'f'){
         return `<br>
                 <div class="feed_item" id="feed_post_${json_info.id}">
@@ -334,7 +391,7 @@ function convert_to_html(json_info, type){
                             <p class="comment_user_text_font">PepaPig</p>
 
                             <input id="comment_text_box_${json_info.id}" class="comment_text_box" "type="text" placeholder="Write something" required>
-                            <button id="feed_comment_button_${json_info.id}" onload="post_comment(${json_info.id});">Comment</button>
+                            <button id="feed_comment_button_${json_info.id}" onclick="post_comment(${json_info.id});" class="button_settings">Comment</button>
                         </div>
                     </div>
                     <br>
@@ -363,6 +420,14 @@ function convert_to_html(json_info, type){
                     </div>
                 </div>
                 <br>`;
+    }
+    else if(type === 'r'){
+        return `<div>
+                    <img de perfil>
+                    <p>Nombre del usuario</p>
+                    <p>${json_info}</p>
+                    <img más likeada>
+                </div>`;
     }
     else{
         return '<div class="feed_error"><p>Error loading post or comment.</p></div>';
