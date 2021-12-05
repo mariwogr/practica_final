@@ -58,13 +58,18 @@ footer{
 
 #user_signin{
     display: flex;
-    text-align: center;
+    /*text-align: center;*/
     width: 20%;
     margin: auto;
+    justify-content: center;
+    align-items: center;
 }
 
 #user_img{
     margin: auto 50px auto 50px;
+    width: 75px;
+    height: 75px;
+    border-radius: 15px;
 }
 
 
@@ -365,6 +370,17 @@ button:hover{
 
 /*[-----------IDs-----------]*/
 
+#NameUser{
+    visibility: hidden;
+    display: none;
+    text-align: center;
+    margin: auto;
+}
+
+#signin__button{
+  visibility: visible;
+  display: flex;
+}
 
 #UserImProfile{
     width:80px;
