@@ -1,6 +1,6 @@
 [
     {
-        "username":"",
+        "username":"mario",
         "password":"",
         "email":"",
         "profile_img":"",
@@ -13,11 +13,34 @@
                 "images_path": []
             },
             {
+                "experience_id": 2,
+                "name": "",
+                "description": "",
+                "images_path": []
+            }
+        ]
+    },
+
+    {
+        "username":"pepe",
+        "password":"",
+        "email":"",
+        "profile_img":"",
+        "total_likes":"",
+        "experiences":[
+            {
                 "experience_id": 1,
+                "name": "",
+                "description": "",
+                "images_path": []
+            },
+            {
+                "experience_id": 2,
                 "name": "",
                 "description": "",
                 "images_path": []
             }
         ]
     }
+
 ]

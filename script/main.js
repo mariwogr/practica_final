@@ -1,3 +1,5 @@
+//const fs = require('fs').promises;
+//import {fs} from 'fs';
 /*
 In feed section, there will be posts, identified by the string 'feed_post_(postId)'.
 Inside a post there is a section for comments, where comments are appended.
@@ -7,6 +9,7 @@ Inside comments there is a section for replies, where they are appended.
 Replies do not have identification, but class. The replies.json file have a pointer
 to identify the comment they are pointing to.
 */
+
 
 var loaded_experiences = 0;
 
@@ -158,27 +161,60 @@ function changeData(expdays){
     window.location.href = "#";
 }
 
+/*
+async function read_file(path){
+    try {
+        var data = await fs.readFile(path);
+    } catch (error) {
+        console.error('Got an error trying to read the file: ${error.message}');
+    }
+    data = data.toString();
+    return data;
+    return  fs.readFile(path, 
+                        'utf8', 
+                        function(err, data) {
+                            if(err){ console.log(err); return null;}
+                            return data;
+                        }
+                        );
+}
+*/
+function read_file(path) {
+    var result = null;
+    var scriptUrl = path;
+    $.ajax({
+        url: scriptUrl,
+        type: 'get',
+        dataType: 'json',
+        async: false,
+        success: function(data) {
+            result = data;
+        } 
+     });
+     return result;
+}
 
 function load_feed(how_many = 3){
     // Load feed posts and their comments
-    var feed_file = $.get("../jsons/feed.json");
-    console.log(feed_file);
-    var feed = JSON.parse(feed_file);
-    var comments = JSON.parse("../jsons/comments.json");
-    var replies = JSON.parse("../jsons/replies.json");
+    var feed = read_file('../jsons/feed.json');
+    if (feed == null) {console.log('No feed file available'); return;}
+    var comments = read_file('../jsons/comments.json');
+    if (comments == null) {console.log('No comments file available'); return;}
+    var replies = read_file('../jsons/replies.json');
+    if (replies == null) {console.log('No replies file available'); return;}
 
     // Create a HTML entry for each feed post
-    for(let i = loaded_experiences; i < min(loaded_experiences + how_many, feed.length); i++){
-        $('feed').prepend(convert_to_html(feed[i], 'f'));
+    for(let i = loaded_experiences; i < Math.min(loaded_experiences + how_many, feed.length); i++){
+        $('#feed_experiences').append(convert_to_html(feed[i], 'f'));
         // Find the comments of the ith post and append them
-        for(let j = 0; j < comments.length(); j++){
-            if(comments[j].feed_id === feed[i].id){
-                $('feed_post_${feed[i].id}.feed_comment_section').append(convert_to_html(comments[j], 'c'));
+        for(let j = 0; j < comments.length; j++){
+            if(comments[j].feed_id == feed[i].id){
+                $(`#feed_comment_section_${feed[i].id}`).append(convert_to_html(comments[j], 'c'));
             }
             // Find the replies of the jth comment and append them
-            for(let k = 0; k < replies.length(); k++){
-                if(replies[k].comment_id === comments[i].comment_id){
-                    $('feed_post_comment_${comment_id}.comment_bottom').append(convert_to_html(replies[k], 'r'));
+            for(let k = 0; k < replies.length; k++){
+                if(replies[k].comment_id == comments[j].comment_id){
+                    $(`#comment_replies_${comments[j].comment_id}`).append(convert_to_html(replies[k], 'r'));
                 }
             }
         }
@@ -192,52 +228,60 @@ function convert_to_html(json_info, type){
        Current supported types: "f" for feed post; "c" for comment;
        "r" for reply.*/
     if(type === 'f'){
-        return '<div id="feed_post_${json_info.id}">\
+        return `<div class="feed_item" id="feed_post_${json_info.id}">\
                     <div class="feed_top">\
-                        <img src="" alt="Profile image of ${json_info.usr}">\
-                        <p class="user_name">${json_info.usr}</p>\
+                        <div class="feed_user_info">
+                            <img class="feed_user_img" src="https://img.icons8.com/external-bearicons-glyph-bearicons/64/000000/external-User-essential-collection-bearicons-glyph-bearicons.png" alt="Profile image of ${json_info.usr}">\
+                            <p class="text_font">${json_info.usr}</p>\
+                        </div>
+                        <div class="feed_date">
+                            <p class="text_font_date">Posted on ${json_info.date}</p>\
+                        </div>
                     </div>\
                     <div class="feed_body">\
-                        <img src="${json_info.src}" alt="image post"}>\
-                        <p>${json_info.descr}</p>\
+                        <img class="feed_img" src="${json_info.src}" alt="image post"}>\
+                        <p class="text_font">${json_info.descr}</p>\
                     </div>\
                     <div class="feed_bottom">\
-                        <img src="" class="like_button" alt="like icon">\
-                        <p>${json_info.likes} likes</p>\
-                        <img src="" class="comment_button" alt="comments icon">\
-                        <p>see ${json_info.comments} comments</p>\
+                        <div class="icon_and_text">
+                            <img class="icon_button" src="https://img.icons8.com/ios/50/000000/like--v1.png" alt="like icon">\
+                            <p class="text_font">${json_info.likes} likes</p>\
+                        </div>
+                        <div class="icon_and_text">
+                            <img class="icon_button" src="https://img.icons8.com/material-rounded/64/000000/comments--v1.png" alt="comments icon">\
+                            <p class="text_font">see ${json_info.comments} comments</p>\
+                        <div>
                     </div>\
-                    <div class="feed_comment_section">\
-                    </div>\
-                </div>';
+                    <div class="feed_comment_section" id="feed_comment_section_${json_info.id}"></div>\
+                </div>`;
     }
     else if(type === 'c'){
-        return '<div id="feed_post_comment_${comment_id}">\
+        return `<div id="feed_post_comment_${json_info.comment_id}">\
                     <div class="comment_top">\
                         <img src="" alt="Profile image of ${json_info.usr}">\
-                        <p class="comment_info">Commented by ${json_info.usr} on ${json_info.date}</p>\
-                        <img src="" class="like_button" alt="like icon">\
-                        <p>${json_info.likes} likes</p>\
+                        <p class="text_font_date">Commented by ${json_info.usr} on ${json_info.date}</p>\
+                        <img src="" class="icon_button" alt="like icon">\
+                        <p class="text_font">${json_info.likes} likes</p>\
                     </div>\
                     <div class="comment_body">\
-                        <p>${json_info.text}</p>\
+                        <p class="text_font">${json_info.text}</p>\
                     </div>\
-                    <div class="comment_bottom">\
+                    <div class="icon_button" id="comment_replies_${json_info.comment_id}">\
                     </div>\
-                </div>';
+                </div>`;
     }
     else if(type === 'r'){
-        return '<div class="feed_post_comment_reply">\
+        return `<div class="feed_post_comment_reply">\
                     <div class="reply_top">\
                         <img src="" alt="Profile image of ${json_info.usr}">\
-                        <p class="comment_info">Commented by ${json_info.usr} on ${json_info.date}</p>\
-                        <img src="" class="like_button" alt="like icon">\
-                        <p>${json_info.likes} likes</p>\
+                        <p class="text_font_date">Commented by ${json_info.usr} on ${json_info.date}</p>\
+                        <img src="" class="icon_button" alt="like icon">\
+                        <p class="text_font">${json_info.likes} likes</p>\
                     </div>\
                     <div class="reply_body">\
-                        <p>${json_info.text}</p>\
+                        <p class="text_font">${json_info.text}</p>\
                     </div>\
-                </div>';
+                </div>`;
     }
     else{
         return '<div class="feed_error"><p>Error loading post or comment.</p></div>';

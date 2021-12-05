@@ -8,6 +8,10 @@ a{
     text-decoration: none;
 }
 
+a:hover{
+    color: rgb(248, 75, 106);
+}
+
 label {
     text-align: left;
 }

@@ -4,16 +4,14 @@
     <meta charset="utf-8">
     <title>Expell</title>
     <meta charset="UTF-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="script/main.js"></script>
-    <link rel="stylesheet" href="style/main.css">
+    <link rel="stylesheet" href="style/experience.css">
     <link rel="stylesheet" href="style/pop_up.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
 </head>
 <body onload="load_feed();">
-    <!---------------------------------------------Header---------------------------------------------------->
+    <!---------------------------------------------HEADER---------------------------------------------------->
     <header>
         <nav>
             <div class="company_identity">
@@ -32,23 +30,31 @@
                 <a href="signin.html">
                     <button class="signin_button">Sign In</button>
                 </a>
-
             </div>
-
         </nav>
     </header>
-    
-    <h1 class="title_text_font">Discover the pleasure to travel</h1>
 
-    <p class="title_text_font">Most popular experiences</p>
+    <!------------------------------------Experiences section-------------------------------------->
+
+    <p class="title_text_font">Experiences</p>
+    <br><br>
+
+    <!-----------------------------------Search bar----------------------------------------------->
+
+    <section>
+        <div id="search_bar" class="menu_margin">
+            <h2 class="subtitle_text_font">Search Bar</h2>
+            <br><br>
+            <input type="text" id="input_search">
+            <button type="button" name="Search" onclick="searchElem()" class="button2">Search</button>
+        </div>
+    </section>
     <br><br>
     <div id="feed" class="button_br_more">
-        <div id="feed_experiences"></div>
         <button id="browse_more_button" class="browse_more_button2" onclick="load_feed('3')">Browse more experiences</button>
     </div>
 
     <br><br><br><br>
-    <!---------------------------------------------Footer---------------------------------------------------->
     <footer>
         <div class="company_identity">
             <img src="images/Icon/app_logo.png" class="app_logo_img">
@@ -57,24 +63,26 @@
 
         <menu class="menu_margin">
             <a href="main.html" class="nav_links">Privacy</a>
-            <a href="about us.html" class="nav_links">About Us</a>
+            <a href="" class="nav_links">About Us</a>
             <a href="" class="nav_links">Help</a>
         </menu>
 
         <div id="footer_icons">
             <a href="#" target="_blank">
-                <img class="icon_footer" src="images/icon/twitter_icon.png" id="twitter" title="Twitter">
+                <img class="icon_footer" src="images/icon/twitter_icon.png" title="Twitter">
             </a>
             <a href="#" target="_blank">
-                <img class="icon_footer" src="images/icon/instagram_icon.png" id="instagram" title="Instagram">
+                <img class="icon_footer" src="images/icon/instagram_icon.png" title="Instagram">
             </a>
             <a href="#" target="_blank">
-                <img class="icon_footer" src="images/icon/question_icon.png" id="FAQ" title="FAQ">
+                <img class="icon_footer" src="images/icon/question_icon.png" title="FAQ">
             </a>
             <a href="https://www.tuabogadodefensor.com/derechos-autor-web/" target="_blank">
-                <img class="icon_footer" src="images/icon/copyright_icon.png" id="Copyright" title="Copyright">
+                <img class="icon_footer" src="images/icon/copyright_icon.png" title="Copyright">
             </a>     
         </div>           
     </footer>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="script/experiences.js"></script>
 </html>

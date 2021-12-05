@@ -27,6 +27,34 @@ footer{
     width: 100%;
 }
 
+/*[------------------Classes--------------------]*/
+
+.browse_more_button2{
+    background-color: rgb(248, 75, 106);
+    color: rgb(255, 255, 255);
+    padding: 14px 20px;
+    cursor: pointer;
+    width: 20%;
+    border-radius: 10px;
+    filter: drop-shadow(5px 5px 10px #444);
+    font-family: 'Quicksand',sans-serif;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.button2{
+    background-color: rgb(248, 75, 106);
+    color: rgb(255, 255, 255);
+    width:10%;
+    cursor: pointer;
+    padding: 7px 14px;
+    border-radius: 10px;
+    filter: drop-shadow(5px 5px 10px #444);
+    font-family: 'Quicksand',sans-serif;
+    font-style: normal;
+    font-weight: 400;
+}
+
 /*[----------------------Classes----------------------]*/
 
 
@@ -132,8 +160,9 @@ button:hover{
     margin: auto;
     color: rgb(2, 2, 2);
     font-size: 26px;
-    text-align: justify;
+    text-align: center;
     font-family:'Quicksand',sans-serif;
+
 }
 
 .text_center{
@@ -160,11 +189,6 @@ button:hover{
     color: black;
 }
 
-#description{
-    margin: auto 20% auto 20%;
-    text-align: justify;
-}
-
 /*    Actions to take when overlay is targeted    */
 .overlay:target {
     visibility: visible;
@@ -187,75 +211,6 @@ button:hover{
     text-align: center;   
 }
 
-/*[--------Experiences--------]*/
-
-
-.feed_item{
-    text-align: center;
-}
-
-.feed_top{
-    margin: 0px auto 10px auto;
-    width: 50%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
-}
-
-.feed_user_info{
-    margin: auto;
-    display: inline-flex;
-    align-items: center;
-}
-
-.feed_user_img{
-    margin-right: 10px;
-}
-
-.feed_date{
-    display: inline-flex;
-    align-items:center;
-    margin:auto;
-}
-
-.feed_img{
-    width: 50%;
-    border-radius: 20px;
-}
-
-.text_font_date{
-    font-family: 'Quicksand',sans-serif;
-    font-style: italic;
-    font-weight: 500;
-    font-size: 15px;
-}
-
-.feed_bottom{
-    margin: 0px auto auto auto;
-    width: 30%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
-}
-
-.icon_and_text{
-    margin: auto;
-    display: inline-flex;
-    align-items: center;
-}
-
-.icon_button{
-    margin-right: 20px;
-    width: 50px;
-    height: 50px;
-}
-
-.feed_coment_section{
-    text-align: center;
-    margin: auto;
-}
-
-
 /*[-----------Fonts-----------]*/
 
 .company_font{
@@ -277,20 +232,6 @@ button:hover{
     font-family: 'Quicksand',sans-serif;
     font-style: normal;
     font-weight: 600;
-}
-
-.text_font{
-    font-family: 'Quicksand',sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 20px;
-}
-
-.text_font_italic{
-    font-family: 'Quicksand',sans-serif;
-    font-style: italic;
-    font-weight: 500;
-    font-size: 20px;
 }
 
 /*[-----------IDs-----------]*/
@@ -354,17 +295,4 @@ button:hover{
 
 #header_options {
     list-style-type: none;
-}
-
-.browse_more_button2{
-    background-color: rgb(248, 75, 106);
-    color: rgb(255, 255, 255);
-    padding: 14px 20px;
-    cursor: pointer;
-    width: 20%;
-    border-radius: 10px;
-    filter: drop-shadow(5px 5px 10px #444);
-    font-family: 'Quicksand',sans-serif;
-    font-style: normal;
-    font-weight: 400;
 }
