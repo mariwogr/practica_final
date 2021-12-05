@@ -110,3 +110,13 @@ button:hover{
     font-weight: 400;
     margin: 0px auto 0px auto;
 }
+
+/*[--------------------IDs-----------------------------]*/
+
+#ImgPreV2{
+    width:100px;
+    height: 100px;
+    visibility: hidden;
+    display: none;
+    margin: auto;
+}
