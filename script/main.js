@@ -102,7 +102,8 @@ function showRanking(){
     sorted_dict = sortDict(dict);
 
     for (let i = 0; i < 10 || i < Object.keys.sorted_dict.length;i++){ 
-        $('#feed_experiences').append(convert_to_html(sorted_dict[i], 'f'));
+        $('#ranking_experiences').append(convert_to_html([Object.keys.sorted_dict[i],
+            Object.values.sorted_dict[i][0], Object.values.sorted_dict[i][1]], 'r'));
     }
 }
 
@@ -259,22 +260,23 @@ function changeData(expdays){
     if(img != ""){
         document.cookie = "imagen=" + img + ";" + expires + ";path=/";
     }
-    
 
     window.location.href = "#";
 }
 
 function post_comment(id) {
+    var username = "";
+    var time = new Date();
+    time.setTime(time.getTime());
     var comment = {
                     feed_id: id,
                     comment_id: get_comment_id(),
                     usr: "nolose",
-                    date: "nolase",
-                    text: $(`comment_text_box_${id}`).value,
+                    date: time.toUTCString(),
+                    text: $(`#comment_text_box_${id}`).val(),
                     likes: 0
                   };
-    console.log("pepeppepepepepe");
-    $(`#feed_comment_section_${id}`).append(convert_to_html(comment, 'c'));
+    $(`#feed_comment_section_${id}`).prepend(convert_to_html(comment, 'c'));
 }
 
 function get_comment_id() {
@@ -422,12 +424,12 @@ function convert_to_html(json_info, type){
                 <br>`;
     }
     else if(type === 'r'){
-        return `<div>
-                    <img de perfil>
+        return `
+                    <img class="img_ranking">
                     <p>Nombre del usuario</p>
                     <p>${json_info}</p>
                     <img más likeada>
-                </div>`;
+                `;
     }
     else{
         return '<div class="feed_error"><p>Error loading post or comment.</p></div>';

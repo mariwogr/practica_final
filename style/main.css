@@ -142,6 +142,14 @@ button:hover{
     font-family:'Quicksand',sans-serif;
 }
 
+.title_text_font2{    
+    margin: auto;
+    color: rgb(2, 2, 2);
+    font-size: 26px;
+    text-align: center;
+    font-family:'Quicksand',sans-serif;
+}
+
 .text_center{
     text-align: center;
 }
@@ -484,6 +492,18 @@ button:hover{
     font-style: normal;
     font-weight: 400;
 
+}
+
+.button_popups{
+    background-color: rgb(248, 75, 106);
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    border-radius: 10px;
+    filter: drop-shadow(5px 5px 10px #444);
+    font-family: 'Quicksand',sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    height: 35px;
 }
 
 .show{
