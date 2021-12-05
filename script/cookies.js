@@ -11,7 +11,7 @@ function createCookie(expdays){
     var email = signup_email.value;
     */
     //if (checkUser(user)){
-    if (checkUser("peepo")){
+    if (checkUser($('signup_uname').value)){
         alert("Ya existe una cuenta asociada a dicho correo cree otro usuario de nuevo con diferente cuenta de correo");
         return;
     }
@@ -61,25 +61,33 @@ function WriteToFile() {
 }*/
 
 function pushData(dict) {
-    var scriptUrl = "jsons/cookies.json";
+    /*var scriptUrl = "jsons/cookies.json";
     var l = [];
     $.ajax({
         url: scriptUrl,
-        type: 'post',
+        type: 'POST',
         dataType: 'json',
         async: false,
-        /*success: function(data) {
-            data.push(dict);
-            l.push(dict);
-            console.log(l);
-        },*/
         data: dict
+    });*/
+
+    const fs = require(['fs']);
+
+    const content = 'Some content!';
+
+    fs.writeFile('hola.txt', content, err => {
+        if (err) {
+            console.error(err);
+            return;
+        }
+    //file written successfully
     });
+
 }
 
 function getData() {
     var result = null;
-    var scriptUrl = "jsons/cookies.json";
+    var scriptUrl = "../jsons/cookies.json";
     $.ajax({
         url: scriptUrl,
         type: 'get',

@@ -189,6 +189,11 @@ button:hover{
 
 /*[--------Experiences--------]*/
 
+#feed{
+    margin: auto 20% auto 20%;
+    background-color: rgb(233, 227, 227);
+    border-radius: 15px;
+}
 
 .feed_item{
     text-align: center;
@@ -219,7 +224,7 @@ button:hover{
 }
 
 .feed_img{
-    width: 50%;
+    width: 70%;
     border-radius: 20px;
 }
 
@@ -232,7 +237,7 @@ button:hover{
 
 .feed_bottom{
     margin: 0px auto auto auto;
-    width: 30%;
+    width: 50%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
@@ -253,6 +258,57 @@ button:hover{
 .feed_coment_section{
     text-align: center;
     margin: auto;
+}
+
+.feed_post_comment{
+    margin: auto 15% auto 15%;
+    background-color: rgb(212, 204, 204);
+    border-radius: 15px;
+}
+
+.comment_section{
+    margin: 0px auto auto auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+.comment_icon_button{
+    margin-left: 10px;
+    width: 50px;
+    height: 50px;
+}
+
+.comment_body{
+    display: grid;
+    width: 50%;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+.comment_user_img{
+    margin-left: 60%;
+}
+
+.comment_user_text_font{
+    font-family: 'Quicksand',sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    margin-left: 20px;
+    text-align: left;
+}
+
+.comment_text_box{
+    width: 380%;
+    background-color:rgb(233, 227, 227);
+    border-radius: 10px;
+    text-align: left;
+}
+
+.text_font{
+    margin-left: 10px;
 }
 
 
