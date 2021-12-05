@@ -1,7 +1,10 @@
 /* This file contains the functions that will build the sign in and sign up */
 
+import { open } from './fs/promises';
+
+
 function createCookie(expdays){
-    
+    console.log("hola");
     const time = new Date();
     time.setTime(time.getTime() + (expdays * 24*60*60*1000));
     let expires = "expires=" + time.toUTCString();
@@ -70,24 +73,26 @@ function pushData(dict) {
         async: false,
         data: dict
     });*/
+    
+    
 
-    const fs = require(['fs']);
+    const fs = require('fs');
 
     const content = 'Some content!';
 
-    fs.writeFile('hola.txt', content, err => {
-        if (err) {
-            console.error(err);
-            return;
-        }
+    let file = fs.open('test.txt', 'r');
+    
+
+    file.close();
     //file written successfully
-    });
+    
+    
 
 }
 
 function getData() {
     var result = null;
-    var scriptUrl = "../jsons/cookies.json";
+    var scriptUrl = "jsons/cookies.json";
     $.ajax({
         url: scriptUrl,
         type: 'get',

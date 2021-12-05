@@ -311,6 +311,20 @@ button:hover{
     margin-left: 10px;
 }
 
+.feed_user_comment{
+    margin: auto 15% auto 15%;
+    background-color: rgb(212, 204, 204);
+    border-radius: 15px;
+    height: 150px;
+}
+
+::-moz-placeholder {
+    font-family: 'Quicksand',sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    font-style: italic;;
+  }
 
 /*[-----------Fonts-----------]*/
 

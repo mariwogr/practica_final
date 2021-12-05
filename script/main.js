@@ -253,18 +253,21 @@ function convert_to_html(json_info, type){
                             <p class="text_font">see ${json_info.comments} comments</p>\
                         </div>
                     </div>\
-                    <div class="feed_post_comment" >\
+                    <br>
+                    <div class="feed_user_comment" >\
+                    
                         <div class="comment_section">
-                            <img class="comment_icon_button" src="https://img.icons8.com/material-rounded/64/000000/comments--v1.png" alt="comments icon">\
+                            <img class="comment_icon_button" src="https://img.icons8.com/material-outlined/64/000000/comments--v1.png" alt="comments icon">\
                         </div>
                         <div class="comment_body">\
                             <img class="comment_user_img" src="https://img.icons8.com/external-bearicons-glyph-bearicons/64/000000/external-User-essential-collection-bearicons-glyph-bearicons.png" alt="Profile image of ${json_info.usr}">\
-                            <p class="comment_user_text_font">${json_info.usr}</p>\
-                            <div class="comment_text_box">
-                                <p class="text_font">${json_info.text}</p>\
-                            </div>
+                            <p class="comment_user_text_font">PepaPig</p>\
+
+                            <input class="comment_text_box" "type="text" placeholder="Write something" name="email" required class="fields">
+
                         </div>\
                     </div>
+                    <br>
                     <div class="feed_comment_section" id="feed_comment_section_${json_info.id}"></div>\
                 </div>
                 <br>`;
