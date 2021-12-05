@@ -260,12 +260,15 @@ function changeData(expdays){
     if(img != ""){
         document.cookie = "imagen=" + img + ";" + expires + ";path=/";
     }
-
     window.location.href = "#";
 }
 
 function post_comment(id) {
-    var username = "";
+    var username = "pepapig";
+    if(username === ""){
+        console.log("User is not registered");
+        return;
+    }
     var time = new Date();
     time.setTime(time.getTime());
     var comment = {
@@ -425,7 +428,7 @@ function convert_to_html(json_info, type){
     }
     else if(type === 'r'){
         return `
-                    <img class="img_ranking">
+                    <img class="img_ranking" src="https://img.icons8.com/ios/50/000000/like--v1.png">
                     <p>Nombre del usuario</p>
                     <p>${json_info}</p>
                     <img más likeada>
