@@ -215,6 +215,29 @@ button:hover{
     background-color: #2980B9;
 }
 
+.ranking_div {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+#ranking {
+    display: flex;
+}
+
+.icon_ranking {
+    width: 10%;
+    margin-right: 10%;
+    border-radius: 20px;
+}
+
+.img_ranking {
+    width: 10%;
+    margin-right: 10%;
+    margin-left: 10%;
+    border-radius: 20px;
+}
+
 
 #feed{
     margin: auto 20% auto 20%;
@@ -393,6 +416,13 @@ button:hover{
 }
 
 /*[-----------IDs-----------]*/
+
+#ranking_experiences{
+    align-items: center;
+    margin: auto 20% auto 20%;
+    background-color: rgb(233, 227, 227);
+    border-radius: 15px;
+}
 
 #dropdown{
     visibility: hidden;

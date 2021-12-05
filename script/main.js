@@ -101,9 +101,10 @@ function showRanking(){
     
     sorted_dict = sortDict(dict);
 
-    for (let i = 0; i < 10 || i < Object.keys.sorted_dict.length;i++){ 
-        $('#ranking_experiences').append(convert_to_html([Object.keys.sorted_dict[i],
-            Object.values.sorted_dict[i][0], Object.values.sorted_dict[i][1]], 'r'));
+    for (let i = 0; i < 10 && i < Object.keys(sorted_dict).length;i++){
+        $('#ranking_experiences').append(convert_to_html([Object.keys(sorted_dict)[i],
+            Object.values(sorted_dict)[i][0], 
+            Object.values(sorted_dict)[i][1]], 'r'));
     }
 }
 
@@ -419,7 +420,7 @@ function convert_to_html(json_info, type){
                     </div>
                     <div class="comment_bottom">
                         <div class="icon_and_text">
-                            <img class="icon_button" src="https://img.icons8.com/ios/50/000000/like--v1.png" alt="like icon">
+                            <img class="icon_button" src="https://img.icons8.com/external-bearicons-glyph-bearicons/64/000000/external-User-essential-collection-bearicons-glyph-bearicons.png" alt="like icon">
                             <p class="text_font">${json_info.likes} likes</p>
                         </div>
                     </div>
@@ -427,12 +428,14 @@ function convert_to_html(json_info, type){
                 <br>`;
     }
     else if(type === 'r'){
-        return `
-                    <img class="img_ranking" src="https://img.icons8.com/ios/50/000000/like--v1.png">
-                    <p>Nombre del usuario</p>
-                    <p>${json_info}</p>
-                    <img más likeada>
-                `;
+        return `<div class="ranking_div">
+                    <img class="icon_ranking" src="https://img.icons8.com/external-bearicons-glyph-bearicons/64/000000/external-User-essential-collection-bearicons-glyph-bearicons.png">
+                    <p class="text_font">${json_info[0]}</p>
+                    <img class="img_ranking" src="${json_info[2]}">
+                    <p class="text_font">${json_info[1]}</p>
+                </div>
+                <br>`;
+
     }
     else{
         return '<div class="feed_error"><p>Error loading post or comment.</p></div>';
