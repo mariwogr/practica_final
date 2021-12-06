@@ -8,7 +8,7 @@ Replies do not have identification, but class. The replies.json file have a poin
 to identify the comment they are pointing to.
 */
 
-var comments =  [
+/*var comments =  [
                     {
                         feed_id: 2,
                         comment_id: 0,
@@ -27,7 +27,7 @@ var comments =  [
                         img: "https://e00-elmundo.uecdn.es/assets/multimedia/imagenes/2021/07/16/16264514660383.jpg",
                         likes: 0
                     }
-                ];
+                ];*/
 /*var feed =      [
                     {
                         id: 0,
@@ -151,12 +151,42 @@ function set_up(){
                             comments: 0
                         },
                     ];
-    localStorage.setItem("feed", "[]")
-    console.log(feed.length);
-    for (let i = 0; i < feed.length; i++){
-        saveLocal("feed", feed[i]);
+
+    var comments =  [
+                        {
+                            feed_id: 2,
+                            comment_id: 0,
+                            usr: "jose",
+                            date: "5/12/2021",
+                            text: "Nice trip bro",
+                            img:"https://i.ytimg.com/vi/BkgA2_sB6NM/maxresdefault.jpg",
+                            likes: 0
+                        },
+                        {
+                            feed_id: 2,
+                            comment_id: 1,
+                            usr: "hasbulla",
+                            date: "5/12/2021",
+                            text: "Da menschen vodka!",
+                            img: "https://e00-elmundo.uecdn.es/assets/multimedia/imagenes/2021/07/16/16264514660383.jpg",
+                            likes: 0
+                        }
+                    ];
+
+    if (!localStorage.getItem("feed")){
+        localStorage.setItem("feed", "[]"); 
+        console.log("entro");
+        for (let i = 0; i < feed.length; i++){
+            saveLocal("feed", feed[i]);
+        }
     }
-    //saveLocal("feed", feed);
+    if (!localStorage.getItem("comments")){
+        localStorage.setItem("comments", "[]");
+        console.log("entro2");
+        for (let i = 0; i < comments.length; i++){
+            saveLocal("comments", comments[i]);
+        }
+    }
     
     checkCookie();
     load_feed(top_pointer, bottom_pointer);
@@ -167,7 +197,6 @@ function saveLocal(where, data){
     if (!localStorage.getItem(where)){
         localStorage.setItem(where, "[]");
     }
-    console.log(localStorage.getItem(where));
     let user_data = JSON.parse(localStorage.getItem(where));
 
     user_data.push((data));
@@ -182,7 +211,6 @@ function showRanking(){
     let feed = JSON.parse(localStorage.getItem("feed"));
 
     var dict = {};
-    console.log(feed.length);
     for (let i=0; i < feed.length; i++){
 
         let user = feed[i]["usr"];
@@ -378,12 +406,52 @@ function changeData(expdays){
     window.location.href = "#";
 }
 
+function like(id, type){
+
+    if (type === "post") {
+        feed = JSON.parse(localStorage.getItem("feed"));
+        new_feed = [];
+        var liked_post;
+        for (let i = 0; i < feed.length; i++) {
+            if (feed[i]["id"] == id) {
+                liked_post = feed[i];
+                liked_post["likes"]++;
+                new_feed.push(liked_post);
+            }
+            else {new_feed.push(feed[i]);}
+        }
+        localStorage.setItem("feed", JSON.stringify(new_feed));
+
+        document.getElementById(`likes_${id}`).innerText = `${liked_post["likes"]} likes`;
+    }
+    
+    else if (type === "comment") {
+        comments = JSON.parse(localStorage.getItem("comments"));
+        new_comments = [];
+        var liked_comment;
+        for (let i = 0; i < comments.length; i++) {
+            if (comments[i]["comment_id"] == id) {
+                liked_comment = comments[i];
+                liked_comment["likes"]++;
+                new_comments.push(liked_comment);
+            }
+            else {new_comments.push(comments[i]);}
+        }
+        localStorage.setItem("comments", JSON.stringify(new_comments));
+
+        document.getElementById(`comments_likes_${id}`).innerText = `${liked_comment["likes"]} likes`;
+    }
+}
+
 function post_comment(id) {
     var username = "pepapig";
     if(username === ""){
         console.log("User is not registered");
         return;
     }
+
+    plus_one_comment(id);
+
     var time = new Date();
     time.setTime(time.getTime());
     var comment = {
@@ -396,12 +464,33 @@ function post_comment(id) {
                     likes: 0
                   };
     $(`#feed_comment_section_${id}`).prepend(convert_to_html(comment, 'c'));
+    saveLocal("comments", comment);
 }
 
 function get_comment_id() {
     // Generates a random id for a comment. Cannot obtain it from comments.json
     // because new comments cannot be stored there, so info won't be updated.
     return Math.floor(Math.random()*10 + 5);
+}
+
+function plus_one_comment(id) {
+
+    feed = JSON.parse(localStorage.getItem("feed"));
+    new_feed = [];
+    var commented_post;
+    for (let i = 0; i < feed.length; i++) {
+        if (feed[i]["id"] == id) {
+            commented_post = feed[i];
+            commented_post["comments"]++;
+            new_feed.push(commented_post);
+        }
+        else {new_feed.push(feed[i]);}
+    }
+    localStorage.setItem("feed", JSON.stringify(new_feed));
+    console.log(commented_post["comments"]);
+
+
+    document.getElementById(`comments_${id}`).innerText = `see ${commented_post["comments"]} comments`;
 }
 
 function read_file(path) {
@@ -433,8 +522,6 @@ function load_older(){
 function load_new(){
 
     let feed = JSON.parse(localStorage.getItem("feed"));
-
-    console.log(feed.length);
 
     // get the "posts window" size
     let loaded_experiences = top_pointer - bottom_pointer + 1;
@@ -470,9 +557,9 @@ function load_feed(top_i, bottom_i, want_new){
     // Create a HTML entry for each feed post
 
     let feed = JSON.parse(localStorage.getItem("feed"));
+    let comments = JSON.parse(localStorage.getItem("comments"));
     
     for(let i = top_i; i >= bottom_i; i--){
-        console.log(feed[i]);
         want_new ? $('#feed_experiences').prepend(convert_to_html(feed[i], 'f')) : $('#feed_experiences').append(convert_to_html(feed[i], 'f'));
         // Find the comments of the ith post and append them
         for(let j = 0; j < comments.length; j++){
@@ -488,9 +575,6 @@ function convert_to_html(json_info, type){
        Current supported types: "f" for feed post; "c" for comment;
        "r" for ranking info.*/
 
-
-    
-    console.log(json_info);
     if(type === 'f'){
 
                
@@ -512,12 +596,12 @@ function convert_to_html(json_info, type){
                     </div>
                     <div class="feed_bottom">
                         <div class="icon_and_text">
-                            <img class="icon_button" src="https://img.icons8.com/ios/50/000000/like--v1.png" alt="like icon">
-                            <p class="text_font">${json_info.likes} likes</p>
+                            <img onclick="like(${json_info.id}, 'post');" "class="icon_button" src="https://img.icons8.com/ios/50/000000/like--v1.png" alt="like icon">
+                            <p class="text_font" id="likes_${json_info.id}">${json_info.likes} likes</p>
                         </div>
                         <div class="icon_and_text">
                             <img class="icon_button" src="https://img.icons8.com/material-rounded/64/000000/comments--v1.png" alt="comments icon">
-                            <p class="text_font">see ${json_info.comments} comments</p>
+                            <p class="text_font" id="comments_${json_info.id}">see ${json_info.comments} comments</p>
                         </div>
                     </div>
                     <br>
@@ -556,8 +640,8 @@ function convert_to_html(json_info, type){
                     </div>
                     <div class="comment_bottom">
                         <div class="icon_and_text">
-                            <img class="icon_button" src="https://img.icons8.com/ios/50/000000/like--v1.png" alt="like icon">
-                            <p class="text_font">${json_info.likes} likes</p>
+                            <img onclick="like(${json_info.comment_id}, 'comment');" class="icon_button" src="https://img.icons8.com/ios/50/000000/like--v1.png" alt="like icon">
+                            <p class="text_font" id="comments_likes_${json_info.comment_id}">${json_info.likes} likes</p>
                         </div>
                     </div>
                 </div>
