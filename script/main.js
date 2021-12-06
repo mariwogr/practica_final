@@ -576,9 +576,6 @@ function convert_to_html(json_info, type){
        "r" for ranking info.*/
 
     if(type === 'f'){
-
-               
-
         return `<br>
                 <div class="feed_item" id="feed_post_${json_info.id}">
                     <div class="feed_top">
@@ -662,7 +659,6 @@ function convert_to_html(json_info, type){
                     </div>
                 </div>
                 <br>`;
-
     }
     else{
         return '<div class="feed_error"><p>Error loading post or comment.</p></div>';
@@ -674,31 +670,24 @@ function convert_to_html(json_info, type){
 function hoverInst(element){
     element.setAttribute("src","images/icon/instagram_icon2.png");
 }
-
 function unhoverInst(element){
     element.setAttribute("src","images/icon/instagram_icon.png");
 }
-
 function hoverTwi(element){
     element.setAttribute("src","images/icon/twitter_icon2.png");
 }
-
 function unhoverTwi(element){
     element.setAttribute("src","images/icon/twitter_icon.png");
 }
-
 function hoverF(element){
     element.setAttribute("src","images/icon/question_icon2.png");
 }
-
 function unhoverF(element){
     element.setAttribute("src","images/icon/question_icon.png");
 }
-
 function hoverC(element){
     element.setAttribute("src","images/icon/copyright_icon2.png");
 }
-
 function unhoverC(element){
     element.setAttribute("src","images/icon/copyright_icon.png");
 }
@@ -707,17 +696,17 @@ function unhoverC(element){
 
 $(window).on("load",function() {
     $(window).scroll(function() {
-      var windowBottom = $(this).scrollTop() + $(this).innerHeight()+1000;
-      $(".feed_item").each(function() {
+        var windowBottom = $(this).scrollTop() + $(this).innerHeight()+1000;
+        $(".feed_item").each(function() {
         /* Check the location of each desired element */
         var objectBottom = $(this).offset().top + $(this).outerHeight();
         
         /* If the element is completely within bounds of the window, fade it in */
         if (objectBottom < windowBottom) { //object comes into view (scrolling down)
-          if ($(this).css("opacity")==0) {$(this).fadeTo(500,1);}
+            if ($(this).css("opacity")==0) {$(this).fadeTo(500,1);}
         } else { //object goes out of view (scrolling up)
-          if ($(this).css("opacity")==1) {$(this).fadeTo(500,0);}
+            if ($(this).css("opacity")==1) {$(this).fadeTo(500,0);}
         }
-      });
+        });
     }).scroll(); //invoke scroll-handler on page-load
-  });
+});

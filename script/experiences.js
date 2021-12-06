@@ -48,36 +48,18 @@ function set_up(){
 }
 
 //------------------[Dropdown Function]------------------
-
-
-
-
-window.onclick = function(event){
-    // Checks if dropdown is clicked
-
-    if (event.target.matches('.dropbtn')) {
-        var dropdowns = document.getElementsByClassName("dropdown_content");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-          var openDropdown = dropdowns[i];
-          if (openDropdown.classList.contains('show')) {
-            openDropdown.classList.remove('show');
-          }
-        }
-    }
-}
-
 function myFunction(){
     // Show dropdown
     document.getElementById("myDropdown").classList.toggle("show");
+    //alert("ola");
 }
 
 window.onclick = function(event){
     // Checks if dropdown is clicked
-
     if (!event.target.matches('.dropbtn')) {
         var dropdowns = document.getElementsByClassName("dropdown_content");
         var i;
+        //alert("asdios");
         for (i = 0; i < dropdowns.length; i++) {
           var openDropdown = dropdowns[i];
           if (openDropdown.classList.contains('show')) {
@@ -86,6 +68,59 @@ window.onclick = function(event){
         }
     }
 }
+
+function preview2(){
+    // Preview img used on Change Form
+    var img = document.getElementById("Change_form").elements['im_per'].value;
+    document.getElementById("ImgPreV2").src = img;
+    document.getElementById("ImgPreV2").style.display = "block";
+    document.getElementById("ImgPreV2").style.visibility = "visible";
+
+}
+
+function setTextUser(){
+    var user = getCookie("usuario");
+    var email = getCookie("email");
+    var img = getCookie("imagen");
+    document.getElementById("usern").innerText = user;
+    document.getElementById("email").innerText = email;  
+    if(img!=""){
+        document.getElementById("img").src = img;
+    }
+}
+
+function logOut(){
+    // Funtion to log out of the session
+    const time = new Date();
+    time.setTime(time.getTime() + (365 * 24*60*60*1000));
+    let expires = "expires=" + time.toUTCString();
+
+    document.cookie = "usuario="  + ";" + expires + ";path=/";
+    document.cookie = "pwd="  + ";" + expires + ";path=/";
+    document.cookie = "email="  + ";" + expires + ";path=/";
+    document.cookie = "imagen=" + ";" + expires + ";path=/";
+
+    window.location.href = "main.html";
+}
+
+function changeData(expdays){
+    const time = new Date();
+    time.setTime(time.getTime() + (expdays * 24*60*60*1000));
+    let expires = "expires=" + time.toUTCString();
+
+    var user = document.getElementById("Change_form").elements["username"].value;
+    if(user != ""){
+        document.cookie = "usuario=" + user + ";" + expires + ";path=/";
+    }
+    
+
+    var img = document.getElementById("Change_form").elements["im_per"].value;
+    if(img != ""){
+        document.cookie = "imagen=" + img + ";" + expires + ";path=/";
+    }
+    window.location.href = "#";
+}
+
 
 function load_exps(){
     let user = getCookie("usuario");
