@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
 </head>
 <body onload="set_up();">
-    <!---------------------------------------------HEADER---------------------------------------------------->
+    <!---------------------------------------------Header---------------------------------------------------->
     <header>
         <nav>
             <div class="company_identity">
@@ -34,9 +34,7 @@
                     <button class="signin_button" id="signin__button">Sign In</button>
                 </a>
                 <div id="dropdown">
-                    <button id="button_settings" onclick ="myFunction();" class="dropbtn"> settings
-                        <!--<img src="images/icons/settings_icon.png">-->
-                    </button>
+                    <button id="button_settings" onclick ="myFunction();" class="dropbtn">Settings</button>
                     <div id ="myDropdown" class = "dropdown_content">
                         <a class="subtitle_text_font" href="#popupUserInf" >
                             <button onclick="setTextUser()" class="button_settings">
@@ -60,6 +58,12 @@
     <p class="title_text_font">Experiences</p>
     <br><br>
 
+    <div id="feed" class="button_br_more">
+        <a href="#popupExperiences">
+            <button id="browse_more_button" class="browse_more_button2">New experience</button>
+        </a>        
+    </div>
+
     <div class="">
         <!-----------------------------------Search bar----------------------------------------------->
         <section>
@@ -76,14 +80,41 @@
     
     <!-----------------------------------Body----------------------------------------------->
 
-    <div class="div_exp">
+    <div id="div_exp">
                 
     </div>
+    
+    <!-----------------------------------Pop-Up Add Experiences----------------------------------------------->
 
-    <div id="feed" class="button_br_more">
-        <button id="browse_more_button" class="browse_more_button2" onclick="load_feed('3')">New experience</button>
+    <div id="popupExperiences" class="overlay">
+        <div id="popupBody">
+            <h2 class="title_text_font_nomargin"> Experiences</h2>
+            <a id="cerrar" href="#">&times;</a>
+            <div class="popupContent">
+                <div id ="experiences_user">
+                    <form id ="experience_form" style="text-align: center;">
+                        <br><br>
+                        <label class="text_font" for="experience_description">Experience description</label>
+                        <br><br>
+                        <input class="description_textbox" id="experience_description" type="text" name="experience_description">
+                        <br><br>
+                        <label class="text_font" for="new_experience">Add a new experience in URL format (png o jpg)</label>
+                        <br><br>
+                        <input class="url_textbox" type="url" id="new_experience" name="new_experience" onchange="preview3()">
+                        <br><br>
+                        <img id = "ImgPreV3" >
+                        <br>
+                        <div class="text_center">
+                            <button id = "button_plus" onclick="add_experience()">
+                                <img src="https://img.icons8.com/material-rounded/96/000000/plus--v2.png"/>
+                            </button>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-
     <!-----------------------------------Footer----------------------------------------------->
 
     <br>

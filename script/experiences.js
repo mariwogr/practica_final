@@ -1,4 +1,5 @@
 
+
 function searchElem(){
     /*
         Searches an element in the page by obtaining the words from
@@ -78,6 +79,15 @@ function preview2(){
 
 }
 
+function preview3(){
+    // Preview img used on Add Experience Form
+    var img = document.getElementById("experience_form").elements['new_experience'].value;
+    document.getElementById("ImgPreV3").src = img;
+    document.getElementById("ImgPreV3").style.display = "block";
+    document.getElementById("ImgPreV3").style.visibility = "visible";
+
+}
+
 function setTextUser(){
     var user = getCookie("usuario");
     var email = getCookie("email");
@@ -134,8 +144,7 @@ function load_exps(){
         }
     }
     for (let i = 0; i < user_exps.length; i++) {
-        console.log(user_exps[i]);
-        $('.div_exp').append(convert_to_html(user_exps[i]));
+        $('#div_exp').append(convert_to_html(user_exps[i]));
     }
 
 }
@@ -152,8 +161,32 @@ function convert_to_html(json_info){
             <br>`;
 }
 
-function new_experience(img, descr){
+function add_experience(){
+    
+    console.log($('#experience_description')[0].value);
+    console.log($('#new_experience')[0].value);
 
+    let descr = $('#experience_description')[0].value;
+    let img = $('#new_experience')[0].value;
+
+    let feed = JSON.parse(localStorage.getItem("feed"));
+    let id_post = feed[feed.length - 1]["id"];
+    
+    let dict = {
+                    id: id_post + 1,
+                    src: img,
+                    usr: getCookie("usuario"),
+                    descr: descr,
+                    date: "5/12/2021",
+                    likes: 0,
+                    img : getCookie("imagen"),
+                    comments: 0
+                }
+
+    saveLocal("feed", dict);
+    $('.div_exp').append(convert_to_html(dict));
+
+    window.location.href = "#";
 }
 
 //------------------[LocalStorage Functions]------------------
@@ -214,4 +247,29 @@ function getCookie(cname){
     return "";
 }
 
+/*---------------------------------Footer's icons-----------------------*/
 
+function hoverInst(element){
+    element.setAttribute("src","images/icon/instagram_icon2.png");
+}
+function unhoverInst(element){
+    element.setAttribute("src","images/icon/instagram_icon.png");
+}
+function hoverTwi(element){
+    element.setAttribute("src","images/icon/twitter_icon2.png");
+}
+function unhoverTwi(element){
+    element.setAttribute("src","images/icon/twitter_icon.png");
+}
+function hoverF(element){
+    element.setAttribute("src","images/icon/question_icon2.png");
+}
+function unhoverF(element){
+    element.setAttribute("src","images/icon/question_icon.png");
+}
+function hoverC(element){
+    element.setAttribute("src","images/icon/copyright_icon2.png");
+}
+function unhoverC(element){
+    element.setAttribute("src","images/icon/copyright_icon.png");
+}

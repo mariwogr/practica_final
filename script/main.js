@@ -315,7 +315,6 @@ function checkCookie(){
         return;
     }
     else{
-        document.getElementById("signin__button").style.visibility="hidden";
         document.getElementById("signin__button").style.display="none";
 
         document.getElementById("NameUser").style.visibility = "visible";

@@ -10,10 +10,10 @@ Funcionalidades a añadir:
 - Posibilidad de cambiar la información del usuario (x)
 - Gestión de usuarios (inicio de sesión y registro) (x)
 - Buscador de experiencias (por autor, interés, experiencia…)
-- Subir una experiencia propia 
+- Subir una experiencia propia (x)
 - Borrar una experiencia 
 - Ver información al hacer clic en una experiencia
-- Cuando un usuario en modo invitado intenta hacer uso de funcionalidades de usuarios que han iniciado
+- Cuando un usuario en modo invitado intenta hacer uso de funcionalidades de usuarios que han iniciado (x)
  sesión, se le redirigirá automáticamente al apartado de inicio de sesión (x)
 - Drag and drop en las experiencias guardadas 
 - Cambiar a modo oscuro (opción para el usuario)
