@@ -71,7 +71,16 @@ var feed =      [
                         date: "6/12/2021",
                         likes: 0,
                         comments: 0
-                    }
+                    },
+                    {
+                        id: 5,
+                        src: "https://pbs.twimg.com/media/E-IXBArVEAsG4Oy.jpg",
+                        usr: "hashbulla",
+                        descr: "de panafresqueooooo",
+                        date: "07/12/2021",
+                        likes: 4000,
+                        comments: 0
+                    },
                 ];
 
 var top_pointer = 3;
@@ -158,10 +167,33 @@ window.onclick = function(event){
 
 //------------------[Cookie´s Functions]------------------
 
+function preview2(){
+    // Preview img used on Change Form
+    var img = document.getElementById("Change_form").elements['im_per'].value;
+    document.getElementById("ImgPreV2").src = img;
+    document.getElementById("ImgPreV2").style.display = "block";
+    document.getElementById("ImgPreV2").style.visibility = "visible";
+
+}
+
+function logOut(){
+    // Funtion to log out of the session
+    const time = new Date();
+    time.setTime(time.getTime() + (365 * 24*60*60*1000));
+    let expires = "expires=" + time.toUTCString();
+
+    document.cookie = "usuario="  + ";" + expires + ";path=/";
+    document.cookie = "pwd="  + ";" + expires + ";path=/";
+    document.cookie = "email="  + ";" + expires + ";path=/";
+    document.cookie = "imagen=" + ";" + expires + ";path=/";
+
+    window.location.href = "main.html";
+}
+
 function checkCookie(){
     var cookie = document.cookie;
     //alert(cookie.length);
-    if(cookie.length <= 24){
+    if(getCookie("usuario")=="" && getCookie("email")=="" && getCookie("pwd")==""){
         return;
     }
     else{
@@ -229,16 +261,10 @@ function checkUser(user){
 
 function setTextUser(){
     var user = getCookie("usuario");
-    var nombre = getCookie("name");
-    var last_n = getCookie("lastname");
     var email = getCookie("email");
-    var interes = getCookie("interes");
     var img = getCookie("imagen");
     document.getElementById("usern").innerText = user;
-    document.getElementById("name").innerText = nombre;
-    document.getElementById("last_name").innerText = last_n;
     document.getElementById("email").innerText = email;  
-    document.getElementById("Interes").innerText = interes; 
     if(img!=""){
         document.getElementById("img").src = img;
     }
@@ -254,8 +280,6 @@ function changeData(expdays){
         document.cookie = "usuario=" + user + ";" + expires + ";path=/";
     }
     
-    var interes = document.getElementById("Change_form").elements["interes"].value;
-    document.cookie = "interes=" + interes + ";" + expires + ";path=/";
 
     var img = document.getElementById("Change_form").elements["im_per"].value;
     if(img != ""){
@@ -388,7 +412,6 @@ function convert_to_html(json_info, type){
                     </div>
                     <br>
                     <div class="feed_user_comment" >
-                    
                         <div class="comment_section">
                             <img class="comment_icon_button" src="https://img.icons8.com/material-outlined/64/000000/comments--v1.png" alt="comments icon">
                         </div>
@@ -397,8 +420,11 @@ function convert_to_html(json_info, type){
                             <p class="comment_user_text_font">PepaPig</p>
 
                             <input id="comment_text_box_${json_info.id}" class="comment_text_box" "type="text" placeholder="Write something" required>
-                            <button id="feed_comment_button_${json_info.id}" onclick="post_comment(${json_info.id});" class="button_settings">Comment</button>
+
                         </div>
+                        
+                        <button id="feed_comment_button_${json_info.id}" onclick="post_comment(${json_info.id});" class="user_comment_button">Comment</button>
+
                     </div>
                     <br>
                     <div class="feed_comment_section" id="feed_comment_section_${json_info.id}"></div>
@@ -429,10 +455,16 @@ function convert_to_html(json_info, type){
     }
     else if(type === 'r'){
         return `<div class="ranking_div">
-                    <img class="icon_ranking" src="https://img.icons8.com/external-bearicons-glyph-bearicons/64/000000/external-User-essential-collection-bearicons-glyph-bearicons.png">
-                    <p class="text_font">${json_info[0]}</p>
-                    <img class="img_ranking" src="${json_info[2]}">
-                    <p class="text_font">${json_info[1]}</p>
+                    <div class="user_ranking">
+                        <img class="icon_ranking" src="https://img.icons8.com/external-bearicons-glyph-bearicons/64/000000/external-User-essential-collection-bearicons-glyph-bearicons.png">
+                        <p class="user_ranking_text_font">${json_info[0]}</p>
+                    </div>
+                    <div class="img_ranking_container">
+                        <img class="img_ranking" src="${json_info[2]}">
+                    </div>
+                    <div class="likes_container">
+                        <p class="text_font">${json_info[1]}</p>
+                    </div>
                 </div>
                 <br>`;
 

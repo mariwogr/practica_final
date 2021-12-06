@@ -43,11 +43,6 @@
                                 Profile
                             </button>
                         </a>
-                        <a class="subtitle_text_font" href="#popupExperiences">
-                            <button class="button_settings">
-                                Experiences 
-                            </button>
-                        </a>
                         <a class="subtitle_text_font" href="#popupOut">
                             <button class="button_settings">
                                 Log Out
@@ -59,17 +54,6 @@
         </nav>
         
     </header>
-    
-    <h1 class="title_text_font">Discover the pleasure to travel</h1>
-
-    <p class="title_text_font">Most popular experiences</p>
-    <br><br>
-    <div id="feed" class="button_br_more">
-        <button id="browse_more_button" class="browse_more_button2" onclick="load_new()">Browse new experiences</button>
-        <div id="feed_experiences"></div>
-        <button id="browse_more_button" class="browse_more_button2" onclick="load_older()">Browse more experiences</button>
-        <br><br>
-    </div>
 
     <!----------------------------Log Out POP UP---------------------------------------------->
     <div id="popupOut" class="overlay">
@@ -86,7 +70,55 @@
         </div>
     </div>
     <!------------------------------------------------------------------------------------------>
-
+    <!--------------------------Change Data POP UP---------------------------------------------->
+    <div id="popupUserInf" class="overlay">
+        <div id="popupBody">
+            <h2 class="title_text_font">information about user</h2>
+            <a id="cerrar" href="#">&times;</a>
+            <div class="popupContent">
+                <br><br>
+                <h4 class="text_font">User: </h4>
+                <p class="text_font" id="usern"></p>
+                <br>
+                <h4 class="text_font">Email: </h4>
+                <p class="text_font" id="email"></p>
+                <br>
+                <h4 class="text_font">Profile Image: </h4>
+                <img src="https://img.icons8.com/external-bearicons-glyph-bearicons/64/000000/external-User-essential-collection-bearicons-glyph-bearicons.png" alt="" class="img_settings" id="img">
+                <br><br>
+                <h1 class="title_text_font">Change User Data</h1>
+                <form class="text_center" id="Change_form">
+                    <br><br>
+                    <label class="text_font" for="username">Change user name:</label>
+                    <input id="username" type="text" name="username" maxlength="10">
+                    <br><br>
+                    <label for="im_per" class="text_font">Stick the url of the image (only jpg or png):</label>
+                    <br><br>
+                    <input type="url" id="im_per" name="im_per" onchange="preview2()" class="fields">
+                    <br><br>
+                    <img src="" id="ImgPreV2">
+                    <br><br>
+                    <div class="text_center">
+                        <button onclick="changeData(365)" class="button_popups">
+                            Save
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!------------------------------------------------------------------------------------------->
+    <h1 class="title_text_font">Discover the pleasure to travel</h1>
+    <p class="title_text_font_nomargin">Most popular experiences</p>
+    <br><br>
+    <div id="feed" class="button_br_more">
+        <button id="reload_button" onclick="load_new()">
+            <img class="icon_footer" src="https://img.icons8.com/external-becris-lineal-becris/64/000000/external-refresh-mintab-for-ios-becris-lineal-becris-1.png"/>
+        </button>
+        <div id="feed_experiences"></div>
+        <button id="browse_more_button" class="browse_more_button2" onclick="load_older()">Browse more experiences</button>
+        <br><br>
+    </div>
     <br><br><br><br>
     <!---------------------------------------------Footer---------------------------------------------------->
     <footer>

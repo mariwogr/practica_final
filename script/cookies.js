@@ -19,12 +19,23 @@ function createCookie(expdays){
         return;
     }    
     
+    var dict = {};
+
+    dict["usr"] = user;
+    dict["img"] = img;
+    dict["pwd"] = pwd;
+    dict["email"] = email;
+
+    saveLocal("user_data", dict);
+
     document.cookie = "usuario=" + user + ";" + expires + ";path=/";
     document.cookie = "pwd=" + pwd + ";" + expires + ";path=/";
     document.cookie = "email=" + email + ";" + expires + ";path=/";
 
     if(img != ""){
         document.cookie = "imagen=" + img + ";" + expires + ";path=/";
+    }else{
+        document.cookie = "imagen=" + ";" + expires + ";path=/";
     }
     if(user != "" && pwd != "" && email != ""){
         window.location.href = "main.html";
@@ -76,4 +87,19 @@ function getCookie(cname){
 
 function checkUser(user){
     return getCookie(user);
+}
+
+
+//------------------[LocalStorage Functions]------------------
+
+function saveLocal(where, data){
+    if (!localStorage.getItem(where)){
+        localStorage.setItem(where, "[]");
+    }
+        
+    let user_data = JSON.parse(localStorage.getItem(where));
+
+    user_data.push((data));
+
+    localStorage.setItem(where, JSON.stringify(user_data));
 }
