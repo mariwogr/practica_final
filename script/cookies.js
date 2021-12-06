@@ -43,6 +43,7 @@ function createCookie(expdays){
     }
 }
 
+
 function preview2(){
     // Preview img used on Change Form
     var img = document.getElementById("sign_up_form").elements['im_per'].value;
@@ -86,7 +87,19 @@ function getCookie(cname){
 
 
 function checkUser(user){
-    return getCookie(user);
+    if (!localStorage.getItem("user_data")){
+        localStorage.setItem("user_data", "[]");
+    }
+
+    let user_data = JSON.parse(localStorage.getItem("user_data"));
+    for (let i = 0; i < user_data.length; i++) {
+        if (user_data[i]["usr"] === user){
+            return true;
+        }
+    }
+    return false;
+
+    //return getCookie(user);
 }
 
 

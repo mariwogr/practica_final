@@ -7,6 +7,8 @@
     <link rel="icon" href="images/Icon/logo.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.16.0/mapbox-gl.js'></script>
+    <script src="script/signin.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
 </head>
 <body> 
@@ -15,27 +17,27 @@
         <p class="company_font">Expell</p>
     </div>
     <div class="form_div">
-        <form>
+        <div id="form_logIn">
             <h1 class="title_font">Sign In</h1>
             <p class="grey_text_font">Welcome back again!</p>
             <br>
-            <div id="form_body">
-                <label class = "label_text_font" for="email"><b >Email</b></label>
+            <form id="form_body">
+                <label class = "label_text_font" for="user"><b >User</b></label>
                 <br><br>
-                <input type="text" placeholder="Enter your email" name="email" required class="fields">
+                <input type="text" placeholder="Enter your user" name="user" required class="fields" id="user">
                 <br>
                 <label class = "label_text_font" for="password"><b>Password</b></label>
                 <br><br>
-                <input type="text" placeholder="Enter your password" name="password" required class="fields">
+                <input type="password" placeholder="Enter your password" name="password" required class="fields" id="password">
                 <br><br>
-                <button class="button_red" type="submit">Sing In</button>
+                <button class="button_red" type="submit" onclick="sign_in()">Sing In</button>
                 <br><br>
                 <p class="grey_text_font"> or enter as a guest</p>
                 <br>
                 
-            </div>
+            </form>
 
-        </form>
+        </div>
 
         <a href="main.html">
             <button class="button_grey">Enter as a guest</button>

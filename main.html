@@ -5,6 +5,7 @@
     <title>Expell</title>
     <meta charset="UTF-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="script/main.js"></script>
     <link rel="stylesheet" href="style/main.css">
     <link rel="stylesheet" href="style/pop_up.css">
@@ -107,13 +108,13 @@
             </div>
         </div>
     </div>
-    <!------------------------------------------------------------------------------------------->
-    <h1 class="title_text_font">Discover the pleasure to travel</h1>
+    <!---------------------------------------------Experiences--------------------------------------------->
+    <h1 class="fade-in-text">Discover the pleasure to travel</h1>
     <p class="title_text_font_nomargin">Most popular experiences</p>
     <br><br>
-    <div id="feed" class="button_br_more">
+    <div id="feed" class="button_centered">
         <button id="reload_button" onclick="load_new()">
-            <img class="icon_footer" src="https://img.icons8.com/external-becris-lineal-becris/64/000000/external-refresh-mintab-for-ios-becris-lineal-becris-1.png"/>
+            <img id="reload_icon" src="https://img.icons8.com/external-becris-lineal-becris/64/000000/external-refresh-mintab-for-ios-becris-lineal-becris-1.png"/>
         </button>
         <div id="feed_experiences"></div>
         <button id="browse_more_button" class="browse_more_button2" onclick="load_older()">Browse more experiences</button>

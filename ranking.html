@@ -29,10 +29,27 @@
             
             <div id="user_signin">
                 <img id="user_img" src="https://img.icons8.com/external-bearicons-glyph-bearicons/64/000000/external-User-essential-collection-bearicons-glyph-bearicons.png"/>
+                <p id="NameUser"></p>
                 <a href="signin.html">
-                    <button class="signin_button">Sign In</button>
+                    <button class="signin_button" id="signin__button">Sign In</button>
                 </a>
-
+                <div id="dropdown">
+                    <button id="button_settings" onclick ="myFunction()" class="dropbtn"> settings
+                        <!--<img src="images/icons/settings_icon.png">-->
+                    </button>
+                    <div id ="myDropdown" class = "dropdown_content">
+                        <a class="subtitle_text_font" href="#popupUserInf" >
+                            <button onclick="setTextUser()" class="button_settings">
+                                Profile
+                            </button>
+                        </a>
+                        <a class="subtitle_text_font" href="#popupOut">
+                            <button class="button_settings">
+                                Log Out
+                            </button>
+                        </a>
+                    </div>
+                </div>
             </div>
 
         </nav>
@@ -46,8 +63,13 @@
     <div id="ranking">
         
         <div id="ranking_experiences">
-            <h1 class="ranking_title_text_font">Top 100 Users</h1>
+            <br>
+            <div id="trophy_and_text">
+                <img id="trophy_icon" src="https://img.icons8.com/ios-glyphs/90/000000/trophy.png"/>
+                <h1 class="ranking_title_text_font">Top 100 Users</h1>
+            </div>
             <img id="straight_line" src="https://img.icons8.com/material-outlined/24/000000/horizontal-line.png"/>
+
             <div class="ranking_div">
                 <p class="ranking_text_font">User</p>
                 <p class="ranking_text_font">Most popular photo</p>

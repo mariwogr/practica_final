@@ -15,6 +15,7 @@ var comments =  [
                         usr: "jose",
                         date: "5/12/2021",
                         text: "Nice trip bro",
+                        img:"https://i.ytimg.com/vi/BkgA2_sB6NM/maxresdefault.jpg",
                         likes: 0
                     },
                     {
@@ -23,10 +24,11 @@ var comments =  [
                         usr: "hasbulla",
                         date: "5/12/2021",
                         text: "Da menschen vodka!",
+                        img: "https://e00-elmundo.uecdn.es/assets/multimedia/imagenes/2021/07/16/16264514660383.jpg",
                         likes: 0
                     }
                 ];
-var feed =      [
+/*var feed =      [
                     {
                         id: 0,
                         src: "https://ih1.redbubble.net/image.557168243.2784/flat,1000x1000,075,f.jpg",
@@ -81,30 +83,117 @@ var feed =      [
                         likes: 4000,
                         comments: 0
                     },
-                ];
+                ];*/
 
 var top_pointer = 3;
 var bottom_pointer = 1;
 
 function set_up(){
+    var feed =      [
+                        {
+                            id: 0,
+                            src: "https://ih1.redbubble.net/image.557168243.2784/flat,1000x1000,075,f.jpg",
+                            usr: "el pibe",
+                            descr: "finisterre",
+                            date: "12/03/2004",
+                            likes: 245,
+                            img: "https://i.ytimg.com/vi/qCylpmEvDCg/maxresdefault.jpg",
+                            comments: 0
+                        },
+                        {
+                            id: 1,
+                            src: "https://pbs.twimg.com/media/FD33F3UXIAIe2bd.jpg",
+                            usr: "hashbulla",
+                            descr: "de panafrescos",
+                            date: "23/10/2020",
+                            likes: 4524,
+                            img : "https://e00-elmundo.uecdn.es/assets/multimedia/imagenes/2021/07/16/16264514660383.jpg",
+                            comments: 0
+                        },
+                        {
+                            id: 2,
+                            src: "https://services.meteored.com/img/article/en-saturno-llueven-diamantes-263801-1_1280.jpg",
+                            usr: "pepe",
+                            descr: "D vacas por saturno",
+                            date: "4/12/2021",
+                            likes: 20,
+                            img: "https://arc-anglerfish-arc2-prod-copesa.s3.amazonaws.com/public/Y7ITUEPBTFGQDLQKWWRQQ5C6KI.jpg",
+                            comments: 2
+                        },
+                        {
+                            id: 3,
+                            src: "http://www.pixelstalk.net/wp-content/uploads/2016/10/Download-Images-Disney-Computer-HD.jpg",
+                            usr: "jose",
+                            descr: "Nice lil' mouse, dont ya think?",
+                            date: "5/12/2021",
+                            likes: 10,
+                            img : "https://www.earlygame.com/uploads/images/_body/Jayce-Arcane-HD-splash-art.jpg",
+                            comments: 0
+                        },
+                        {
+                            id: 4,
+                            src: "https://wallup.net/wp-content/uploads/2016/01/136128-mountain-lake-trees.jpg",
+                            usr: "juan",
+                            descr: "Enjoying the mountain",
+                            date: "6/12/2021",
+                            likes: 0,
+                            img : "https://i.ytimg.com/vi/BkgA2_sB6NM/maxresdefault.jpg",
+                            comments: 0
+                        },
+                        {
+                            id: 5,
+                            src: "https://pbs.twimg.com/media/E-IXBArVEAsG4Oy.jpg",
+                            usr: "hashbulla",
+                            descr: "de panafresqueooooo",
+                            date: "07/12/2021",
+                            likes: 4000,
+                            img: "https://e00-elmundo.uecdn.es/assets/multimedia/imagenes/2021/07/16/16264514660383.jpg",
+                            comments: 0
+                        },
+                    ];
+    localStorage.setItem("feed", "[]")
+    console.log(feed.length);
+    for (let i = 0; i < feed.length; i++){
+        saveLocal("feed", feed[i]);
+    }
+    //saveLocal("feed", feed);
+    
     checkCookie();
     load_feed(top_pointer, bottom_pointer);
 }
+//------------------[LocalStorage Functions]------------------
 
+function saveLocal(where, data){
+    if (!localStorage.getItem(where)){
+        localStorage.setItem(where, "[]");
+    }
+    console.log(localStorage.getItem(where));
+    let user_data = JSON.parse(localStorage.getItem(where));
+
+    user_data.push((data));
+
+    localStorage.setItem(where, JSON.stringify(user_data));
+}
 //------------------[Ranking Functions]------------------
 
 function showRanking(){
+    checkCookie();
+
+    let feed = JSON.parse(localStorage.getItem("feed"));
+
     var dict = {};
+    console.log(feed.length);
     for (let i=0; i < feed.length; i++){
 
         let user = feed[i]["usr"];
 
         if (dict[user]==undefined){
-            dict[user] = [feed[i]["likes"], feed[i]["src"]];
+            dict[user] = [feed[i]["likes"], feed[i]["src"], feed[i]["img"]];
         }
         else{
             dict[user][0] += feed[i]["likes"];
             dict[user][1] = feed[i]["src"];
+            dict[user][2] = feed[i]["img"];
         }
     }
     
@@ -113,7 +202,8 @@ function showRanking(){
     for (let i = 0; i < 10 && i < Object.keys(sorted_dict).length;i++){
         $('#ranking_experiences').append(convert_to_html([Object.keys(sorted_dict)[i],
             Object.values(sorted_dict)[i][0], 
-            Object.values(sorted_dict)[i][1]], 'r'));
+            Object.values(sorted_dict)[i][1],
+            Object.values(sorted_dict)[i][2]], 'r'));
     }
 }
 
@@ -299,9 +389,10 @@ function post_comment(id) {
     var comment = {
                     feed_id: id,
                     comment_id: get_comment_id(),
-                    usr: "nolose",
+                    usr: document.getElementById("NameUser").innerText,
                     date: time.toUTCString(),
                     text: $(`#comment_text_box_${id}`).val(),
+                    img: document.getElementById("user_img").src,
                     likes: 0
                   };
     $(`#feed_comment_section_${id}`).prepend(convert_to_html(comment, 'c'));
@@ -340,6 +431,11 @@ function load_older(){
 }
 
 function load_new(){
+
+    let feed = JSON.parse(localStorage.getItem("feed"));
+
+    console.log(feed.length);
+
     // get the "posts window" size
     let loaded_experiences = top_pointer - bottom_pointer + 1;
     // adapt top pointer to the new situation (at most 3 more new posts)
@@ -349,7 +445,10 @@ function load_new(){
     
     load_feed(top_pointer, new_load_bottom, true);
 
+    document.getElementById("reload_icon").className ="reload_animation"
+
 }
+
 /*
 [6]
 [5]
@@ -369,7 +468,11 @@ function load_feed(top_i, bottom_i, want_new){
         'want_new' is a boolean: true means load new content; false means load old content
     */
     // Create a HTML entry for each feed post
+
+    let feed = JSON.parse(localStorage.getItem("feed"));
+    
     for(let i = top_i; i >= bottom_i; i--){
+        console.log(feed[i]);
         want_new ? $('#feed_experiences').prepend(convert_to_html(feed[i], 'f')) : $('#feed_experiences').append(convert_to_html(feed[i], 'f'));
         // Find the comments of the ith post and append them
         for(let j = 0; j < comments.length; j++){
@@ -384,12 +487,19 @@ function convert_to_html(json_info, type){
     /* Transforms into HTML the information of the object provided.
        Current supported types: "f" for feed post; "c" for comment;
        "r" for ranking info.*/
+
+
+    
+    console.log(json_info);
     if(type === 'f'){
+
+               
+
         return `<br>
                 <div class="feed_item" id="feed_post_${json_info.id}">
                     <div class="feed_top">
                         <div class="feed_user_info">
-                            <img class="feed_user_img" src="https://img.icons8.com/external-bearicons-glyph-bearicons/64/000000/external-User-essential-collection-bearicons-glyph-bearicons.png" alt="Profile image of ${json_info.usr}">
+                            <img class="feed_user_img" src="${json_info.img}" alt="Profile image of ${json_info.usr}">
                             <p class="text_font">${json_info.usr}</p>
                         </div>
                         <div class="feed_date">
@@ -416,8 +526,8 @@ function convert_to_html(json_info, type){
                             <img class="comment_icon_button" src="https://img.icons8.com/material-outlined/64/000000/comments--v1.png" alt="comments icon">
                         </div>
                         <div class="comment_body">
-                            <img class="comment_user_img" src="https://img.icons8.com/external-bearicons-glyph-bearicons/64/000000/external-User-essential-collection-bearicons-glyph-bearicons.png" alt="Profile image of ${json_info.usr}">
-                            <p class="comment_user_text_font">PepaPig</p>
+                            <img id="comment_user_img" class="comment_user_img" src=${user_img.src} alt="Profile image of ${json_info.usr}">
+                            <p class="comment_user_text_font">${NameUser.innerText}</p>
 
                             <input id="comment_text_box_${json_info.id}" class="comment_text_box" "type="text" placeholder="Write something" required>
 
@@ -438,7 +548,7 @@ function convert_to_html(json_info, type){
                         <p class="text_font_date">Commented on ${json_info.date}</p>
                     </div>
                     <div class="comment_body">
-                        <img class="comment_user_img" src="https://img.icons8.com/external-bearicons-glyph-bearicons/64/000000/external-User-essential-collection-bearicons-glyph-bearicons.png" alt="Profile image of ${json_info.usr}">
+                        <img class="comment_user_img" src=${json_info.img} alt="Profile image of ${json_info.usr}">
                         <p class="comment_user_text_font">${json_info.usr}</p>
                         <div class="comment_text_box">
                             <p class="text_font">${json_info.text}</p>
@@ -446,7 +556,7 @@ function convert_to_html(json_info, type){
                     </div>
                     <div class="comment_bottom">
                         <div class="icon_and_text">
-                            <img class="icon_button" src="https://img.icons8.com/external-bearicons-glyph-bearicons/64/000000/external-User-essential-collection-bearicons-glyph-bearicons.png" alt="like icon">
+                            <img class="icon_button" src="https://img.icons8.com/ios/50/000000/like--v1.png" alt="like icon">
                             <p class="text_font">${json_info.likes} likes</p>
                         </div>
                     </div>
@@ -456,13 +566,14 @@ function convert_to_html(json_info, type){
     else if(type === 'r'){
         return `<div class="ranking_div">
                     <div class="user_ranking">
-                        <img class="icon_ranking" src="https://img.icons8.com/external-bearicons-glyph-bearicons/64/000000/external-User-essential-collection-bearicons-glyph-bearicons.png">
+                        <img class="icon_ranking" src=${json_info[3]}>
                         <p class="user_ranking_text_font">${json_info[0]}</p>
                     </div>
                     <div class="img_ranking_container">
                         <img class="img_ranking" src="${json_info[2]}">
                     </div>
                     <div class="likes_container">
+                        <img class="icon_button" src="https://img.icons8.com/ios/50/000000/like--v1.png" alt="like icon">
                         <p class="text_font">${json_info[1]}</p>
                     </div>
                 </div>
@@ -507,3 +618,22 @@ function hoverC(element){
 function unhoverC(element){
     element.setAttribute("src","images/icon/copyright_icon.png");
 }
+
+/* Animations */
+
+$(window).on("load",function() {
+    $(window).scroll(function() {
+      var windowBottom = $(this).scrollTop() + $(this).innerHeight()+1000;
+      $(".feed_item").each(function() {
+        /* Check the location of each desired element */
+        var objectBottom = $(this).offset().top + $(this).outerHeight();
+        
+        /* If the element is completely within bounds of the window, fade it in */
+        if (objectBottom < windowBottom) { //object comes into view (scrolling down)
+          if ($(this).css("opacity")==0) {$(this).fadeTo(500,1);}
+        } else { //object goes out of view (scrolling up)
+          if ($(this).css("opacity")==1) {$(this).fadeTo(500,0);}
+        }
+      });
+    }).scroll(); //invoke scroll-handler on page-load
+  });
