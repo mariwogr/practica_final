@@ -163,26 +163,65 @@ function load_exps(){
         }
     }
     for (let i = 0; i < user_exps.length; i++) {
-        $('#div_exp').append(convert_to_html(user_exps[i]));
+        $('#div_exp').append(convert_to_html_exp(user_exps[i], i));
     }
 
 }
 
-function convert_to_html(json_info){
-    return `<div id="imageNo" class="exp_user_div">
+function convert_to_html_exp(json_info, id){
+    return `<div id="imageNo${id}" class="exp_user_div">
                 <div>
                     <img class="img_experience" src="${json_info.src}">
                 </div>
-                <div>
-                    <p class="text_font">${json_info.descr}</p>
+                <div class="description_container">
+                    <div class="description_div">
+                        <p class="text_font">${json_info.descr}</p>
+                    </div>
+                    <div class="trash_div">
+                        <a href="#popupdel">
+                            <img class="img_delete" src="https://img.icons8.com/ios-glyphs/60/000000/trash--v3.png">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!----------------------------------POP UP DELETE EXP---------------------->
+            <div id="popupdel" class="overlay">
+                <div id="popupBody">
+                    <h2 class="title_text_font_nomargin"> Delete Experiences</h2>
+                    <a id="cerrar" href="#">&times;</a>
+                    <div class="popupContent">
+                        <br><br>
+                        <h4 class="text_font">Are you sure to delete the experience: </h4>
+                        <br><br>
+                        <button class="button_popups" onclick = "delete_exp(${id},${json_info.id})">YES</button>
+                    </div>
                 </div>
             </div>`;
 }
 
+function delete_exp(id, feed_id) {
+
+
+    $(`#imageNo${id}`).css('display', "none");
+
+    var feed = JSON.parse(localStorage.getItem("feed"));
+
+    var new_feed = [];
+
+    for (let i = 0; i < feed.length; i++) {
+        if (feed[i]["id"] != feed_id){
+            new_feed.push(feed[i]);
+        }
+    }
+    localStorage.setItem("feed", JSON.stringify(new_feed));
+
+    window.location.href = "#";
+}
+
 function add_experience(){
-    
-    console.log($('#experience_description')[0].value);
-    console.log($('#new_experience')[0].value);
+
+    var time = new Date();
+    time.setTime(time.getTime());
 
     let descr = $('#experience_description')[0].value;
     let img = $('#new_experience')[0].value;
@@ -195,7 +234,7 @@ function add_experience(){
                     src: img,
                     usr: getCookie("usuario"),
                     descr: descr,
-                    date: "5/12/2021",
+                    date: time.toUTCString(),
                     likes: 0,
                     img : getCookie("imagen"),
                     comments: 0,
@@ -203,7 +242,7 @@ function add_experience(){
                 }
 
     saveLocal("feed", dict);
-    $('.div_exp').append(convert_to_html(dict));
+    $('.div_exp').append(convert_to_html_exp(dict));
 
     window.location.href = "#";
 }

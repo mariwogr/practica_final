@@ -23,7 +23,7 @@ function set_up(){
                             src: "https://ih1.redbubble.net/image.557168243.2784/flat,1000x1000,075,f.jpg",
                             usr: "el pibe",
                             descr: "finisterre",
-                            date: "12/03/2004",
+                            date: "Thu, 12 Mar 2020 12:24:29 GMT",
                             likes: 245,
                             img: "https://i.ytimg.com/vi/qCylpmEvDCg/maxresdefault.jpg",
                             comments: 0,
@@ -34,7 +34,7 @@ function set_up(){
                             src: "https://pbs.twimg.com/media/FD33F3UXIAIe2bd.jpg",
                             usr: "hashbulla",
                             descr: "de panafrescos",
-                            date: "23/10/2020",
+                            date: "Fri, 23 Oct 2020 04:21:56 GMT",
                             likes: 4524,
                             img : "https://e00-elmundo.uecdn.es/assets/multimedia/imagenes/2021/07/16/16264514660383.jpg",
                             comments: 0,
@@ -45,7 +45,7 @@ function set_up(){
                             src: "https://services.meteored.com/img/article/en-saturno-llueven-diamantes-263801-1_1280.jpg",
                             usr: "pepe",
                             descr: "D vacas por saturno",
-                            date: "4/12/2021",
+                            date: "Sat, 04 Dic 2021 00:46:12 GMT",
                             likes: 20,
                             img: "https://arc-anglerfish-arc2-prod-copesa.s3.amazonaws.com/public/Y7ITUEPBTFGQDLQKWWRQQ5C6KI.jpg",
                             comments: 2,
@@ -56,7 +56,7 @@ function set_up(){
                             src: "http://www.pixelstalk.net/wp-content/uploads/2016/10/Download-Images-Disney-Computer-HD.jpg",
                             usr: "jose",
                             descr: "Nice lil' mouse, dont ya think?",
-                            date: "5/12/2021",
+                            date: "Sun, 05 Dic 2021 23:01:00 GMT",
                             likes: 10,
                             img : "https://www.earlygame.com/uploads/images/_body/Jayce-Arcane-HD-splash-art.jpg",
                             comments: 0,
@@ -67,7 +67,7 @@ function set_up(){
                             src: "https://wallup.net/wp-content/uploads/2016/01/136128-mountain-lake-trees.jpg",
                             usr: "juan",
                             descr: "Enjoying the mountain",
-                            date: "6/12/2021",
+                            date: "Mon, 06 Dic 2021 15:08:43 GMT",
                             likes: 0,
                             img : "https://i.ytimg.com/vi/BkgA2_sB6NM/maxresdefault.jpg",
                             comments: 0,
@@ -78,7 +78,7 @@ function set_up(){
                             src: "https://pbs.twimg.com/media/E-IXBArVEAsG4Oy.jpg",
                             usr: "hashbulla",
                             descr: "de panafresqueooooo",
-                            date: "07/12/2021",
+                            date: "Tue, 07 Dic 2021 07:23:39 GMT",
                             likes: 4000,
                             img: "https://e00-elmundo.uecdn.es/assets/multimedia/imagenes/2021/07/16/16264514660383.jpg",
                             comments: 0,
@@ -91,7 +91,7 @@ function set_up(){
                             feed_id: 2,
                             comment_id: 0,
                             usr: "jose",
-                            date: "5/12/2021",
+                            date: "Sun, 05 Dec 2021 21:56:08 GMT",
                             text: "Nice trip bro",
                             img:"https://i.ytimg.com/vi/BkgA2_sB6NM/maxresdefault.jpg",
                             likes: 0,
@@ -101,7 +101,7 @@ function set_up(){
                             feed_id: 2,
                             comment_id: 1,
                             usr: "hasbulla",
-                            date: "5/12/2021",
+                            date: "Sun, 05 Dec 2021 17:01:32 GMT",
                             text: "Da menschen vodka!",
                             img: "https://e00-elmundo.uecdn.es/assets/multimedia/imagenes/2021/07/16/16264514660383.jpg",
                             likes: 0,
@@ -169,8 +169,9 @@ function showRanking(){
     }
     
     sorted_dict = sortDict(dict);
+    console.log(sorted_dict);
 
-    for (let i = 0; i < Math.min(10, i < Object.keys(sorted_dict).length); i++){
+    for (let i = 0; i < Math.min(10, Object.keys(sorted_dict).length); i++){
         $('#ranking_experiences').append(convert_to_html(
             [Object.keys(sorted_dict)[i],
              Object.values(sorted_dict)[i][0], 
@@ -215,6 +216,21 @@ window.onclick = function(event){
     if (event.target.matches('.dropbtn')) {
         var dropdowns = document.getElementsByClassName("dropdown_content");
         for (let i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+    }
+}
+
+
+window.onclick = function(event){
+    // Checks if dropdown is clicked
+    if (!event.target.matches('.dropbtn')) {
+        var dropdowns = document.getElementsByClassName("dropdown_content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
           var openDropdown = dropdowns[i];
           if (openDropdown.classList.contains('show')) {
             openDropdown.classList.remove('show');
@@ -271,61 +287,18 @@ function checkCookie(){
     }
 }
 
-function myFunction(){
-    // Show dropdown
-    document.getElementById("myDropdown").classList.toggle("show");
-}
-
-window.onclick = function(event){
-    // Checks if dropdown is clicked
-
-    if (!event.target.matches('.dropbtn')) {
-        var dropdowns = document.getElementsByClassName("dropdown_content");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-          var openDropdown = dropdowns[i];
-          if (openDropdown.classList.contains('show')) {
-            openDropdown.classList.remove('show');
-          }
-        }
-    }
-}
-
-
-function getCookie(cname){
-    // Returns a specific cookie passed as paramete
-    let name = cname + "=";
-    let decodeCookie = decodeURIComponent(document.cookie);
-    let cake = decodeCookie.split(";");
-    for(let i = 0; i < cake.length; i++){
-        let x = cake[i];
-        while(x.charAt(0)==' '){
-            x = x.substring(1);
-        }
-        if(x.indexOf(name)==0){
-            return x.substring(name.length,x.length);
-        }
-    }
-    return "";
-}
-
-
-function checkUser(user){
-    return getCookie(user);
-}
-
 function setTextUser(){
-    var user = getCookie("usuario");
-    var email = getCookie("email");
-    var img = getCookie("imagen");
-    $('#usern').text(user);
-    $('#email').text(email);  
+    /* Function to show current user data in 'change profile' section */
+    $('#usern').text( getCookie("usuario") );
+    $('#email').text( getCookie("email") ); 
+    var img = getCookie("imagen"); 
     if(img != ""){
-        $('#img').attr('src', 'img');
+        $('#img').attr('src', img);
     }
 }
 
 function changeData(expdays){
+    /* Function to change data in cookies*/
     var time = new Date();
     time.setTime(time.getTime() + (expdays * 24*60*60*1000));
     let expires = "expires=" + time.toUTCString();
@@ -475,7 +448,15 @@ function post_comment(id) {
                     likes: 0,
                     who_liked: []
                   };
-    $(`#feed_comment_section_${id}`).prepend(convert_to_html(comment, 'c'));
+
+    console.log(getCookie("mode"));
+    if (getCookie("mode") === "dark-mode") {
+        $(`#feed_comment_section_${id}`).prepend(convert_to_html(comment, 'c', '_dark_mode'));
+    }
+    else {
+        $(`#feed_comment_section_${id}`).prepend(convert_to_html(comment, 'c'));
+    }
+    
     saveLocal("comments", comment);
 }
 
@@ -559,10 +540,11 @@ function load_feed(top_i, bottom_i, want_new){
     }
 }
 
-function convert_to_html(json_info, type){
+function convert_to_html(json_info, type, mode = ""){
     /* Transforms into HTML the information of the object provided.
        Current supported types: "f" for feed post; "c" for comment;
-       "r" for ranking info.*/
+       "r" for ranking info.
+       Mode can be set to defautl or '_dark_mode' for dark mode*/
 
     if(type === 'f'){
         return `<br>
@@ -582,7 +564,7 @@ function convert_to_html(json_info, type){
                     </div>
                     <div class="feed_bottom">
                         <div class="icon_and_text">
-                            <img onclick="like(${json_info.id}, 'post');" "class="icon_button" id="like_button_${json_info.id}" src="https://img.icons8.com/ios/50/000000/like--v1.png" alt="like icon">
+                            <img onclick="like(${json_info.id}, 'post');" class="icon_button" id="like_button_${json_info.id}" src="https://img.icons8.com/ios/50/000000/like--v1.png" alt="like icon">
                             <p class="text_font" id="likes_${json_info.id}">${json_info.likes} likes</p>
                         </div>
                         <div class="icon_and_text">
@@ -612,7 +594,7 @@ function convert_to_html(json_info, type){
                 <br>`;
     }
     else if(type === 'c'){
-        return `<div class="feed_post_comment" id="feed_post_comment_${json_info.comment_id}">
+        return `<div class="feed_post_comment${mode}" id="feed_post_comment_${json_info.comment_id}">
                     <div class="comment_section">
                         <img class="comment_icon_button" src="https://img.icons8.com/material-rounded/64/000000/comments--v1.png" alt="comments icon">
                         <p class="text_font_date">Commented on ${json_info.date}</p>
@@ -620,7 +602,7 @@ function convert_to_html(json_info, type){
                     <div class="comment_body">
                         <img class="comment_user_img" src=${json_info.img} alt="Profile image of ${json_info.usr}">
                         <p class="comment_user_text_font">${json_info.usr}</p>
-                        <div class="comment_text_box">
+                        <div class="comment_text_box${mode}">
                             <p class="text_font_margin_left">${json_info.text}</p>
                         </div>
                     </div>

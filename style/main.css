@@ -67,12 +67,6 @@
     align-items: center;
 }
 
-.icon_button{
-    margin-right: 20px;
-    width: 50px;
-    height: 50px;
-}
-
 .feed_coment_section{
     text-align: center;
     margin: auto;
@@ -195,16 +189,22 @@
     -ms-animation: fadeIn linear 7s;
 }
 
+.title_anim_div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .wordCarousel {
     margin: auto;
-    width: 50%;
+    width: 49%;
     margin-top: 150px;  
     font-size: 45px;
     text-align: center;
+    align-items: bottom;
     font-family: 'Quicksand',sans-serif;
     font-style: normal;
     font-weight: 600;
-    color: black;
   }
 .wordCarousel div {
     overflow: hidden;
@@ -215,10 +215,9 @@
     margin-top: -10px;
 }
 .wordCarousel div li {
-    font-family: Serif;
-    color: #eee;
-    font-weight: 700;
-    padding: 0 10px;
+    font-family: 'Quicksand',sans-serif;
+    font-style: normal;
+    font-weight: 600;
     height: 45px;
     margin-bottom: 45px;
     display: block;

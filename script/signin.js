@@ -13,7 +13,7 @@ function sign_in() {
         for (let i = 0; i < user_data.length; i++) {
             if (user_data[i]["usr"] === user && user_data[i]["pwd"] === pwd){
                 
-                const time = new Date();
+                var time = new Date();
                 time.setTime(time.getTime() + (365 * 24*60*60*1000));
                 let expires = "expires=" + time.toUTCString();
 

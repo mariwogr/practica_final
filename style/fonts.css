@@ -64,6 +64,13 @@
     font-family:'Quicksand',sans-serif;
 }
 
+.subtitle_text_font_centered{    
+    color: rgb(2, 2, 2);
+    font-size: 26px;
+    text-align: center;
+    font-family:'Quicksand',sans-serif;
+}
+
 /*[Common text Fonts]*/
 
 .text_font{
@@ -117,4 +124,23 @@
     font-style: normal;
     font-weight: 500;
     font-size: 20px;
+}
+
+
+
+@media only screen and (max-width:600px){
+    .company_font{
+        font-size: 20px;
+        margin: auto auto auto 17px;
+    }
+
+    .title_text_font_nomargin{
+        width: 100%;
+        font-size: 25px;
+    }
+
+    .comment_user_text_font {
+        margin: 80px auto auto -30px
+    }
+
 }

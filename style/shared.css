@@ -4,7 +4,10 @@
 
 /*[--------Basic elements--------]*/
 
-body { background-color: rgb(243, 237, 237); }
+body { 
+    background-color: rgb(243, 237, 237);
+    margin: 0px 0px 0px 0px;
+}
 
 nav{
     background-color: rgb(233, 227, 227);
@@ -75,6 +78,8 @@ button:hover{
     display: inline-flex;
     text-align: center;
     align-items: center;
+    width: 366.433px;
+    height: 125px;
 }
 
 #user_img{
@@ -136,8 +141,8 @@ button:hover{
 }
 
 .dropbtn{
-    background-color: rgb(233, 227, 227);
-    color: white;
+    background-color: rgb(248, 75, 106);
+    color: rgb(255, 255, 255);
     font-size: 16px;
     border: none;
     cursor: pointer;
@@ -184,6 +189,12 @@ button:hover{
     width: 23vw;
 }
 
+.icon_button{
+    margin-right: 20px;
+    width: 50px;
+    height: 50px;
+}
+
 #ImgPreV2{
     width:100px;
     height: 100px;
@@ -198,8 +209,6 @@ button:hover{
     font-size: 20px;
     line-height: 30px;
     height: 35px;
-    background-color: rgb(248, 75, 106);
-    color: rgb(255, 255, 255);
     width: 100px;
     cursor: pointer;
     border-radius: 10px;
@@ -303,15 +312,21 @@ button:hover{
 }
 
 .feed_post_comment_dark_mode{
+    margin: auto 15% auto 15%;
+    border-radius: 15px;
     background-color: rgb(75, 75, 75);
 }
 
 .comment_text_box_dark_mode{
+    width: 380%;
+    border-radius: 10px;
+    text-align: left;
+    align-items: center;
     background-color: #333333;
 }
 
-.fade_in_text_dark_mode{
-    color: #818181;
+.title_text_anim_dark_mode{
+    color:rgb(190, 185, 185);;
 }
 
 .title_text_font_dark_mode{
@@ -332,4 +347,112 @@ button:hover{
     color: rgb(248, 75, 106);
 }
 
+.ranking_experiences_dark_mode{
+    background-color: rgb(75, 75, 75);
+}
 
+.button2_dark_mode{
+    background-color: rgb(216, 216, 216);;
+    color: rgb(248, 75, 106);
+}
+
+.dropbtn_dark_mode{
+    background-color: rgb(216, 216, 216);;
+    color: rgb(248, 75, 106);
+}
+
+.button_settings_dark_mode{
+    background-color: rgb(216, 216, 216);;
+    color: rgb(248, 75, 106);
+}
+
+
+@media only screen and (max-width:600px){
+    
+    .company_identity{
+        display: block;
+        width: 20%;
+    }
+    .app_logo_img{
+        height: 80px;
+        width: 80px;
+    }
+
+    .menu_margin{
+        text-align: left;
+    }
+
+    .nav_links{
+        margin: auto 10px auto auto;
+    }
+
+    .wordCarousel{
+        font-size: 25px;
+        width: 88%;
+    }
+
+    .feed_centered {
+        margin: auto 5% auto 5%;
+    }
+
+    #reload_icon{
+        height: 25px;
+        width: 25px;
+    }
+
+    .feed_top {
+        width: 80%;
+    }
+
+    .feed_img{
+        width: 80%;
+    }
+
+    .feed_user_img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .feed_bottom {
+        width: 85%;
+    }
+
+    .feed_user_comment {
+        margin: auto 5% auto 5%;
+        border-radius: 15px;
+        height: 200px;
+    }
+
+    .comment_user_img {
+        margin-left: 60%;
+        width: 70px;
+        height: 70px;
+    }
+
+    .comment_body {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .comment_text_box {
+        height: 65px;
+    }
+
+    .user_comment_button {
+        margin-top: 0px;
+    }
+
+    .feed_user_comment {
+        margin: auto 5% auto 5%;
+        border-radius: 15px;
+        height: 210px;
+    }
+
+    .feed_post_comment {
+        margin: auto 5% auto 5%;
+        border-radius: 15px;
+    }
+
+    .browse_more_button2 {
+        width: 40%;
+    }
+}

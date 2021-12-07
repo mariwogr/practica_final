@@ -8,14 +8,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="script/main.js"></script>
-    <script src="script/cookies.js"></script>
     <script src="script/shared.js"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
     <!--CSS Files Used-->
-    <link rel="stylesheet" href="style/main.css">
     <link rel="stylesheet" href="style/shared.css">
     <link rel="stylesheet" href="style/fonts.css">
     <link rel="stylesheet" href="style/pop_up.css">
@@ -96,7 +94,7 @@
                 <p class="text_font" id="email"></p>
                 <br>
                 <h4 class="subtitle_text_font_centered">Profile Image: </h4>
-                <img id="img" src="https://img.icons8.com/external-bearicons-glyph-bearicons/64/000000/external-User-essential-collection-bearicons-glyph-bearicons.png" alt="" class="img_settings">
+                <img src="https://img.icons8.com/external-bearicons-glyph-bearicons/64/000000/external-User-essential-collection-bearicons-glyph-bearicons.png" alt="" class="img_settings" id="img">
                 <br><br>
                 <h1 class="title_text_font">Change User Data</h1>
                 <form class="text_center" id="Change_form">
@@ -119,59 +117,3 @@
             </div>
         </div>
     </div>
-    <!---------------------------------------------Experiences--------------------------------------------->
-    <div class="title_anim_div">
-        <h1 class="wordCarousel">
-            <span class="title_text_anim">Discover the pleasure to travel:</span>
-            <div>
-                <!-- Use classes 2,3, or 4 to match the number of words -->
-                <ul class="flip4">
-                    <li>Amazing</li>
-                    <li>Swoosh</li>
-                    <li>Cool</li>
-                    <li>Squirrel🐿</li>
-                </ul>
-            </div>
-        </h1>
-    </div>
-    <p class="title_text_font_nomargin">Most popular experiences</p>
-    <br><br>
-    <div id="feed" class="feed_centered">
-        <button id="reload_button" onclick="load_new()">
-            <img id="reload_icon" src="https://img.icons8.com/external-becris-lineal-becris/64/000000/external-refresh-mintab-for-ios-becris-lineal-becris-1.png"/>
-        </button>
-        <div id="feed_experiences"></div>
-        <button id="browse_more_button" class="browse_more_button2" onclick="load_older()">Browse more experiences</button>
-        <br><br>
-    </div>
-    <br><br><br><br>
-    <!---------------------------------------------Footer---------------------------------------------------->
-    <footer class="footer">
-        <div class="company_identity">
-            <img src="images/Icon/app_logo.png" class="app_logo_img">
-            <p class="company_font">Expell</p>
-        </div>
-
-        <menu class="menu_margin">
-            <a href="privacy.html" class="nav_links">Privacy</a>
-            <a href="about_us.html" class="nav_links">About Us</a>
-            <a href="" class="nav_links">Help</a>
-        </menu>
-
-        <div id="footer_icons">
-            <a href="#" target="_blank">
-                <img class="icon_footer" src="images/Icon/twitter_icon.png" id="twitter" title="Twitter" onmouseover="hoverTwi(this)" onmouseout="unhoverTwi(this)">
-            </a>
-            <a href="#" target="_blank">
-                <img class="icon_footer" src="images/Icon/instagram_icon.png" id="instagram" title="Instagram" onmouseover="hoverInst(this)" onmouseout="unhoverInst(this)">
-            </a>
-            <a href="#" target="_blank">
-                <img class="icon_footer" src="images/Icon/question_icon.png" id="FAQ" title="FAQ" onmouseover="hoverF(this)" onmouseout="unhoverF(this)">
-            </a>
-            <a href="https://www.tuabogadodefensor.com/derechos-autor-web/" target="_blank">
-                <img class="icon_footer" src="images/Icon/copyright_icon.png" id="Copyright" title="Copyright" onmouseover="hoverC(this)" onmouseout="unhoverC(this)">
-            </a>
-        </div>           
-    </footer>
-</body>
-</html>

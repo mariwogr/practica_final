@@ -1,85 +1,51 @@
 /* This file contains the functions that will build the sign in and sign up */
 
-//import { open } from './fs/promises';
-
-
 function createCookie(expdays){
-    const time = new Date();
-    time.setTime(time.getTime() + (expdays * 24*60*60*1000));
-    let expires = "expires=" + time.toUTCString();
-    
-    var user = signup_uname.value;
-    var pwd = signup_pwd.value;
-    var email = signup_email.value;
-    var img = im_per.value;
-    
-
-    if (checkUser(user)){
+    // Check if user is already registered
+    if (checkUser(signup_uname.value)){
         alert("There is already an account associated with this username. Create a new account with a diferent username or sign in.");
         return;
     }    
+    // Get cookie data from form
+    var time = new Date();
+    time.setTime(time.getTime() + (expdays * 24*60*60*1000));
+    let expires = "expires=" + time.toUTCString();
     
-    var dict = {};
-
-    dict["usr"] = user;
-    dict["img"] = img;
-    dict["pwd"] = pwd;
-    dict["email"] = email;
+    var dict = {
+        usr: signup_uname.value,
+        img: im_per.value,
+        pwd: signup_pwd.value,
+        email: signup_email.value
+    };
 
     saveLocal("user_data", dict);
 
-    document.cookie = "usuario=" + user + ";" + expires + ";path=/";
-    document.cookie = "pwd=" + pwd + ";" + expires + ";path=/";
-    document.cookie = "email=" + email + ";" + expires + ";path=/";
+    document.cookie = `usuario=${dict.usr};${expires};path=/`;
+    document.cookie = `pwd=${dict.pwd};${expires};path=/`;
+    document.cookie = `email=${dict.email};${expires};path=/`;
+    document.cookie = `mode=light-mode;${expires};path=/`;
 
-    if(img != ""){
-        document.cookie = "imagen=" + img + ";" + expires + ";path=/";
-    }else{
-        document.cookie = "imagen=" + ";" + expires + ";path=/";
+    if(dict.img != ""){
+        document.cookie = `imagen=${dict.img};${expires};path=/`;
+    } else{
+        document.cookie = `imagen=;${expires};path=/`;
     }
-    if(user != "" && pwd != "" && email != ""){
+    if(dict.usr != "" && dict.pwd != "" && dict.email != ""){
         window.location.href = "main.html";
         alert("welcome!!");
     }
 }
 
-
-function preview2(){
-    // Preview img used on Change Form
-    var img = document.getElementById("sign_up_form").elements['im_per'].value;
-    document.getElementById("ImgPreV2").src = img;
-    document.getElementById("ImgPreV2").style.display = "block";
-    document.getElementById("ImgPreV2").style.visibility = "visible";
-
-}
-
-function getData() {
-    var result = null;
-    var scriptUrl = "jsons/cookies.json";
-    $.ajax({
-        url: scriptUrl,
-        type: 'get',
-        dataType: 'json',
-        async: false,
-        success: function(data) {
-            result = data;
-        } 
-     });
-     return result;
-}
-
 function getCookie(cname){
-    // Returns a specific cookie passed as paramete
+    // Returns the cookie which name matches 'cname'
     let name = cname + "=";
     let decodeCookie = decodeURIComponent(document.cookie);
     let cake = decodeCookie.split(";");
+    let x = '';
     for(let i = 0; i < cake.length; i++){
-        let x = cake[i];
-        while(x.charAt(0)==' '){
-            x = x.substring(1);
-        }
-        if(x.indexOf(name)==0){
-            return x.substring(name.length,x.length);
+        x = cake[i].trim();
+        if(x.indexOf(name) == 0){
+            return x.substring(name.length, x.length);
         }
     }
     return "";
@@ -98,8 +64,6 @@ function checkUser(user){
         }
     }
     return false;
-
-    //return getCookie(user);
 }
 
 

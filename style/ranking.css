@@ -10,8 +10,11 @@
 #ranking_experiences{
     align-items: center;
     margin: auto 20% auto 20%;
-    background-color: rgb(233, 227, 227);
     border-radius: 15px;
+}
+
+.ranking_experiences{
+    background-color: rgb(233, 227, 227);
 }
 
 #trophy_and_text{

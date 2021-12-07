@@ -45,7 +45,25 @@
     border-radius: 15px;
 }
 
+.img_delete{
+    width: 20px;
+    height: 20px;
+    border-radius: 40px;
+    border-color: aliceblue;
+    margin-top: 8px;
+}
 
+.description_container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
 
+.description_div{
+    text-align: right;
+}
 
-
+.trash_div{
+    text-align: left;
+    margin-left: 10px;
+}
