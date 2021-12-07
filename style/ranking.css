@@ -51,6 +51,12 @@
     border-radius: 15px;
 }
 
+.icon_like_ranking{
+    margin: auto 20px auto 130px;
+    width: 50px;
+    height: 50px;
+}
+
 .img_ranking {
     height: 200px;
     border-radius: 15px;
@@ -61,7 +67,41 @@
 }
 
 .likes_container{
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+
+@media only screen and (max-width:600px){
+
+    .button2{
+        width: 80px;
+    }
+
+    #ranking_experiences{
+        margin: auto 5% auto 5%;
+    }
+
+    #straight_line{
+        width: 550px;
+    }
+
+    .img_ranking_container{
+        display: none;
+    }
+
+    #most_popular_photo{
+        display: none;
+    }
+
+    .ranking_div{
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .icon_like_ranking{
+        margin: auto 20px auto 80px;
+        width: 50px;
+        height: 50px;
+    }
 }

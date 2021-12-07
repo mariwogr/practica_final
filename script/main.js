@@ -625,7 +625,7 @@ function convert_to_html(json_info, type, mode = ""){
                         <img class="img_ranking" src="${json_info[2]}">
                     </div>
                     <div class="likes_container">
-                        <img class="icon_button" src="https://img.icons8.com/ios/50/000000/like--v1.png" alt="like icon">
+                        <img class="icon_like_ranking" src="https://img.icons8.com/ios/50/000000/like--v1.png" alt="like icon">
                         <p class="text_font">${json_info[1]}</p>
                     </div>
                 </div>
