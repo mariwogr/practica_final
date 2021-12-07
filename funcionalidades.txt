@@ -1,15 +1,15 @@
 Funcionalidades a añadir:
 
 - Scroll infinito ****** En PC será un semi-scroll infinito (x)
-- Apartado con tus experiencias (-)
-- Filtro de experiencias (en las experiencias guardadas)
+- Apartado con tus experiencias (x)
+- Filtro de experiencias (en las experiencias guardadas) (x)
 - Dar like a experiencias (x)
 - Ranking *****En el ranking aparecerán (en PC) las fotos con más likes (x)
 - Acceso como invitado a la plataforma (x)
 - Apartado de settings (x)
 - Posibilidad de cambiar la información del usuario (x)
 - Gestión de usuarios (inicio de sesión y registro) (x)
-- Buscador de experiencias (por autor, interés, experiencia…)
+- Buscador de experiencias (por autor, interés, experiencia…) (-)
 - Subir una experiencia propia (x)
 - Borrar una experiencia 
 - Ver información al hacer clic en una experiencia

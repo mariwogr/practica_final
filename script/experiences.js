@@ -7,14 +7,20 @@ function searchElem(){
     */
     //filter: search words; figures: array of web experiences
     //hidden: counter of hidden figures
+
     var filter, figures, hidden;
     
     console.log($('#input_search'));
-    filter = $('#input_search').value.toUpperCase().split(' ');
+
+    filter = document.getElementById("input_search").value.toUpperCase();
+
 
     //get experience figure tags and set hidden variable at its possible maximum
-    figures = $('.div_exp');
+
+    figures = document.getElementsByClassName("exp_user_div");
+
     hidden = figures.length;
+
 
     //in case no words are provided, show all experiences
     if (filter.length == 0){
@@ -24,8 +30,19 @@ function searchElem(){
         return;
     }
 
+
     //iterate through experiences and hide or show them according to whether they match filter
     for(let i = 0; i < figures.length; i++){
+        
+        if(!figures[i].innerHTML.toUpperCase().includes(filter)){
+            figures[i].style.display = "none";
+            hidden--;
+        }
+        else{
+            figures[i].style.display = "";
+        }
+
+        /*
         for(let j = 0; j < filter.length; j++){
             if( figures[i].innerHTML.toUpperCase().includes(filter[j]) ){
                 //show it
@@ -34,9 +51,11 @@ function searchElem(){
             } else{
                 //hide it
                 figures[i].css('display', 'none');
+                
             }
-        }
+        }*/
     }
+    
     //inform the user if none of the experiences matches his query
     if (hidden == 0){
         alert("Ningun elemento satisface su busqueda");
