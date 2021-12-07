@@ -11,6 +11,7 @@ function createCookie(expdays){
     time.setTime(time.getTime() + (expdays * 24*60*60*1000));
     let expires = "expires=" + time.toUTCString();
     
+    // Collects all the data and saves it into a dictionary
     var dict = {
         usr: signup_uname.value,
         img: im_per.value,
@@ -18,18 +19,25 @@ function createCookie(expdays){
         email: signup_email.value
     };
 
+    // Saves the new user_data in the "cookie" of the localStorage
     saveLocal("user_data", dict);
 
+    // Also, saves the user in the cookie
     document.cookie = `usuario=${dict.usr};${expires};path=/`;
     document.cookie = `pwd=${dict.pwd};${expires};path=/`;
     document.cookie = `email=${dict.email};${expires};path=/`;
     document.cookie = `mode=light-mode;${expires};path=/`;
 
+    // If the img is something, it sticks the url's image in the cookie
     if(dict.img != ""){
         document.cookie = `imagen=${dict.img};${expires};path=/`;
-    } else{
+    } 
+    // Else, it do not save anything in the image
+    else{
         document.cookie = `imagen=;${expires};path=/`;
     }
+
+    // If all data is correct it lets the user in the page (signed up)
     if(dict.usr != "" && dict.pwd != "" && dict.email != ""){
         window.location.href = "main.html";
         alert("welcome!!");

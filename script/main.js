@@ -169,7 +169,6 @@ function showRanking(){
     }
     
     sorted_dict = sortDict(dict);
-    console.log(sorted_dict);
 
     for (let i = 0; i < Math.min(10, Object.keys(sorted_dict).length); i++){
         $('#ranking_experiences').append(convert_to_html(
@@ -449,7 +448,6 @@ function post_comment(id) {
                     who_liked: []
                   };
 
-    console.log(getCookie("mode"));
     if (getCookie("mode") === "dark-mode") {
         $(`#feed_comment_section_${id}`).prepend(convert_to_html(comment, 'c', '_dark_mode'));
     }

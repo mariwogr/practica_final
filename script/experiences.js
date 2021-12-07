@@ -10,8 +10,6 @@ function searchElem(){
 
     var filter, figures, hidden;
     
-    console.log($('#input_search'));
-
     filter = document.getElementById("input_search").value.toUpperCase();
 
 
@@ -41,19 +39,6 @@ function searchElem(){
         else{
             figures[i].style.display = "";
         }
-
-        /*
-        for(let j = 0; j < filter.length; j++){
-            if( figures[i].innerHTML.toUpperCase().includes(filter[j]) ){
-                //show it
-                figures[i].css('display', '');
-                hidden--;
-            } else{
-                //hide it
-                figures[i].css('display', 'none');
-                
-            }
-        }*/
     }
     
     //inform the user if none of the experiences matches his query
