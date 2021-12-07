@@ -184,11 +184,6 @@ button:hover{
     width: 23vw;
 }
 
-.img_ranking {
-    height: 200px;
-    border-radius: 15px;
-}
-
 #ImgPreV2{
     width:100px;
     height: 100px;
@@ -228,7 +223,6 @@ button:hover{
 #NameUser{
     visibility: hidden;
     display: none;
-    color: rgb(0, 0, 0);
     font-size: 20px;
     font-family:'Quicksand',sans-serif;
     margin: auto auto auto 10px;
@@ -276,3 +270,66 @@ button:hover{
     text-align: center;
     margin-bottom: 1%;
 }
+
+/*[Dark Mode]*/
+
+.nav_dark_mode{
+    background-color: #3c3c3c;
+}
+
+.body_dark_mode{
+    background-color: #1e1e1e;
+    color: rgb(190, 185, 185);
+}
+
+.footer_dark_mode{
+    background-color: #3c3c3c;
+}
+
+.nav_links_dark_mode{
+    color: rgb(190, 185, 185);
+}
+
+.name_user_dark_mode{
+    color: rgb(190, 185, 185);
+}
+
+.feed_dark_mode{
+    background-color: #252526;
+}
+
+.feed_user_comment_dark_mode{
+    background-color: rgb(75, 75, 75);
+}
+
+.feed_post_comment_dark_mode{
+    background-color: rgb(75, 75, 75);
+}
+
+.comment_text_box_dark_mode{
+    background-color: #333333;
+}
+
+.fade_in_text_dark_mode{
+    color: #818181;
+}
+
+.title_text_font_dark_mode{
+    color: #818181;
+}
+
+.title_text_font_nomargin_dark_mode{
+    color: #818181;
+}
+
+.user_comment_button_dark_mode{
+    background-color: rgb(216, 216, 216);;
+    color: rgb(248, 75, 106);
+}
+
+.browse_more_button2_dark_mode{
+    background-color: rgb(216, 216, 216);;
+    color: rgb(248, 75, 106);
+}
+
+

@@ -8,6 +8,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="script/main.js"></script>
+    <script src="script/shared.js"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +22,7 @@
 <body onload="set_up();">
     <!---------------------------------------------Header---------------------------------------------------->
     <header>
-        <nav>
+        <nav class="nav">
             <div class="company_identity">
                 <img src="images/Icon/app_logo.png" class="app_logo_img">
                 <p class="company_font">Expell</p>
@@ -35,7 +36,7 @@
             
             <div id="user_signin">
                 <img id="user_img" src="https://img.icons8.com/external-bearicons-glyph-bearicons/64/000000/external-User-essential-collection-bearicons-glyph-bearicons.png"/>
-                <p id="NameUser"></p>
+                <p id="NameUser" class="name_user"></p>
                 <a href="signin.html">
                     <button class="signin_button" id="signin__button">Sign In</button>
                 </a>
@@ -54,12 +55,15 @@
                                 Log Out
                             </button>
                         </a>
+                        <a class="subtitle_text_font" >
+                            <button class="button_settings" onclick="darkMode()">
+                                Dark Mode
+                            </button>
+                        </a>
                     </div>
                 </div>
             </div>
-            
         </nav>
-        
     </header>
 
     <!----------------------------Log Out POP UP---------------------------------------------->
@@ -115,10 +119,10 @@
         </div>
     </div>
     <!---------------------------------------------Experiences--------------------------------------------->
-    <h1 class="fade-in-text">Discover the pleasure to travel</h1>
+    <h1 class="wordCarousel">Discover the pleasure to travel</h1>
     <p class="title_text_font_nomargin">Most popular experiences</p>
     <br><br>
-    <div id="feed" class="button_centered">
+    <div id="feed" class="feed_centered">
         <button id="reload_button" onclick="load_new()">
             <img id="reload_icon" src="https://img.icons8.com/external-becris-lineal-becris/64/000000/external-refresh-mintab-for-ios-becris-lineal-becris-1.png"/>
         </button>
@@ -128,7 +132,7 @@
     </div>
     <br><br><br><br>
     <!---------------------------------------------Footer---------------------------------------------------->
-    <footer>
+    <footer class="footer">
         <div class="company_identity">
             <img src="images/Icon/app_logo.png" class="app_logo_img">
             <p class="company_font">Expell</p>
@@ -142,16 +146,16 @@
 
         <div id="footer_icons">
             <a href="#" target="_blank">
-                <img class="icon_footer" src="images/icon/twitter_icon.png" id="twitter" title="Twitter" onmouseover="hoverTwi(this)" onmouseout="unhoverTwi(this)">
+                <img class="icon_footer" src="images/Icon/twitter_icon.png" id="twitter" title="Twitter" onmouseover="hoverTwi(this)" onmouseout="unhoverTwi(this)">
             </a>
             <a href="#" target="_blank">
-                <img class="icon_footer" src="images/icon/instagram_icon.png" id="instagram" title="Instagram" onmouseover="hoverInst(this)" onmouseout="unhoverInst(this)">
+                <img class="icon_footer" src="images/Icon/instagram_icon.png" id="instagram" title="Instagram" onmouseover="hoverInst(this)" onmouseout="unhoverInst(this)">
             </a>
             <a href="#" target="_blank">
-                <img class="icon_footer" src="images/icon/question_icon.png" id="FAQ" title="FAQ" onmouseover="hoverF(this)" onmouseout="unhoverF(this)">
+                <img class="icon_footer" src="images/Icon/question_icon.png" id="FAQ" title="FAQ" onmouseover="hoverF(this)" onmouseout="unhoverF(this)">
             </a>
             <a href="https://www.tuabogadodefensor.com/derechos-autor-web/" target="_blank">
-                <img class="icon_footer" src="images/icon/copyright_icon.png" id="Copyright" title="Copyright" onmouseover="hoverC(this)" onmouseout="unhoverC(this)">
+                <img class="icon_footer" src="images/Icon/copyright_icon.png" id="Copyright" title="Copyright" onmouseover="hoverC(this)" onmouseout="unhoverC(this)">
             </a>
         </div>           
     </footer>

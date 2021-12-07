@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="script/experiences.js"></script>
+    <script src="script/shared.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
@@ -19,7 +20,7 @@
 <body onload="set_up();">
     <!---------------------------------------------Header---------------------------------------------------->
     <header>
-        <nav>
+        <nav class="nav">
             <div class="company_identity">
                 <img src="images/Icon/app_logo.png" class="app_logo_img">
                 <p class="company_font">Expell</p>
@@ -50,6 +51,11 @@
                                 Log Out
                             </button>
                         </a>
+                        <a class="subtitle_text_font" >
+                            <button class="button_settings" onclick="darkMode()">
+                                Dark Mode
+                            </button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -68,11 +74,12 @@
         </a>        
     </div>
 
+    
+    <!-----------------------------------Search bar----------------------------------------------->
     <div class="">
-        <!-----------------------------------Search bar----------------------------------------------->
         <section>
             <div id="search_bar" class="menu_margin">
-                <h2 class="title_text_font">Gallery</h2>
+                <h2 class="title_text_font_nomargin">Gallery</h2>
                 <br><br>
                 <input type="text" id="input_search">
                 <button type="button" name="Search" onclick="searchElem()" class="button2">Search</button>
@@ -80,12 +87,11 @@
         </section>
         <br><br>
         
-    <div>
+    </div>
     
     <!-----------------------------------Body----------------------------------------------->
-
     <div id="div_exp">
-                
+                    
     </div>
     
     <!-----------------------------------Pop-Up Add Experiences----------------------------------------------->
@@ -100,11 +106,11 @@
                         <br><br>
                         <label class="text_font" for="experience_description">Experience description</label>
                         <br><br>
-                        <input class="description_textbox" id="experience_description" type="text" name="experience_description">
+                        <input class="description_textbox" id="experience_description" required type="text" name="experience_description">
                         <br><br>
-                        <label class="text_font" for="new_experience">Add a new experience in URL format (png o jpg)</label>
+                        <label class="text_font" for="new_experience" >Add a new experience in URL format (png o jpg)</label>
                         <br><br>
-                        <input class="url_textbox" type="url" id="new_experience" name="new_experience" onchange="preview3()">
+                        <input class="url_textbox" type="url" id="new_experience" name="new_experience" required onchange="preview3()">
                         <br><br>
                         <img id = "ImgPreV3" >
                         <br>
@@ -122,7 +128,7 @@
     <!-----------------------------------Footer----------------------------------------------->
 
     <br>
-    <footer>
+    <footer class="footer">
         <div class="company_identity">
             <img src="images/Icon/app_logo.png" class="app_logo_img">
             <p class="company_font">Expell</p>
@@ -136,18 +142,18 @@
 
         <div id="footer_icons">
             <a href="#" target="_blank">
-                <img class="icon_footer" src="images/icon/twitter_icon.png" id="twitter" title="Twitter" onmouseover="hoverTwi(this)" onmouseout="unhoverTwi(this)">
+                <img class="icon_footer" src="images/Icon/twitter_icon.png" id="twitter" title="Twitter" onmouseover="hoverTwi(this)" onmouseout="unhoverTwi(this)">
             </a>
             <a href="#" target="_blank">
-                <img class="icon_footer" src="images/icon/instagram_icon.png" id="instagram" title="Instagram" onmouseover="hoverInst(this)" onmouseout="unhoverInst(this)">
+                <img class="icon_footer" src="images/Icon/instagram_icon.png" id="instagram" title="Instagram" onmouseover="hoverInst(this)" onmouseout="unhoverInst(this)">
             </a>
             <a href="#" target="_blank">
-                <img class="icon_footer" src="images/icon/question_icon.png" id="FAQ" title="FAQ" onmouseover="hoverF(this)" onmouseout="unhoverF(this)">
+                <img class="icon_footer" src="images/Icon/question_icon.png" id="FAQ" title="FAQ" onmouseover="hoverF(this)" onmouseout="unhoverF(this)">
             </a>
             <a href="https://www.tuabogadodefensor.com/derechos-autor-web/" target="_blank">
-                <img class="icon_footer" src="images/icon/copyright_icon.png" id="Copyright" title="Copyright" onmouseover="hoverC(this)" onmouseout="unhoverC(this)">
-            </a>     
-        </div>            
+                <img class="icon_footer" src="images/Icon/copyright_icon.png" id="Copyright" title="Copyright" onmouseover="hoverC(this)" onmouseout="unhoverC(this)">
+            </a>
+        </div>             
     </footer>
     <!----------------------------Log Out POP UP---------------------------------------------->
 <div id="popupOut" class="overlay">

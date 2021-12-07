@@ -21,7 +21,6 @@
     margin: auto;
     width: 50%;
     margin-top: 150px;  
-    color: rgb(0, 0, 0);
     font-size: 45px;
     text-align: center;
     font-family: 'Quicksand',sans-serif;
@@ -41,7 +40,6 @@
     margin: auto;
     width: 50%;
     margin-top: 20px;
-    color: rgb(0, 0, 0);
     font-size: 45px;
     text-align: center;
     font-family: 'Quicksand',sans-serif;
@@ -75,11 +73,35 @@
     font-size: 20px;
 }
 
+.text_font_margin_left{
+    font-family: 'Quicksand',sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    margin-left: 15px;
+}
+
 .text_font_italic{
     font-family: 'Quicksand',sans-serif;
     font-style: italic;
     font-weight: 500;
     font-size: 20px;
+}
+
+.text_font_date{
+    font-family: 'Quicksand',sans-serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.comment_user_text_font{
+    font-family: 'Quicksand',sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    margin-left: 0px;
+    text-align: left;
 }
 
 .ranking_text_font{

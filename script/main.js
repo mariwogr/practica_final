@@ -8,87 +8,15 @@ Replies do not have identification, but class. The replies.json file have a poin
 to identify the comment they are pointing to.
 */
 
-/*var comments =  [
-                    {
-                        feed_id: 2,
-                        comment_id: 0,
-                        usr: "jose",
-                        date: "5/12/2021",
-                        text: "Nice trip bro",
-                        img:"https://i.ytimg.com/vi/BkgA2_sB6NM/maxresdefault.jpg",
-                        likes: 0
-                    },
-                    {
-                        feed_id: 2,
-                        comment_id: 1,
-                        usr: "hasbulla",
-                        date: "5/12/2021",
-                        text: "Da menschen vodka!",
-                        img: "https://e00-elmundo.uecdn.es/assets/multimedia/imagenes/2021/07/16/16264514660383.jpg",
-                        likes: 0
-                    }
-                ];*/
-/*var feed =      [
-                    {
-                        id: 0,
-                        src: "https://ih1.redbubble.net/image.557168243.2784/flat,1000x1000,075,f.jpg",
-                        usr: "el pibe",
-                        descr: "finisterre",
-                        date: "12/03/2004",
-                        likes: 245,
-                        comments: 0
-                    },
-                    {
-                        id: 1,
-                        src: "https://pbs.twimg.com/media/FD33F3UXIAIe2bd.jpg",
-                        usr: "hashbulla",
-                        descr: "de panafrescos",
-                        date: "23/10/2020",
-                        likes: 4524,
-                        comments: 0
-                    },
-                    {
-                        id: 2,
-                        src: "https://services.meteored.com/img/article/en-saturno-llueven-diamantes-263801-1_1280.jpg",
-                        usr: "pepe",
-                        descr: "D vacas por saturno",
-                        date: "4/12/2021",
-                        likes: 20,
-                        comments: 2
-                    },
-                    {
-                        id: 3,
-                        src: "http://www.pixelstalk.net/wp-content/uploads/2016/10/Download-Images-Disney-Computer-HD.jpg",
-                        usr: "jose",
-                        descr: "Nice lil' mouse, dont ya think?",
-                        date: "5/12/2021",
-                        likes: 10,
-                        comments: 0
-                    },
-                    {
-                        id: 4,
-                        src: "https://wallup.net/wp-content/uploads/2016/01/136128-mountain-lake-trees.jpg",
-                        usr: "juan",
-                        descr: "Enjoying the mountain",
-                        date: "6/12/2021",
-                        likes: 0,
-                        comments: 0
-                    },
-                    {
-                        id: 5,
-                        src: "https://pbs.twimg.com/media/E-IXBArVEAsG4Oy.jpg",
-                        usr: "hashbulla",
-                        descr: "de panafresqueooooo",
-                        date: "07/12/2021",
-                        likes: 4000,
-                        comments: 0
-                    },
-                ];*/
-
 var top_pointer = 3;
 var bottom_pointer = 1;
 
 function set_up(){
+    /* This function will be called every time the main.html page is loaded and will
+    set up the initial feed and comments to the website. Also, it will check if the
+    user is logged.*/
+
+
     var feed =      [
                         {
                             id: 0,
@@ -98,7 +26,8 @@ function set_up(){
                             date: "12/03/2004",
                             likes: 245,
                             img: "https://i.ytimg.com/vi/qCylpmEvDCg/maxresdefault.jpg",
-                            comments: 0
+                            comments: 0,
+                            who_liked: []
                         },
                         {
                             id: 1,
@@ -108,7 +37,8 @@ function set_up(){
                             date: "23/10/2020",
                             likes: 4524,
                             img : "https://e00-elmundo.uecdn.es/assets/multimedia/imagenes/2021/07/16/16264514660383.jpg",
-                            comments: 0
+                            comments: 0,
+                            who_liked: []
                         },
                         {
                             id: 2,
@@ -118,7 +48,8 @@ function set_up(){
                             date: "4/12/2021",
                             likes: 20,
                             img: "https://arc-anglerfish-arc2-prod-copesa.s3.amazonaws.com/public/Y7ITUEPBTFGQDLQKWWRQQ5C6KI.jpg",
-                            comments: 2
+                            comments: 2,
+                            who_liked: []
                         },
                         {
                             id: 3,
@@ -128,7 +59,8 @@ function set_up(){
                             date: "5/12/2021",
                             likes: 10,
                             img : "https://www.earlygame.com/uploads/images/_body/Jayce-Arcane-HD-splash-art.jpg",
-                            comments: 0
+                            comments: 0,
+                            who_liked: []
                         },
                         {
                             id: 4,
@@ -138,7 +70,8 @@ function set_up(){
                             date: "6/12/2021",
                             likes: 0,
                             img : "https://i.ytimg.com/vi/BkgA2_sB6NM/maxresdefault.jpg",
-                            comments: 0
+                            comments: 0,
+                            who_liked: []
                         },
                         {
                             id: 5,
@@ -148,7 +81,8 @@ function set_up(){
                             date: "07/12/2021",
                             likes: 4000,
                             img: "https://e00-elmundo.uecdn.es/assets/multimedia/imagenes/2021/07/16/16264514660383.jpg",
-                            comments: 0
+                            comments: 0,
+                            who_liked: []
                         },
                     ];
 
@@ -160,7 +94,8 @@ function set_up(){
                             date: "5/12/2021",
                             text: "Nice trip bro",
                             img:"https://i.ytimg.com/vi/BkgA2_sB6NM/maxresdefault.jpg",
-                            likes: 0
+                            likes: 0,
+                            who_liked: []
                         },
                         {
                             feed_id: 2,
@@ -169,31 +104,39 @@ function set_up(){
                             date: "5/12/2021",
                             text: "Da menschen vodka!",
                             img: "https://e00-elmundo.uecdn.es/assets/multimedia/imagenes/2021/07/16/16264514660383.jpg",
-                            likes: 0
+                            likes: 0,
+                            who_liked: []
                         }
                     ];
-
+    // In case 'feed' does not exist, create it and add it every component
     if (!localStorage.getItem("feed")){
         localStorage.setItem("feed", "[]"); 
-        console.log("entro");
         for (let i = 0; i < feed.length; i++){
             saveLocal("feed", feed[i]);
         }
     }
+    // In case 'comments' does not exist, create it and add it every component
     if (!localStorage.getItem("comments")){
         localStorage.setItem("comments", "[]");
-        console.log("entro2");
         for (let i = 0; i < comments.length; i++){
             saveLocal("comments", comments[i]);
         }
     }
     
+    // It will check if the user is logged
     checkCookie();
+
+    // It will load the feed with a length defined by the two parameters of the call
     load_feed(top_pointer, bottom_pointer);
 }
 //------------------[LocalStorage Functions]------------------
 
 function saveLocal(where, data){
+    /* This function will let us to save a json content @param data in the localStorage
+    of the session. @param where will have the value of the arrays of json content such as
+    feed, comments or user_data.*/
+
+    // If the arrays of json in @param where of localStorage is not defined it will set a empty array in it.
     if (!localStorage.getItem(where)){
         localStorage.setItem(where, "[]");
     }
@@ -215,7 +158,7 @@ function showRanking(){
 
         let user = feed[i]["usr"];
 
-        if (dict[user]==undefined){
+        if (dict[user] == undefined){
             dict[user] = [feed[i]["likes"], feed[i]["src"], feed[i]["img"]];
         }
         else{
@@ -227,18 +170,17 @@ function showRanking(){
     
     sorted_dict = sortDict(dict);
 
-    for (let i = 0; i < 10 && i < Object.keys(sorted_dict).length;i++){
-        $('#ranking_experiences').append(convert_to_html([Object.keys(sorted_dict)[i],
-            Object.values(sorted_dict)[i][0], 
-            Object.values(sorted_dict)[i][1],
-            Object.values(sorted_dict)[i][2]], 'r'));
+    for (let i = 0; i < Math.min(10, i < Object.keys(sorted_dict).length); i++){
+        $('#ranking_experiences').append(convert_to_html(
+            [Object.keys(sorted_dict)[i],
+             Object.values(sorted_dict)[i][0], 
+             Object.values(sorted_dict)[i][1],
+             Object.values(sorted_dict)[i][2]], 
+            'r'));
     }
 }
 
 function sortDict(dict) {
-
-    //console.log(Object.keys(dict));
-    //console.log(Object.values(dict));
 
     let sorted_dict = {};
 
@@ -266,8 +208,6 @@ function sortDict(dict) {
 function myFunction(){
     // Show dropdown
     document.getElementById("myDropdown").classList.toggle("show");
-    // $('#myDropdown').css('visibility', 'visible');
-    // $('#myDropdown').css('display', '');
 }
 
 window.onclick = function(event){
@@ -291,7 +231,6 @@ function preview2(){
     document.getElementById("ImgPreV2").src = img;
     document.getElementById("ImgPreV2").style.display = "block";
     document.getElementById("ImgPreV2").style.visibility = "visible";
-
 }
 
 function logOut(){
@@ -375,101 +314,169 @@ function checkUser(user){
     return getCookie(user);
 }
 
-
 function setTextUser(){
     var user = getCookie("usuario");
     var email = getCookie("email");
     var img = getCookie("imagen");
-    document.getElementById("usern").innerText = user;
-    document.getElementById("email").innerText = email;  
-    if(img!=""){
-        document.getElementById("img").src = img;
+    $('#usern').text(user);
+    $('#email').text(email);  
+    if(img != ""){
+        $('#img').attr('src', 'img');
     }
 }
 
 function changeData(expdays){
-    const time = new Date();
+    var time = new Date();
     time.setTime(time.getTime() + (expdays * 24*60*60*1000));
     let expires = "expires=" + time.toUTCString();
 
     var user = document.getElementById("Change_form").elements["username"].value;
     if(user != ""){
-        document.cookie = "usuario=" + user + ";" + expires + ";path=/";
+        document.cookie = `usuario=${user};${expires};path=/`;
     }
-    
 
     var img = document.getElementById("Change_form").elements["im_per"].value;
     if(img != ""){
-        document.cookie = "imagen=" + img + ";" + expires + ";path=/";
+        document.cookie = `imagen=${img};${expires};path=/`;
     }
     window.location.href = "#";
 }
 
 function like(id, type){
 
+    if(getCookie("usuario")=="" && getCookie("pwd")=="" && getCookie("email")==""){
+        window.location.href = "signin.html";
+        alert("You must to be logged");
+    }
+
     if (type === "post") {
-        feed = JSON.parse(localStorage.getItem("feed"));
-        new_feed = [];
-        var liked_post;
+        // get stored items
+        var feed = JSON.parse(localStorage.getItem("feed"));
+        // define a new array because localStorage cannot be edited, so we have to create a new array
+        var new_feed = [];
+        var current_user = getCookie("usuario");
+        // traverse feed array
         for (let i = 0; i < feed.length; i++) {
+            // when we find the desired feed...
             if (feed[i]["id"] == id) {
-                liked_post = feed[i];
-                liked_post["likes"]++;
-                new_feed.push(liked_post);
+                // extract the list of users who liked the post and check if the current user belongs to the list
+                var who_liked = feed[i]["who_liked"];
+                if (who_liked.indexOf(current_user) > -1){
+                    // because current user is in 'likes list', change like icon to gray heart (from like to unlike)
+                    $(`#like_button_${id}`).attr('src', 'https://img.icons8.com/ios/50/000000/like--v1.png');
+                    // remove current user from post's likes list
+                    who_liked.splice(current_user);
+                    // create an updated entry for feed by changing its like list and like counter
+                    var modified_post = feed[i];
+                    modified_post["who_liked"] = who_liked;
+                    modified_post["likes"]--;
+                    new_feed.push(modified_post);
+                }
+                // current user is not in likes list, so he has not liked the post yet
+                else {
+                    // set a red heart in like button
+                    $(`#like_button_${id}`).attr('src', "https://img.icons8.com/ios-filled/50/000000/like--v2.png");
+                    // append current user to the likes list of this post
+                    who_liked.push(current_user);
+                    // create an updated entry for feed by changing its like list and like counter
+                    var modified_post = feed[i];
+                    modified_post["who_liked"] = who_liked;
+                    modified_post["likes"]++;
+                    new_feed.push(modified_post);
+                }
             }
-            else {new_feed.push(feed[i]);}
+            // feeds that do not match the id are added directly to the new array
+            else {
+                new_feed.push(feed[i]);
+            }
         }
         localStorage.setItem("feed", JSON.stringify(new_feed));
-
-        document.getElementById(`likes_${id}`).innerText = `${liked_post["likes"]} likes`;
+        $(`#likes_${id}`).text(`${modified_post["likes"]} likes`);
     }
     
     else if (type === "comment") {
-        comments = JSON.parse(localStorage.getItem("comments"));
-        new_comments = [];
+        var comments = JSON.parse(localStorage.getItem("comments"));
+        var new_comments = [];
         var liked_comment;
+        var who_liked;
+        var current_user = getCookie("usuario");
         for (let i = 0; i < comments.length; i++) {
             if (comments[i]["comment_id"] == id) {
+                who_liked = comments[i]["who_liked"];
                 liked_comment = comments[i];
-                liked_comment["likes"]++;
-                new_comments.push(liked_comment);
+                if (who_liked.indexOf(current_user) > -1){
+                    $(`#like_comment_button_${id}`).attr('src', 'https://img.icons8.com/ios/50/000000/like--v1.png');
+                    // remove current user from post's likes list
+                    who_liked.splice(current_user);
+                    // create an updated entry for feed by changing its like list and like counter
+                    var modified_comment = comments[i];
+                    modified_comment["who_liked"] = who_liked;
+                    modified_comment["likes"]--;
+                    new_comments.push(modified_comment);
+                }
+                else {
+                    $(`#like_comment_button_${id}`).attr('src', "https://img.icons8.com/ios-filled/50/000000/like--v2.png");
+                    // append current user to the likes list of this post
+                    who_liked.push(current_user);
+                    // create an updated entry for feed by changing its like list and like counter
+                    var modified_comment = comments[i];
+                    modified_comment["who_liked"] = who_liked;
+                    modified_comment["likes"]++;
+                    new_comments.push(modified_comment);
+                }
             }
             else {new_comments.push(comments[i]);}
         }
         localStorage.setItem("comments", JSON.stringify(new_comments));
 
-        document.getElementById(`comments_likes_${id}`).innerText = `${liked_comment["likes"]} likes`;
+        $(`#comments_likes_${id}`).text(`${liked_comment["likes"]} likes`);
     }
 }
 
 function post_comment(id) {
-    var username = "pepapig";
-    if(username === ""){
-        console.log("User is not registered");
+    // Check if user is registered
+    if(getCookie("usuario")=="" && getCookie("pwd")=="" && getCookie("email")==""){
+        window.location.href = "signin.html";
+        alert("you have to be registered");
         return;
     }
+    // Get comment text and abort if it is empty
+    var comment_text = $(`#comment_text_box_${id}`).val();
+    if(comment_text == undefined){ return; }
 
+    // Get the comments and fill an array with this post comments ids
+    var comments = JSON.parse(localStorage.getItem("comments"));
+    var post_comment_ids = [];
+    for(let i = 0; i < comments.length; i++){
+        if(comments[i].feed_id == id){
+            post_comment_ids.push(comments[i].comment_id);
+        }   
+    }
+    if(post_comment_ids.length){
+        // Find the next available comment id
+        post_comment_ids.sort();
+        var next_id = post_comment_ids.pop() + 1;
+    } else{
+        var next_id = 0;
+    }
+    // Increment comment counter for this post
     plus_one_comment(id);
-
+    // Get current date to display it in the comment
     var time = new Date();
     time.setTime(time.getTime());
+    // Create comment object with appropiate data and insert it
     var comment = {
                     feed_id: id,
-                    comment_id: get_comment_id(),
-                    usr: document.getElementById("NameUser").innerText,
+                    comment_id: next_id,
+                    usr: $("#NameUser").text(),
                     date: time.toUTCString(),
-                    text: $(`#comment_text_box_${id}`).val(),
-                    img: document.getElementById("user_img").src,
-                    likes: 0
+                    text: comment_text,
+                    img: $("#user_img").attr('src'),
+                    likes: 0,
+                    who_liked: []
                   };
     $(`#feed_comment_section_${id}`).prepend(convert_to_html(comment, 'c'));
     saveLocal("comments", comment);
-}
-
-function get_comment_id() {
-    // Generates a random id for a comment. Cannot obtain it from comments.json
-    // because new comments cannot be stored there, so info won't be updated.
-    return Math.floor(Math.random()*10 + 5);
 }
 
 function plus_one_comment(id) {
@@ -483,28 +490,12 @@ function plus_one_comment(id) {
             commented_post["comments"]++;
             new_feed.push(commented_post);
         }
-        else {new_feed.push(feed[i]);}
+        else {
+            new_feed.push(feed[i]);
+        }
     }
     localStorage.setItem("feed", JSON.stringify(new_feed));
-    console.log(commented_post["comments"]);
-
-
-    document.getElementById(`comments_${id}`).innerText = `see ${commented_post["comments"]} comments`;
-}
-
-function read_file(path) {
-    var result = null;
-    var scriptUrl = path;
-    $.ajax({
-        url: scriptUrl,
-        type: 'get',
-        dataType: 'json',
-        async: false,
-        success: function(data) {
-            result = data;
-        } 
-     });
-     return result;
+    $(`#comments_${id}`).text(`see ${commented_post["comments"]} comments`);
 }
 
 function load_older(){
@@ -531,8 +522,7 @@ function load_new(){
     
     load_feed(top_pointer, new_load_bottom, true);
 
-    document.getElementById("reload_icon").className ="reload_animation"
-
+    document.getElementById("reload_icon").classList.toggle("reload_animation");
 }
 
 /*
@@ -592,7 +582,7 @@ function convert_to_html(json_info, type){
                     </div>
                     <div class="feed_bottom">
                         <div class="icon_and_text">
-                            <img onclick="like(${json_info.id}, 'post');" "class="icon_button" src="https://img.icons8.com/ios/50/000000/like--v1.png" alt="like icon">
+                            <img onclick="like(${json_info.id}, 'post');" "class="icon_button" id="like_button_${json_info.id}" src="https://img.icons8.com/ios/50/000000/like--v1.png" alt="like icon">
                             <p class="text_font" id="likes_${json_info.id}">${json_info.likes} likes</p>
                         </div>
                         <div class="icon_and_text">
@@ -631,12 +621,12 @@ function convert_to_html(json_info, type){
                         <img class="comment_user_img" src=${json_info.img} alt="Profile image of ${json_info.usr}">
                         <p class="comment_user_text_font">${json_info.usr}</p>
                         <div class="comment_text_box">
-                            <p class="text_font">${json_info.text}</p>
+                            <p class="text_font_margin_left">${json_info.text}</p>
                         </div>
                     </div>
                     <div class="comment_bottom">
                         <div class="icon_and_text">
-                            <img onclick="like(${json_info.comment_id}, 'comment');" class="icon_button" src="https://img.icons8.com/ios/50/000000/like--v1.png" alt="like icon">
+                            <img onclick="like(${json_info.comment_id}, 'comment');" class="icon_button" id="like_comment_button_${json_info.comment_id}" src="https://img.icons8.com/ios/50/000000/like--v1.png" alt="like icon">
                             <p class="text_font" id="comments_likes_${json_info.comment_id}">${json_info.likes} likes</p>
                         </div>
                     </div>
@@ -666,46 +656,31 @@ function convert_to_html(json_info, type){
 
 /*---------------------------------footer's icons-----------------------*/
 
-function hoverInst(element){
-    element.setAttribute("src","images/icon/instagram_icon2.png");
-}
-function unhoverInst(element){
-    element.setAttribute("src","images/icon/instagram_icon.png");
-}
-function hoverTwi(element){
-    element.setAttribute("src","images/icon/twitter_icon2.png");
-}
-function unhoverTwi(element){
-    element.setAttribute("src","images/icon/twitter_icon.png");
-}
-function hoverF(element){
-    element.setAttribute("src","images/icon/question_icon2.png");
-}
-function unhoverF(element){
-    element.setAttribute("src","images/icon/question_icon.png");
-}
-function hoverC(element){
-    element.setAttribute("src","images/icon/copyright_icon2.png");
-}
-function unhoverC(element){
-    element.setAttribute("src","images/icon/copyright_icon.png");
-}
+function hoverInst(element)  { element.setAttribute("src","images/Icon/instagram_icon2.png"); }
+function unhoverInst(element){ element.setAttribute("src","images/Icon/instagram_icon.png" ); }
+function hoverTwi(element)   { element.setAttribute("src","images/Icon/twitter_icon2.png"  ); }
+function unhoverTwi(element) { element.setAttribute("src","images/Icon/twitter_icon.png"   ); }
+function hoverF(element)     { element.setAttribute("src","images/Icon/question_icon2.png" ); }
+function unhoverF(element)   { element.setAttribute("src","images/Icon/question_icon.png"  ); }
+function hoverC(element)     { element.setAttribute("src","images/Icon/copyright_icon2.png"); }
+function unhoverC(element)   { element.setAttribute("src","images/Icon/copyright_icon.png" ); }
 
-/* Animations */
+/* Scroll Animation */
 
 $(window).on("load",function() {
     $(window).scroll(function() {
-        var windowBottom = $(this).scrollTop() + $(this).innerHeight()+1000;
+        var windowBottom = $(this).scrollTop() + $(this).innerHeight()+1200;
         $(".feed_item").each(function() {
         /* Check the location of each desired element */
         var objectBottom = $(this).offset().top + $(this).outerHeight();
         
         /* If the element is completely within bounds of the window, fade it in */
         if (objectBottom < windowBottom) { //object comes into view (scrolling down)
-            if ($(this).css("opacity")==0) {$(this).fadeTo(500,1);}
+            if ($(this).css("opacity") == 0) {$(this).fadeTo(500,1);}
         } else { //object goes out of view (scrolling up)
-            if ($(this).css("opacity")==1) {$(this).fadeTo(500,0);}
+            if ($(this).css("opacity") == 1) {$(this).fadeTo(500,0);}
         }
         });
     }).scroll(); //invoke scroll-handler on page-load
 });
+

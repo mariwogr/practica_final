@@ -48,6 +48,11 @@
     border-radius: 15px;
 }
 
+.img_ranking {
+    height: 200px;
+    border-radius: 15px;
+}
+
 .img_ranking_container {
     text-align: center;
 }

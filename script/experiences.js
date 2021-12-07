@@ -25,7 +25,7 @@ function searchElem(){
     //in case no words are provided, show all experiences
     if (filter.length == 0){
         for(let i = 0; i < figures.length; i++){
-            figures[i].css('display', '');
+            figures[i].style.display = "";
         }
         return;
     }
@@ -169,15 +169,14 @@ function load_exps(){
 }
 
 function convert_to_html(json_info){
-    return `<div class="exp_user_div">
-                <div class="img_ranking_container">
-                    <img class="img_ranking" src="${json_info.src}">
+    return `<div id="imageNo" class="exp_user_div">
+                <div>
+                    <img class="img_experience" src="${json_info.src}">
                 </div>
-                <div class="descr_img">
+                <div>
                     <p class="text_font">${json_info.descr}</p>
                 </div>
-            </div>
-            <br>`;
+            </div>`;
 }
 
 function add_experience(){
@@ -199,7 +198,8 @@ function add_experience(){
                     date: "5/12/2021",
                     likes: 0,
                     img : getCookie("imagen"),
-                    comments: 0
+                    comments: 0,
+                    who_liked: []
                 }
 
     saveLocal("feed", dict);
@@ -265,30 +265,49 @@ function getCookie(cname){
     }
     return "";
 }
+//------------------[Drag and drop experiences]------------------
+
+$(function() {
+    // Permite el drag and drop entre imagenes que busca por su id
+    $("#div_exp").sortable({ 
+            update: function(event, ui) {
+            getIdsOfImages();
+        }   		
+    });
+});
+
+function getIdsOfImages() {
+    // Devuelve el id de cada imagen contenida en div_exp
+    var values = [];
+    $('.exp_user_div').each(function (index) {
+        values.push( $(this).attr("id").replace("imageNo", "") );
+    });
+}
+
 
 /*---------------------------------Footer's icons-----------------------*/
 
 function hoverInst(element){
-    element.setAttribute("src","images/icon/instagram_icon2.png");
+    element.setAttribute("src","images/Icon/instagram_icon2.png");
 }
 function unhoverInst(element){
-    element.setAttribute("src","images/icon/instagram_icon.png");
+    element.setAttribute("src","images/Icon/instagram_icon.png");
 }
 function hoverTwi(element){
-    element.setAttribute("src","images/icon/twitter_icon2.png");
+    element.setAttribute("src","images/Icon/twitter_icon2.png");
 }
 function unhoverTwi(element){
-    element.setAttribute("src","images/icon/twitter_icon.png");
+    element.setAttribute("src","images/Icon/twitter_icon.png");
 }
 function hoverF(element){
-    element.setAttribute("src","images/icon/question_icon2.png");
+    element.setAttribute("src","images/Icon/question_icon2.png");
 }
 function unhoverF(element){
-    element.setAttribute("src","images/icon/question_icon.png");
+    element.setAttribute("src","images/Icon/question_icon.png");
 }
 function hoverC(element){
-    element.setAttribute("src","images/icon/copyright_icon2.png");
+    element.setAttribute("src","images/Icon/copyright_icon2.png");
 }
 function unhoverC(element){
-    element.setAttribute("src","images/icon/copyright_icon.png");
+    element.setAttribute("src","images/Icon/copyright_icon.png");
 }

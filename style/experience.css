@@ -28,6 +28,24 @@
     margin: auto;
 }
 
+#div_exp{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    width: 70%;
+    margin: auto;
+}
+
+.exp_user_div{
+    text-align: center;
+}
+
+.img_experience{
+    width: 33vw;
+    border-radius: 15px;
+}
+
+
 
 
 
