@@ -5,8 +5,8 @@ A comment is identified by the string 'feed_post_comment_(commentId)'.
 Comments have a pointer to tell which post they belong to.
 */
 
-var top_pointer = 3;
-var bottom_pointer = 1;
+var top_pointer = 5;
+var bottom_pointer = 3;
 
 function set_up(){
     /* This function will be called every time the page is loaded and will
@@ -16,6 +16,28 @@ function set_up(){
     var feed =      [
                         {
                             id: 0,
+                            src: "https://kilometrosquecuentan.com/wp-content/uploads/2019/10/sierra-gata-paisaje.jpg",
+                            usr: "pepe",
+                            descr: "Cómo mola la sierra de Gata!",
+                            date: "Thu, 12 Mar 2019 12:24:29 GMT",
+                            likes: 150,
+                            img: "https://arc-anglerfish-arc2-prod-copesa.s3.amazonaws.com/public/Y7ITUEPBTFGQDLQKWWRQQ5C6KI.jpg",
+                            comments: 0,
+                            who_liked: []
+                        },
+                        {
+                            id: 1,
+                            src: "https://www.madridiario.es/fotos/1/1437374667_64d0894749194343353c52a2b9cf933d.jpeg",
+                            usr: "StonksBoy",
+                            descr: "euroes go brrr",
+                            date: "Thu, 18 Mar 2019 12:00:29 GMT",
+                            likes: 245,
+                            img: "https://i.ytimg.com/vi/qCylpmEvDCg/maxresdefault.jpg",
+                            comments: 0,
+                            who_liked: []
+                        },
+                        {
+                            id: 2,
                             src: "https://ih1.redbubble.net/image.557168243.2784/flat,1000x1000,075,f.jpg",
                             usr: "StonksBoy",
                             descr: "Bitcoin goes brrr",
@@ -26,7 +48,7 @@ function set_up(){
                             who_liked: []
                         },
                         {
-                            id: 1,
+                            id: 3,
                             src: "https://cdn.eldoce.tv/sites/default/files/styles/amp_metadata_content_image_min_696px_wide/public/nota/2021/07/06/El%20ni%C3%B1o%20de%2018%20a%C3%B3s.jpg?itok=BG5eBfLG",
                             usr: "Hasbulla",
                             descr: "готов сразиться с Бургиром",
@@ -37,7 +59,7 @@ function set_up(){
                             who_liked: []
                         },
                         {
-                            id: 2,
+                            id: 4,
                             src: "https://services.meteored.com/img/article/en-saturno-llueven-diamantes-263801-1_1280.jpg",
                             usr: "pepe",
                             descr: "De vacas por saturnooo",
@@ -48,7 +70,7 @@ function set_up(){
                             who_liked: []
                         },
                         {
-                            id: 3,
+                            id: 5,
                             src: "http://www.pixelstalk.net/wp-content/uploads/2016/10/Download-Images-Disney-Computer-HD.jpg",
                             usr: "Joline",
                             descr: "Nice lil' mouse, dont ya think?",
@@ -59,7 +81,7 @@ function set_up(){
                             who_liked: []
                         },
                         {
-                            id: 4,
+                            id: 6,
                             src: "https://wallup.net/wp-content/uploads/2016/01/136128-mountain-lake-trees.jpg",
                             usr: "juan.",
                             descr: "Enjoying the mountain",
@@ -70,7 +92,7 @@ function set_up(){
                             who_liked: []
                         },
                         {
-                            id: 5,
+                            id: 7,
                             src: "https://cdn.eldoce.tv/sites/default/files/styles/amp_metadata_content_image_min_696px_wide/public/nota/2021/07/06/El%20ni%C3%B1o%20de%2018%20a%C3%B3s.jpg?itok=BG5eBfLG",
                             usr: "Hasbulla",
                             descr: "по панафреско",
