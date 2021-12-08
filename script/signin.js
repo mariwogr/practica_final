@@ -1,10 +1,13 @@
 //This file contains the code about log in 
 
 function sign_in() {
+    /* This function will allow the user to sign in. */
     if (!localStorage.getItem("user_data")){
         alert("This user does not exist");
         return;
-    }else{    
+    }else{
+
+        // It checks in the user_data of the localStorage if the user is already in it.
         var user = document.getElementById("form_body").elements["user"].value;
         var pwd = document.getElementById("form_body").elements["password"].value;
 
@@ -23,10 +26,8 @@ function sign_in() {
                 if(user_data[i]["img"] != ""){
                     document.cookie = "imagen="+ user_data[i]["img"] + ";" + expires + ";path=/";
                 }
-
                 window.location.href = "main.html";
                 alert("welcome!");
-
             }
         }
         alert("This user does not exist");

@@ -15,30 +15,104 @@
     <!--CSS Files Used-->
     <link rel="stylesheet" href="style/shared.css">
     <link rel="stylesheet" href="style/fonts.css">
+    <link rel="stylesheet" href="style/pop_up.css">
 </head>
 <body onload="set_up();checkDarkMode()">
     <!---------------------------------------------HEADER---------------------------------------------------->
     <header>
-        <nav>
+        <nav class="nav">
             <div class="company_identity">
-                <img src="images/Icon/app_logo.png" class="app_logo_img">
+                <img src="images/Icon/app_logo.png" class="app_logo_img" alt="app logo">
                 <h1 class="company_font">Expell</h1>
             </div>
 
             <menu class="menu_margin">
                 <a href="main.html" class="nav_links">Home</a>
                 <a href="experiences.html" class="nav_links">Experiences</a>
-                <a href="" class="nav_links">Ranking</a>
+                <a href="ranking.html" class="nav_links">Ranking</a>
             </menu>
             
             <div id="user_signin">
-                <img id="user_img" src="https://img.icons8.com/external-bearicons-glyph-bearicons/64/000000/external-User-essential-collection-bearicons-glyph-bearicons.png"/>
+                <img id="user_img" src="https://img.icons8.com/external-bearicons-glyph-bearicons/64/000000/external-User-essential-collection-bearicons-glyph-bearicons.png" alt="profile of current user"/>
+                <p id="NameUser"></p>
                 <a href="signin.html">
-                    <button class="signin_button">Sign In</button>
+                    <button class="signin_button" id="signin__button">Sign In</button>
                 </a>
+                <div id="dropdown">
+                    <button id="button_settings" onclick ="myFunction();" class="dropbtn">Settings</button>
+                    <div id ="myDropdown" class = "dropdown_content">
+                        <a class="subtitle_text_font" href="#popupUserInf" >
+                            <button onclick="setTextUser()" class="button_settings">
+                                Profile
+                            </button>
+                        </a>
+                        <a class="subtitle_text_font" href="#popupOut">
+                            <button class="button_settings">
+                                Log Out
+                            </button>
+                        </a>
+                        <a class="subtitle_text_font" >
+                            <button class="button_settings" onclick="darkMode(false)">
+                                Dark Mode
+                            </button>
+                        </a>
+                    </div>
+                </div>
             </div>
         </nav>
     </header>
+    <!----------------------------Log Out POP UP---------------------------------------------->
+    <div id="popupOut" class="overlay">
+        <div id="popupBody">
+            <a id="cerrar" href="#">&times;</a>
+            <div class="popupContent">
+                <br>
+                <h2 class="title_text_font2">¿SEGURO QUE DESEA CERRAR SESION?</h2>
+                <br><br><br><br><br><br><br><br><br><br><br>
+                <button onclick="logOut()" class="button_popups">
+                    Aceptar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!--------------------------Change Data POP UP---------------------------------------------->
+    <div id="popupUserInf" class="overlay">
+        <div id="popupBody">
+            <h2 class="title_text_font">information about user</h2>
+            <a id="cerrar" href="#">&times;</a>
+            <div class="popupContent">
+                <br><br>
+                <h3 class="text_font">User: </h3>
+                <p class="text_font" id="usern"></p>
+                <br>
+                <h3 class="text_font">Email: </h3>
+                <p class="text_font" id="email"></p>
+                <br>
+                <h3 class="text_font">Profile Image: </h3>
+                <img src="https://img.icons8.com/external-bearicons-glyph-bearicons/64/000000/external-User-essential-collection-bearicons-glyph-bearicons.png" alt="" class="img_settings" id="img">
+                <br><br>
+                <h1 class="title_text_font">Change User Data</h1>
+                <form class="text_center" id="Change_form">
+                    <br><br>
+                    <label class="text_font" for="username">Change user name:</label>
+                    <input id="username" type="text" name="username" maxlength="10">
+                    <br><br>
+                    <label for="im_per" class="text_font">Stick the url of the image (only jpg or png):</label>
+                    <br><br>
+                    <input type="url" id="im_per" name="im_per" onchange="preview2()" class="fields">
+                    <br><br>
+                    <img src="" id="ImgPreV2" alt="image added by the user">
+                    <br><br>
+                    <div class="text_center">
+                        <button onclick="changeData(365)" class="button_popups">
+                            Save
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <!---------------------------------------------About Us---------------------------------------------------->
     <h1 class="title_text_font">What is <span class="company_font2">Expell</span>?</h1>
     <br>
@@ -57,9 +131,9 @@
     </div>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <!---------------------------------------------Footer---------------------------------------------------->
-    <footer>
+    <footer class="footer">
         <div class="company_identity">
-            <img src="images/Icon/app_logo.png" class="app_logo_img">
+            <img src="images/Icon/app_logo.png" class="app_logo_img" alt="app logo">
             <h1 class="company_font">Expell</h1>
         </div>
 
@@ -70,17 +144,17 @@
         </menu>
 
         <div id="footer_icons">
-            <a href="#" target="_blank">
-                <img class="icon_footer" src="images/Icon/twitter_icon.png" id="twitter" title="Twitter" onmouseover="hoverTwi(this)" onmouseout="unhoverTwi(this)">
+            <a href="https://www.twitter.com" target="_blank">
+                <img class="icon_footer" src="images/Icon/twitter_icon.png" id="twitter" title="Twitter" onmouseover="hoverTwi(this)" onmouseout="unhoverTwi(this)" alt="twitter icon">
             </a>
-            <a href="#" target="_blank">
-                <img class="icon_footer" src="images/Icon/instagram_icon.png" id="instagram" title="Instagram" onmouseover="hoverInst(this)" onmouseout="unhoverInst(this)">
+            <a href="https://www.instagram.com" target="_blank">
+                <img class="icon_footer" src="images/Icon/instagram_icon.png" id="instagram" title="Instagram" onmouseover="hoverInst(this)" onmouseout="unhoverInst(this)" alt="instagram icon">
             </a>
-            <a href="#" target="_blank">
-                <img class="icon_footer" src="images/Icon/question_icon.png" id="FAQ" title="FAQ" onmouseover="hoverF(this)" onmouseout="unhoverF(this)">
+            <a href="help.html" target="_blank">
+                <img class="icon_footer" src="images/Icon/question_icon.png" id="FAQ" title="FAQ" onmouseover="hoverF(this)" onmouseout="unhoverF(this)" alt="question icon">
             </a>
             <a href="https://www.tuabogadodefensor.com/derechos-autor-web/" target="_blank">
-                <img class="icon_footer" src="images/Icon/copyright_icon.png" id="Copyright" title="Copyright" onmouseover="hoverC(this)" onmouseout="unhoverC(this)">
+                <img class="icon_footer" src="images/Icon/copyright_icon.png" id="Copyright" title="Copyright" onmouseover="hoverC(this)" onmouseout="unhoverC(this)" alt="copyright icon">
             </a>     
         </div>            
     </footer>

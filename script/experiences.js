@@ -156,7 +156,7 @@ function load_exps(){
 function convert_to_html_exp(json_info, id){
     return `<div id="imageNo${id}" class="exp_user_div">
                 <div>
-                    <img class="img_experience" src="${json_info.src}">
+                    <img class="img_experience" src="${json_info.src}" alt="experience ${id}">
                 </div>
                 <div class="description_container">
                     <div class="description_div">
@@ -164,7 +164,7 @@ function convert_to_html_exp(json_info, id){
                     </div>
                     <div class="trash_div">
                         <a href="#popupdel_${id}">
-                            <img class="img_delete" src="https://img.icons8.com/ios-glyphs/60/000000/trash--v3.png">
+                            <img class="img_delete" src="https://img.icons8.com/ios-glyphs/60/000000/trash--v3.png" alt="delete experience ${id}">
                         </a>
                     </div>
                 </div>
@@ -176,7 +176,7 @@ function convert_to_html_exp(json_info, id){
                     <a id="cerrar" href="#">&times;</a>
                     <div class="popupContent">
                         <br><br>
-                        <h4 class="text_font">Are you sure to delete the experience: </h4>
+                        <h3 class="text_font">Are you sure to delete the experience: </h3>
                         <br><br>
                         <button class="button_popups" onclick = "delete_exp(${id},${json_info.id})">YES</button>
                     </div>

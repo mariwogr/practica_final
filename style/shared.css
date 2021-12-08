@@ -299,7 +299,6 @@ button:hover{
 
 #description{
     margin: auto 20% auto 20%;
-    text-align: justify;
 }
 
 /*[Fill input fields]*/
@@ -355,6 +354,7 @@ button:hover{
 
 .comment_text_box_dark_mode{
     width: 500px;
+    height: 65px;
     margin-right: 50px;
     border-radius: 10px;
     text-align: left;
@@ -510,5 +510,22 @@ button:hover{
 
     .browse_more_button2 {
         width: 40%;
+    }
+
+    .comment_text_box_dark_mode{
+        width: 300px;
+        height: 65px;
+        background-color: #333333;
+    }
+
+    .feed_user_comment_dark_mode{
+        margin: auto 5% auto 5%;
+        height: 230px;
+        background-color: rgb(75, 75, 75);
+    }
+    
+    .feed_post_comment_dark_mode{
+        margin: auto 5% auto 5%;
+        background-color: rgb(75, 75, 75);
     }
 }

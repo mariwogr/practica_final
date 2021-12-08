@@ -36,7 +36,7 @@
             </menu>
             
             <div id="user_signin">
-                <img id="user_img" src="https://img.icons8.com/external-bearicons-glyph-bearicons/64/000000/external-User-essential-collection-bearicons-glyph-bearicons.png"/>
+                <img id="user_img" src="https://img.icons8.com/external-bearicons-glyph-bearicons/64/000000/external-User-essential-collection-bearicons-glyph-bearicons.png" alt="profile of current user"/>
                 <p id="NameUser"></p>
                 <a href="signin.html">
                     <button class="signin_button" id="signin__button">Sign In</button>
@@ -68,7 +68,7 @@
 
     <!------------------------------------Experiences section-------------------------------------->
 
-    <p class="title_text_font">Experiences</p>
+    <h1 class="title_text_font">Experiences</h1>
     <br><br>
 
     <div id="feed" class="button_br_more">
@@ -115,11 +115,11 @@
                         <br><br>
                         <input class="url_textbox" type="url" id="new_experience" name="new_experience" required onchange="preview4()">
                         <br><br>
-                        <img id = "ImgPreV3" >
+                        <img id = "ImgPreV3" alt="preview of the experience">
                         <br>
                         <div class="text_center">
                             <button id = "button_plus" onclick="add_experience()">
-                                <img src="https://img.icons8.com/material-rounded/96/000000/plus--v2.png"/>
+                                <img src="https://img.icons8.com/material-rounded/96/000000/plus--v2.png" alt="image added by the user"/>
                             </button>
                         </div>
                         
@@ -151,13 +151,13 @@
             <a id="cerrar" href="#">&times;</a>
             <div class="popupContent">
                 <br><br>
-                <h4 class="text_font">User: </h4>
+                <h3 class="text_font">User: </h3>
                 <p class="text_font" id="usern"></p>
                 <br>
-                <h4 class="text_font">Email: </h4>
+                <h3 class="text_font">Email: </h3>
                 <p class="text_font" id="email"></p>
                 <br>
-                <h4 class="text_font">Profile Image: </h4>
+                <h3 class="text_font">Profile Image: </h3>
                 <img src="https://img.icons8.com/external-bearicons-glyph-bearicons/64/000000/external-User-essential-collection-bearicons-glyph-bearicons.png" alt="" class="img_settings" id="img">
                 <br><br>
                 <h1 class="title_text_font">Change User Data</h1>
@@ -170,7 +170,7 @@
                     <br><br>
                     <input type="url" id="im_per" name="im_per" onchange="preview2()" class="fields">
                     <br><br>
-                    <img src="" id="ImgPreV2">
+                    <img src="" id="ImgPreV2" alt="image added by the user">
                     <br><br>
                     <div class="text_center">
                         <button onclick="changeData(365)" class="button_popups">
@@ -197,17 +197,17 @@
         </menu>
 
         <div id="footer_icons">
-            <a href="#" target="_blank">
-                <img class="icon_footer" src="images/Icon/twitter_icon.png" id="twitter" title="Twitter" onmouseover="hoverTwi(this)" onmouseout="unhoverTwi(this)">
+            <a href="https://www.twitter.com" target="_blank">
+                <img class="icon_footer" src="images/Icon/twitter_icon.png" id="twitter" title="Twitter" onmouseover="hoverTwi(this)" onmouseout="unhoverTwi(this)" alt="twitter icon">
             </a>
-            <a href="#" target="_blank">
-                <img class="icon_footer" src="images/Icon/instagram_icon.png" id="instagram" title="Instagram" onmouseover="hoverInst(this)" onmouseout="unhoverInst(this)">
+            <a href="https://www.instagram.com" target="_blank">
+                <img class="icon_footer" src="images/Icon/instagram_icon.png" id="instagram" title="Instagram" onmouseover="hoverInst(this)" onmouseout="unhoverInst(this)" alt="instagram icon">
             </a>
-            <a href="#" target="_blank">
-                <img class="icon_footer" src="images/Icon/question_icon.png" id="FAQ" title="FAQ" onmouseover="hoverF(this)" onmouseout="unhoverF(this)">
+            <a href="help.html" target="_blank">
+                <img class="icon_footer" src="images/Icon/question_icon.png" id="FAQ" title="FAQ" onmouseover="hoverF(this)" onmouseout="unhoverF(this)" alt="question icon">
             </a>
             <a href="https://www.tuabogadodefensor.com/derechos-autor-web/" target="_blank">
-                <img class="icon_footer" src="images/Icon/copyright_icon.png" id="Copyright" title="Copyright" onmouseover="hoverC(this)" onmouseout="unhoverC(this)">
+                <img class="icon_footer" src="images/Icon/copyright_icon.png" id="Copyright" title="Copyright" onmouseover="hoverC(this)" onmouseout="unhoverC(this)" alt="copyright icon">
             </a>
         </div>             
     </footer>

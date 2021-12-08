@@ -406,4 +406,7 @@
         width: 300px;
         margin-right: 50px;
     }
+    .title_anim_div{
+        width: 100%;
+    }
 }

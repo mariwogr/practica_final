@@ -27,7 +27,7 @@ function set_up(){
                         },
                         {
                             id: 1,
-                            src: "https://pbs.twimg.com/media/E-IXBArVEAsG4Oy.jpg",
+                            src: "https://cdn.eldoce.tv/sites/default/files/styles/amp_metadata_content_image_min_696px_wide/public/nota/2021/07/06/El%20ni%C3%B1o%20de%2018%20a%C3%B3s.jpg?itok=BG5eBfLG",
                             usr: "Hasbulla",
                             descr: "готов сразиться с Бургиром",
                             date: "Fri, 23 Oct 2020 04:21:56 GMT",
@@ -71,7 +71,7 @@ function set_up(){
                         },
                         {
                             id: 5,
-                            src: "https://pbs.twimg.com/media/FD33F3UXIAIe2bd.jpg",
+                            src: "https://cdn.eldoce.tv/sites/default/files/styles/amp_metadata_content_image_min_696px_wide/public/nota/2021/07/06/El%20ni%C3%B1o%20de%2018%20a%C3%B3s.jpg?itok=BG5eBfLG",
                             usr: "Hasbulla",
                             descr: "по панафреско",
                             date: "Tue, 07 Dic 2021 07:23:39 GMT",
@@ -640,11 +640,11 @@ function convert_to_html(json_info, type, mode = ""){
     else if(type === 'r'){
         return `<div class="ranking_div">
                     <div class="user_ranking">
-                        <img class="icon_ranking" src=${json_info[3]}>
+                        <img class="icon_ranking" src=${json_info[3]} alt="profile image of ${json_info[0]}">
                         <p class="user_ranking_text_font">${json_info[0]}</p>
                     </div>
                     <div class="img_ranking_container">
-                        <img class="img_ranking" src="${json_info[2]}">
+                        <img class="img_ranking" src="${json_info[2]}" alt="most recent experience of ${json_info[0]}">
                     </div>
                     <div class="likes_container">
                         <img class="icon_like_ranking" src="https://img.icons8.com/ios/50/000000/like--v1.png" alt="like icon">
