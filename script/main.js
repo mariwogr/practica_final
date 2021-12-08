@@ -504,7 +504,13 @@ function load_older(){
     // already have bottom pointer set, now define the top of the new chunk to load
     let new_load_top = top_pointer - loaded_experiences;
 
-    load_feed(new_load_top, bottom_pointer, false);
+    if (getCookie("mode") === "dark-mode") {
+        load_feed(new_load_top, bottom_pointer, false, '_dark_mode');
+    }
+    else {
+        load_feed(new_load_top, bottom_pointer, false);
+    }
+
 }
 
 function load_new(){
@@ -518,7 +524,12 @@ function load_new(){
     // already have top pointer set, now define the bottom of the new chunk to load
     let new_load_bottom = bottom_pointer + loaded_experiences;
     
-    load_feed(top_pointer, new_load_bottom, true);
+    if (getCookie("mode") === "dark-mode") {
+        load_feed(top_pointer, new_load_bottom, true, '_dark_mode');
+    }
+    else {
+        load_feed(top_pointer, new_load_bottom, true);
+    }
 
     document.getElementById("reload_icon").classList.toggle("reload_animation");
 }
@@ -534,7 +545,7 @@ function load_new(){
 -----
 [0]
 */
-function load_feed(top_i, bottom_i, want_new){
+function load_feed(top_i, bottom_i, want_new, mode = ""){
     /* 
         This function writes to the html posts ranging from 'top_i' to 'bottom_i', which are 
         valid indexes of the 'feed' array. These indexes define the "posts window", which is the
@@ -547,11 +558,11 @@ function load_feed(top_i, bottom_i, want_new){
     let comments = JSON.parse(localStorage.getItem("comments"));
     
     for(let i = top_i; i >= bottom_i; i--){
-        want_new ? $('#feed_experiences').prepend(convert_to_html(feed[i], 'f')) : $('#feed_experiences').append(convert_to_html(feed[i], 'f'));
+        want_new ? $('#feed_experiences').prepend(convert_to_html(feed[i], 'f', mode)) : $('#feed_experiences').append(convert_to_html(feed[i], 'f', mode));
         // Find the comments of the ith post and append them
         for(let j = 0; j < comments.length; j++){
             if(comments[j].feed_id == feed[i].id){
-                $(`#feed_comment_section_${feed[i].id}`).append(convert_to_html(comments[j], 'c'));
+                $(`#feed_comment_section_${feed[i].id}`).append(convert_to_html(comments[j], 'c', mode));
             }
         }
     }
@@ -590,7 +601,7 @@ function convert_to_html(json_info, type, mode = ""){
                         </div>
                     </div>
                     <br>
-                    <div class="feed_user_comment" >
+                    <div class="feed_user_comment${mode}" >
                         <div class="comment_section">
                             <img class="comment_icon_button" src="https://img.icons8.com/material-outlined/64/000000/comments--v1.png" alt="comments icon">
                         </div>
@@ -598,11 +609,11 @@ function convert_to_html(json_info, type, mode = ""){
                             <img id="comment_user_img" class="comment_user_img" src=${user_img.src} alt="Profile image of ${json_info.usr}">
                             <p class="comment_user_text_font">${getCookie("usuario")}</p>
 
-                            <input id="comment_text_box_${json_info.id}" class="comment_text_box" "type="text" placeholder="Write something" required>
+                            <input id="comment_text_box_${json_info.id}" class="comment_text_box${mode}" "type="text" placeholder="Write something" required>
 
                         </div>
                         
-                        <button id="feed_comment_button_${json_info.id}" onclick="post_comment(${json_info.id});" class="user_comment_button">Comment</button>
+                        <button id="feed_comment_button_${json_info.id}" onclick="post_comment(${json_info.id});" class="user_comment_button${mode}">Comment</button>
                         <div class="alert" id="alert_${json_info.id}">
                             <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
                             <strong>This comment exceedes the 22 characters maximum length</strong>

@@ -341,14 +341,29 @@ button:hover{
 }
 
 .feed_user_comment_dark_mode{
+    margin: auto 15% auto 15%;
+    border-radius: 15px;
+    height: 200px;
     background-color: rgb(75, 75, 75);
 }
 
 .feed_post_comment_dark_mode{
+    margin: auto 15% auto 15%;
+    border-radius: 15px;
     background-color: rgb(75, 75, 75);
 }
 
 .comment_text_box_dark_mode{
+    width: 500px;
+    margin-right: 50px;
+    border-radius: 10px;
+    text-align: left;
+    align-items: center;
+    font-family: 'Quicksand',sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    margin-left: 15px;
     background-color: #333333;
 }
 
@@ -369,6 +384,15 @@ button:hover{
 }
 
 .user_comment_button_dark_mode{
+    cursor: pointer;
+    height: 30px;
+    width: 100px;
+    border-radius: 10px;
+    filter: drop-shadow(5px 5px 10px #444);
+    font-family: 'Quicksand',sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    margin-top: 20px;
     background-color: rgb(216, 216, 216);;
     color: rgb(248, 75, 106);
 }
