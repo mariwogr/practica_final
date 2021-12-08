@@ -20,43 +20,35 @@
     <link rel="stylesheet" href="style/pop_up.css">
 </head>
 <body onload="set_up();checkDarkMode()">
-    <!---------------------------------------------Header---------------------------------------------------->
+    <!--[Header]-->
     <header>
         <nav class="nav">
             <div class="company_identity">
                 <img src="images/Icon/app_logo.png" class="app_logo_img" alt="app logo">
-                <h1 class="company_font">Expell</h1>
+                <p class="company_font">Expell</p>
             </div>
 
-            <menu class="menu_margin">
+            <div class="menu_margin">
                 <a href="main.html" class="nav_links">Home</a>
                 <a href="experiences.html" class="nav_links">Experiences</a>
                 <a href="ranking.html" class="nav_links">Ranking</a>
-            </menu>
+            </div>
             
             <div id="user_signin">
                 <img id="user_img" src="https://img.icons8.com/external-bearicons-glyph-bearicons/64/000000/external-User-essential-collection-bearicons-glyph-bearicons.png" alt="profile of current user"/>
                 <p id="NameUser" class="name_user"></p>
-                <a href="signin.html">
-                    <button class="signin_button" id="signin__button">Sign In</button>
-                </a>
+                <button class="signin_button" id="signin__button" onclick='location.href="signin.html"'>Sign In</button>
                 <div id="dropdown">
                     <button id="button_settings" onclick ="myFunction()" class="dropbtn"> Settings</button>
                     <div id ="myDropdown" class = "dropdown_content">
-                        <a class="subtitle_text_font" href="#popupUserInf" >
-                            <button onclick="setTextUser()" class="button_settings">
-                                Profile
-                            </button>
+                        <a class="button_settings " onclick="setTextUser();location.href='#popupUserInf'">Profile</a>
+                            
+                        <!--<button onclick="setTextUser();location.href='#popupUserInf'" class="button_settings subtitle_text_font">Profile</button>-->
+                        <a class=" button_settings" onclick="location.href='#popupOut'">
+                            Log Out
                         </a>
-                        <a class="subtitle_text_font" href="#popupOut">
-                            <button class="button_settings">
-                                Log Out
-                            </button>
-                        </a>
-                        <a class="subtitle_text_font" >
-                            <button class="button_settings" onclick="darkMode(false)">
-                                Dark Mode
-                            </button>
+                        <a class=" button_settings" onclick="darkMode(false)">
+                            Dark Mode
                         </a>
                     </div>
                 </div>
@@ -64,10 +56,10 @@
         </nav>
     </header>
 
-    <!----------------------------Log Out POP UP---------------------------------------------->
+    <!--[Log Out POP UP]-->
     <div id="popupOut" class="overlay">
-        <div id="popupBody">
-            <a id="cerrar" href="#">&times;</a>
+        <div class="popupBody">
+            <a class="cerrar" href="#">&times;</a>
             <div class="popupContent">
                 <br>
                 <h2 class="title_text_font2">¿SEGURO QUE DESEA CERRAR SESION?</h2>
@@ -78,12 +70,11 @@
             </div>
         </div>
     </div>
-    <!------------------------------------------------------------------------------------------>
-    <!--------------------------Change Data POP UP---------------------------------------------->
+    <!--[Change Data POP UP]-->
     <div id="popupUserInf" class="overlay">
-        <div id="popupBody">
+        <div class="popupBody">
             <h2 class="title_text_font">Account Information</h2>
-            <a id="cerrar" href="#">&times;</a>
+            <a class="cerrar" href="#">&times;</a>
             <div class="popupContent">
                 <br><br>
                 <h3 class="subtitle_text_font_centered">User: </h3>
@@ -105,7 +96,7 @@
                     <br><br>
                     <input type="url" id="im_per" name="im_per" onchange="preview2()" class="fields">
                     <br><br>
-                    <img src="" id="ImgPreV2" alt="preview profile image of the current user">
+                    <img src="https://lledogrupo.com/wp-content/uploads/2018/04/white-img.jpg" id="ImgPreV2" alt="preview profile image of the current user">
                     <br><br>
                     <div class="text_center">
                         <button onclick="changeData(365)" class="button_popups">
@@ -116,10 +107,10 @@
             </div>
         </div>
     </div>
-    <!---------------------------------------------Experiences--------------------------------------------->
+    <!--[Experiences]-->
     <br>
     <div class="title_anim_div">
-        <h1 class="wordCarousel">
+        <div class="wordCarousel">
             <span class="title_text_anim">Discover the pleasure to travel:</span>
             <div>
                 <!-- Flip 4 to match the number of words -->
@@ -130,7 +121,7 @@
                     <li>Cool</li>
                 </ul>
             </div>
-        </h1>
+        </div>
     </div>
     <br><br><br>
     <h2 class="title_text_font_nomargin">Most popular experiences</h2>
@@ -144,18 +135,18 @@
         <br><br>
     </div>
     <br><br><br><br>
-    <!---------------------------------------------Footer---------------------------------------------------->
+    <!--[Footer]-->
     <footer class="footer">
         <div class="company_identity">
             <img src="images/Icon/app_logo.png" class="app_logo_img" alt="app logo">
             <h1 class="company_font">Expell</h1>
         </div>
 
-        <menu class="menu_margin">
+        <div class="menu_margin">
             <a href="privacy.html" class="nav_links">Privacy</a>
             <a href="about_us.html" class="nav_links">About Us</a>
             <a href="help.html" class="nav_links">Help</a>
-        </menu>
+        </div>
 
         <div id="footer_icons">
             <a href="https://www.twitter.com" target="_blank">
@@ -165,7 +156,7 @@
                 <img class="icon_footer" src="images/Icon/instagram_icon.png" id="instagram" title="Instagram" onmouseover="hoverInst(this)" onmouseout="unhoverInst(this)" alt="instagram icon">
             </a>
             <a href="help.html" target="_blank">
-                <img class="icon_footer" src="images/Icon/question_icon.png" id="FAQ" title="FAQ" onmouseover="hoverF(this)" onmouseout="unhoverF(this)"alt="questions icon">
+                <img class="icon_footer" src="images/Icon/question_icon.png" id="FAQ" title="FAQ" onmouseover="hoverF(this)" onmouseout="unhoverF(this)" alt="questions icon">
             </a>
             <a href="https://www.tuabogadodefensor.com/derechos-autor-web/" target="_blank">
                 <img class="icon_footer" src="images/Icon/copyright_icon.png" id="Copyright" title="Copyright" onmouseover="hoverC(this)" onmouseout="unhoverC(this)" alt="copyright icon">

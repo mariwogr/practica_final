@@ -4,7 +4,6 @@
     <!--Configuration-->
     <meta charset="utf-8">
     <title>Expell</title>
-    <meta charset="UTF-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="script/main.js"></script>
     <script src="script/shared.js"></script>
@@ -18,45 +17,35 @@
     <link rel="stylesheet" href="style/fonts.css">
 </head>
 <body onload="showRanking();checkDarkMode();">
-    <!---------------------------------------------Header---------------------------------------------------->
+    <!--[Header]-->
     <header>
         <nav class="nav">
             <div class="company_identity">
                 <img src="images/Icon/app_logo.png" class="app_logo_img" alt="app logo">
-                <h1 class="company_font">Expell</h1>
+                <p class="company_font">Expell</p>
             </div>
 
-            <menu class="menu_margin">
+            <div class="menu_margin">
                 <a href="main.html" class="nav_links">Home</a>
                 <a href="experiences.html" class="nav_links">Experiences</a>
                 <a href="" class="nav_links">Ranking</a>
-            </menu>
+            </div>
             
             <div id="user_signin">
                 <img id="user_img" src="https://img.icons8.com/external-bearicons-glyph-bearicons/64/000000/external-User-essential-collection-bearicons-glyph-bearicons.png" alt="profile of current user"/>
                 <p id="NameUser"></p>
-                <a href="signin.html">
-                    <button class="signin_button" id="signin__button">Sign In</button>
-                </a>
+                <button class="signin_button" onclick='location.href="signin.html"' id="signin__button">Sign In</button>
                 <div id="dropdown">
-                    <button id="button_settings" onclick ="myFunction()" class="dropbtn"> settings
-                        <!--<img src="images/icons/settings_icon.png">-->
-                    </button>
+                    <button id="button_settings" onclick ="myFunction()" class="dropbtn">Settings</button>
                     <div id ="myDropdown" class = "dropdown_content">
-                        <a class="subtitle_text_font" href="#popupUserInf" >
-                            <button onclick="setTextUser()" class="button_settings">
-                                Profile
-                            </button>
+                        <a class="button_settings " onclick="setTextUser();location.href='#popupUserInf'">Profile</a>
+                            
+                        <!--<button onclick="setTextUser();location.href='#popupUserInf'" class="button_settings subtitle_text_font">Profile</button>-->
+                        <a class=" button_settings" onclick="location.href='#popupOut'">
+                            Log Out
                         </a>
-                        <a class="subtitle_text_font" href="#popupOut">
-                            <button class="button_settings">
-                                Log Out
-                            </button>
-                        </a>
-                        <a class="subtitle_text_font" >
-                            <button class="button_settings" onclick="darkMode(false)">
-                                Dark Mode
-                            </button>
+                        <a class=" button_settings" onclick="darkMode(false)">
+                            Dark Mode
                         </a>
                     </div>
                 </div>
@@ -65,10 +54,10 @@
         </nav>
     </header>
 
-    <!----------------------------Log Out POP UP---------------------------------------------->
+    <!--[Log Out POP UP]-->
     <div id="popupOut" class="overlay">
-        <div id="popupBody">
-            <a id="cerrar" href="#">&times;</a>
+        <div class="popupBody">
+            <a class="cerrar" href="#">&times;</a>
             <div class="popupContent">
                 <br>
                 <h2 class="title_text_font2">¿SEGURO QUE DESEA CERRAR SESION?</h2>
@@ -79,11 +68,11 @@
             </div>
         </div>
     </div>
-    <!--------------------------Change Data POP UP---------------------------------------------->
+    <!--[Change Data POP UP]-->
     <div id="popupUserInf" class="overlay">
-        <div id="popupBody">
+        <div class="popupBody">
             <h2 class="title_text_font">information about user</h2>
-            <a id="cerrar" href="#">&times;</a>
+            <a class="cerrar" href="#">&times;</a>
             <div class="popupContent">
                 <br><br>
                 <h3 class="text_font">User: </h3>
@@ -105,7 +94,7 @@
                     <br><br>
                     <input type="url" id="im_per" name="im_per" onchange="preview2()" class="fields">
                     <br><br>
-                    <img src="" id="ImgPreV2" alt="preview profile image of the current user">
+                    <img src="https://lledogrupo.com/wp-content/uploads/2018/04/white-img.jpg" id="ImgPreV2" alt="preview profile image of the current user">
                     <br><br>
                     <div class="text_center">
                         <button onclick="changeData(365)" class="button_popups">
@@ -117,7 +106,7 @@
         </div>
     </div>
     
-    <!---------------------------------------------Ranking---------------------------------------------------->
+    <!--[Ranking]-->
 
     <h1 class="title_text_font">Global Ranking</h1>
     <br><br>
@@ -144,18 +133,18 @@
 
     <br><br><br><br>
 
-    <!---------------------------------------------Footer---------------------------------------------------->
+    <!--[Footer]-->
     <footer class="footer">
         <div class="company_identity">
             <img src="images/Icon/app_logo.png" class="app_logo_img" alt="app logo">
             <h1 class="company_font">Expell</h1>
         </div>
 
-        <menu class="menu_margin">
+        <div class="menu_margin">
             <a href="privacy.html" class="nav_links">Privacy</a>
             <a href="about_us.html" class="nav_links">About Us</a>
             <a href="help.html" class="nav_links">Help</a>
-        </menu>
+        </div>
 
         <div id="footer_icons">
             <a href="https://www.twitter.com" target="_blank">

@@ -133,11 +133,12 @@ button:hover{
 
 .dropdown_content a{
     display: block;
-    color: rgb(200,3,3);
     font-size: 16px;
     font-family:'Quicksand',sans-serif;
-    padding: 12px 16px;
+    padding: 6px 0px;
+    margin: 10px 20px 10px 10px;
     text-decoration: none;
+    
 }
 
 .dropbtn{
@@ -255,12 +256,20 @@ button:hover{
     background-color: rgb(248, 75, 106);
     color: rgb(255, 255, 255);
     cursor: pointer;
+    width: 100px;
     border-radius: 10px;
     filter: drop-shadow(5px 5px 10px #444);
     font-family: 'Quicksand',sans-serif;
     font-style: normal;
     font-weight: 400;
+    text-align: center;
 }
+
+.button_settings:hover{
+    color: white;
+    background-color: #2980B9;
+}
+
 
 #NameUser{
     visibility: hidden;

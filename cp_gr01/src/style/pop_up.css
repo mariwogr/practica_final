@@ -23,7 +23,7 @@
     opacity: 1;
 }
 
-#popupBody{
+.popupBody{
     width: 45%;
     padding: 2%;
     border-radius: 15px;
@@ -34,7 +34,7 @@
     transition: all 5s ease-in-out;
 }
 
-#cerrar{
+.cerrar{
     position: absolute;
     top: 20px;
     right: 30px;

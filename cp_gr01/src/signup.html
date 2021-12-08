@@ -17,7 +17,7 @@
 </head>
 <body>
     <div class="company_identity">
-        <img src="images/Icon/app_logo.png" class="app_logo_img">
+        <img src="images/Icon/app_logo.png" class="app_logo_img" alt="app logo image">
         <p class="company_font">Expell</p>
     </div>
     <div class="form_div">
@@ -25,15 +25,15 @@
             <h1 class="title_font">Sign Up</h1>
             <br>
             <div id="form_body">
-                <label class = "label_text_font" for="username"><b>Username</b></label>
+                <label class = "label_text_font" for="signup_uname"><b>Username</b></label>
                 <br>
                 <input type="text" placeholder="Enter username" maxlength=10 name="username" id="signup_uname" required class="fields">
                 <br>
-                <label class = "label_text_font" for="email"><b>Email</b></label>
+                <label class = "label_text_font" for="signup_email"><b>Email</b></label>
                 <br>
-                <input type="email" placeholder="Enter email" name="email" required id="signup_email" required class="fields">
+                <input type="email" placeholder="Enter email" name="email" required id="signup_email" class="fields">
                 <br>
-                <label class = "label_text_font" for="pwd"><b>Password</b></label>
+                <label class = "label_text_font" for="signup_pwd"><b>Password</b></label>
                 <br>
                 <input  placeholder="Enter password" type="password" name="pwd" required id="signup_pwd" class="fields">
                 <br><br>
@@ -41,7 +41,7 @@
                 <br><br>
                 <input type="url" id="im_per" placeholder="Stick the url of the image (only jpg or png)" name="im_per" onchange="preview3()" class="fields">
                 <br><br>
-                <img src="" id="ImgPreV2">
+                <img src="https://lledogrupo.com/wp-content/uploads/2018/04/white-img.jpg" id="ImgPreV2" alt="user image preview">
                 <br><br>
                 <label class = "grey_text_font">
                 <input type="checkbox" checked="checked" name="Terms"> I agree to the <a href="terms.html"><strong>Terms of Services</strong></a> and <a href="privacy.html"><strong>Privacy Policy</strong></a>.
@@ -58,7 +58,4 @@
     
 </body>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.16.0/mapbox-gl.js'></script>
 </html>

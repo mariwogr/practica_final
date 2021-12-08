@@ -4,7 +4,6 @@
     <!--Configuration-->
     <meta charset="utf-8">
     <title>Expell</title>
-    <meta charset="UTF-8">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
@@ -13,31 +12,29 @@
     <link rel="stylesheet" href="style/fonts.css">
 </head>
 <body>
-    <!---------------------------------------------HEADER---------------------------------------------------->
+    <!--[HEADER]-->
     <header>
         <nav>
             <div class="company_identity">
                 <img src="images/Icon/app_logo.png" class="app_logo_img" alt="app logo">
-                <h1 class="company_font">Expell</h1>
+                <p class="company_font">Expell</p>
             </div>
 
-            <menu class="menu_margin">
+            <div class="menu_margin">
                 <a href="main.html" class="nav_links">Home</a>
                 <a href="experiences.html" class="nav_links">Experiences</a>
                 <a href="" class="nav_links">Ranking</a>
-            </menu>
+            </div>
             
             <div id="user_signin">
-                <img id="user_img" src="https://img.icons8.com/external-bearicons-glyph-bearicons/64/000000/external-User-essential-collection-bearicons-glyph-bearicons.png"/>
-                <a href="signin.html">
-                    <button class="signin_button">Sign In</button>
-                </a>
+                <img id="user_img" src="https://img.icons8.com/external-bearicons-glyph-bearicons/64/000000/external-User-essential-collection-bearicons-glyph-bearicons.png" alt="user profile image"/>
+                <button class="signin_button" id="signin__button" onclick='location.href="signin.html"'>Sign In</button>
 
             </div>
 
         </nav>
     </header>
-    <!---------------------------------------------About Us---------------------------------------------------->
+    <!--[About Us]-->
     <h1 class="title_text_font">What you agree by accepting the <span class="company_font2">Expell</span> terms?</h1>
     <br>
     <div id="description">
@@ -51,18 +48,18 @@
         </p>
     </div>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <!---------------------------------------------Footer---------------------------------------------------->
+    <!--[Footer]-->
     <footer>
         <div class="company_identity">
             <img src="images/Icon/app_logo.png" class="app_logo_img" alt="app logo">
             <p class="company_font">Expell</p>
         </div>
 
-        <menu class="menu_margin">
+        <div class="menu_margin">
             <a href="privacy.html" class="nav_links">Privacy</a>
             <a href="about_us.html" class="nav_links">About Us</a>
             <a href="help.html" class="nav_links">Help</a>
-        </menu>
+        </div>
 
         <div id="footer_icons">
             <a href="https://www.twitter.com" target="_blank">
@@ -80,5 +77,4 @@
         </div>            
     </footer>
 </body>
-<script src="script/main.js"></script>
 </html>
