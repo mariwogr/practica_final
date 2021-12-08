@@ -49,7 +49,7 @@ function set_up(){
                         },
                         {
                             id: 3,
-                            src: "https://cdn.eldoce.tv/sites/default/files/styles/amp_metadata_content_image_min_696px_wide/public/nota/2021/07/06/El%20ni%C3%B1o%20de%2018%20a%C3%B3s.jpg?itok=BG5eBfLG",
+                            src: "https://estaticos-cdn.elperiodico.com/clip/1690d8dd-090b-42b7-b66f-4e8f2faa84cd_source-aspect-ratio_default_0.jpg",
                             usr: "Hasbulla",
                             descr: "готов сразиться с Бургиром",
                             date: "Fri, 23 Oct 2020 04:21:56 GMT",
