@@ -2,17 +2,17 @@
 <html>
 <head>
     <!--Configuration-->
-    <meta charset="utf-8">
     <title>Expell</title>
     <meta charset="UTF-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="script/main.js"></script>
+    <script src="script/cookies.js"></script>
     <script src="script/shared.js"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap">
     <!--CSS Files Used-->
     <link rel="stylesheet" href="style/shared.css">
     <link rel="stylesheet" href="style/fonts.css">
@@ -64,17 +64,47 @@
             </div>
         </nav>
     </header>
-
+    <!--------------------------------------------- Help ---------------------------------------------------->
+    <h1 class="title_text_font"><span class="company_font2">Expell</span> FAQ</h1>
+    <br>
+    <div id="description">
+        <p class="text_font">
+            <h3 class="subtitle_text_font">How to register in Expell?</h3>
+            <p class="text_font">Welcome to Expell, we are so thriving you want to join our family. In order to registrer, you need
+               to check the upper-right button and fill the form with required data. You will be prompted to fill in
+               your name, email address, a password which you have to keep secret and the URL of any image you like 
+               for your profile. Once completed these steps, you will be able to enjoy all the advantages of a full
+               category user!
+            </p>
+            <br>
+            <h3 class="subtitle_text_font">How to upload an experience?</h3>
+            <p class="text_font">First of all, to updload an experience you should be logged in. When you are logged in, you may go to
+               the 'Experiences' section and click the 'upload experience' button. Then you will be required to add 
+               the photography of the experience and provide a description for all people to read it.
+            </p>
+            <br>
+            <h3 class="subtitle_text_font">How to log in?</h3>
+            <p class="text_font">In order to log in, you have to clic on the upper-right button and fill the form with your
+               account credentials. Unfortunately, have you forgotten your password, you will not be able to
+               recover it due to security reasons.
+            </p>
+            <br>
+            <h3 class="subtitle_text_font">How to activate dark mode feature?</h3>
+            <p class="text_font">Simply check the upper-right button and select the 'dark mode' option :)
+            </p>
+            <br>
+        </p>
+    </div>
     <!----------------------------Log Out POP UP---------------------------------------------->
     <div id="popupOut" class="overlay">
         <div id="popupBody">
             <a id="cerrar" href="#">&times;</a>
             <div class="popupContent">
                 <br>
-                <h2 class="title_text_font2">¿SEGURO QUE DESEA CERRAR SESION?</h2>
+                <h2 class="title_text_font2">ARE YOU SURE YOU WANT TO QUIT?</h2>
                 <br><br>
                 <button onclick="logOut()" class="button_popups">
-                    Aceptar
+                    Accept
                 </button>
             </div>
         </div>
@@ -117,3 +147,33 @@
             </div>
         </div>
     </div>
+    <!---------------------------------------------Footer---------------------------------------------------->
+    <footer class="footer">
+        <div class="company_identity">
+            <img src="images/Icon/app_logo.png" class="app_logo_img">
+            <p class="company_font">Expell</p>
+        </div>
+
+        <menu class="menu_margin">
+            <a href="privacy.html" class="nav_links">Privacy</a>
+            <a href="about_us.html" class="nav_links">About Us</a>
+            <a href="help.html" class="nav_links">Help</a>
+        </menu>
+
+        <div id="footer_icons">
+            <a href="#" target="_blank">
+                <img class="icon_footer" src="images/Icon/twitter_icon.png" id="twitter" title="Twitter" onmouseover="hoverTwi(this)" onmouseout="unhoverTwi(this)">
+            </a>
+            <a href="#" target="_blank">
+                <img class="icon_footer" src="images/Icon/instagram_icon.png" id="instagram" title="Instagram" onmouseover="hoverInst(this)" onmouseout="unhoverInst(this)">
+            </a>
+            <a href="#" target="_blank">
+                <img class="icon_footer" src="images/Icon/question_icon.png" id="FAQ" title="FAQ" onmouseover="hoverF(this)" onmouseout="unhoverF(this)">
+            </a>
+            <a href="https://www.tuabogadodefensor.com/derechos-autor-web/" target="_blank">
+                <img class="icon_footer" src="images/Icon/copyright_icon.png" id="Copyright" title="Copyright" onmouseover="hoverC(this)" onmouseout="unhoverC(this)">
+            </a>
+        </div>           
+    </footer>
+</body>
+</html>

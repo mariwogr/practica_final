@@ -61,6 +61,8 @@ function getCookie(cname){
 
 
 function checkUser(user){
+    // This will check the user in the localStorage if it she/he has signed up already in the web.
+
     if (!localStorage.getItem("user_data")){
         localStorage.setItem("user_data", "[]");
     }
@@ -78,6 +80,12 @@ function checkUser(user){
 //------------------[LocalStorage Functions]------------------
 
 function saveLocal(where, data){
+    /* This function will let us to save a json content @param data in the localStorage
+    of the session. @param where will have the value of the arrays of json content such as
+    feed, comments or user_data.*/
+
+    // If the arrays of json in @param where of localStorage is not defined it will set a empty array in it.
+
     if (!localStorage.getItem(where)){
         localStorage.setItem(where, "[]");
     }

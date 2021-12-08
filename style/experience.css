@@ -60,12 +60,14 @@
 }
 
 .description_div{
-    text-align: right;
+    margin-left: 20px;
+    width: 600px;
 }
 
 .trash_div{
-    text-align: left;
+    text-align: right;
     margin-left: 10px;
+    width: 10px;
 }
 
 .search_bar_margin{
@@ -78,5 +80,8 @@
 
     .button2{
         width: 80px;
+    }
+    .description_div{
+        width: 150px;
     }
 }

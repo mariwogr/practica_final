@@ -102,7 +102,7 @@ function set_up(){
                             comment_id: 1,
                             usr: "hasbulla",
                             date: "Sun, 05 Dec 2021 17:01:32 GMT",
-                            text: "Da menschen vodka!",
+                            text: "Cool!!",
                             img: "https://e00-elmundo.uecdn.es/assets/multimedia/imagenes/2021/07/16/16264514660383.jpg",
                             likes: 0,
                             who_liked: []
@@ -149,18 +149,29 @@ function saveLocal(where, data){
 //------------------[Ranking Functions]------------------
 
 function showRanking(){
+    /* This function will show the Ranking. */
+
+    // It calls the checkCookie fucntion to check if there is a logged user to set up the user data.
     checkCookie();
 
+    // It gets the feed from the localStorage.
     let feed = JSON.parse(localStorage.getItem("feed"));
 
+    // It creates a dictionary with the most liked users and their most recent photo, total likes and profile photo.
     var dict = {};
+
+    // It iterates on the feed.
     for (let i=0; i < feed.length; i++){
 
+        // It obtains the user i of the feed
         let user = feed[i]["usr"];
 
+        // It checks if the dictionary has already the user data in it, if not it adds it.
         if (dict[user] == undefined){
             dict[user] = [feed[i]["likes"], feed[i]["src"], feed[i]["img"]];
         }
+
+        // It adds the likes of every photo. It sets the most recent image and the user profile photo.
         else{
             dict[user][0] += feed[i]["likes"];
             dict[user][1] = feed[i]["src"];
@@ -168,8 +179,11 @@ function showRanking(){
         }
     }
     
+    // It calls the function sortDict to sort the dictionary with the most liked users.
     sorted_dict = sortDict(dict);
 
+    // It iterates on the sorted dictionary @param sorted_dict to show the 10 most liked users or, 
+    // if there are not enough users that posted a single experience it will show how many are there.
     for (let i = 0; i < Math.min(10, Object.keys(sorted_dict).length); i++){
         $('#ranking_experiences').append(convert_to_html(
             [Object.keys(sorted_dict)[i],
@@ -409,12 +423,18 @@ function post_comment(id) {
     // Check if user is registered
     if(getCookie("usuario")=="" && getCookie("pwd")=="" && getCookie("email")==""){
         window.location.href = "signin.html";
-        alert("you have to be registered");
+        alert("You have to be registered!!");
         return;
     }
     // Get comment text and abort if it is empty
     var comment_text = $(`#comment_text_box_${id}`).val();
     if(comment_text == undefined){ return; }
+
+    if (comment_text.length > 24) {
+        $(`#alert_${id}`).css('display', 'block');
+        return;
+    }
+
 
     // Get the comments and fill an array with this post comments ids
     var comments = JSON.parse(localStorage.getItem("comments"));
@@ -577,14 +597,17 @@ function convert_to_html(json_info, type, mode = ""){
                         </div>
                         <div class="comment_body">
                             <img id="comment_user_img" class="comment_user_img" src=${user_img.src} alt="Profile image of ${json_info.usr}">
-                            <p class="comment_user_text_font">${NameUser.innerText}</p>
+                            <p class="comment_user_text_font">${json_info.usr}</p>
 
                             <input id="comment_text_box_${json_info.id}" class="comment_text_box" "type="text" placeholder="Write something" required>
 
                         </div>
                         
                         <button id="feed_comment_button_${json_info.id}" onclick="post_comment(${json_info.id});" class="user_comment_button">Comment</button>
-
+                        <div class="alert" id="alert_${json_info.id}">
+                            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                            <strong>This comment exceedes the 24 characters maximum length</strong>
+                        </div>
                     </div>
                     <br>
                     <div class="feed_comment_section" id="feed_comment_section_${json_info.id}"></div>

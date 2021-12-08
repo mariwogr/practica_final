@@ -119,6 +119,13 @@ function darkMode(check) {
     for (var i=0; i <button_settings.length; i++){
         button_settings[i].classList.toggle("button_settings_dark_mode");
     }
+
+    var subtitle_text_font = document.getElementsByClassName("subtitle_text_font");
+
+    for (var i=0; i <subtitle_text_font.length; i++){
+        subtitle_text_font[i].classList.toggle("subtitle_text_font_dark_mode");
+    }
+
 }
 
 function checkDarkMode(){

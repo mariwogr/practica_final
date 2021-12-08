@@ -185,7 +185,7 @@ function convert_to_html_exp(json_info, id){
 }
 
 function delete_exp(id, feed_id) {
-
+    console.log(id, feed_id);
 
     $(`#imageNo${id}`).css('display', "none");
 
@@ -200,7 +200,8 @@ function delete_exp(id, feed_id) {
     }
     localStorage.setItem("feed", JSON.stringify(new_feed));
 
-    window.location.href = "#";
+    //set_up();
+    window.location.href = "experiences.html";
 }
 
 function add_experience(){

@@ -15,6 +15,15 @@
     margin: auto 5% auto 5%;
 }
 
+.company_font2{
+    font-family: 'Quicksand',sans-serif;
+    font-style: normal;
+    font-size: 40px;
+    font-weight: 600;
+    color:rgb(83, 231, 231);
+    margin: auto;
+}
+
 /*[Title Fonts]*/
 
 .title_text_font{  
@@ -58,14 +67,12 @@
 
 .subtitle_text_font{    
     margin: auto;
-    color: rgb(2, 2, 2);
     font-size: 26px;
     text-align: justify;
     font-family:'Quicksand',sans-serif;
 }
 
 .subtitle_text_font_centered{    
-    color: rgb(2, 2, 2);
     font-size: 26px;
     text-align: center;
     font-family:'Quicksand',sans-serif;

@@ -178,6 +178,39 @@ button:hover{
     font-family: 'Quicksand',sans-serif;
 }
 
+/*[--------Alert--------]*/
+
+
+.alert {
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+    display: none;
+    border-radius: 15px;
+    font-family: 'Quicksand',sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    z-index: 100;
+    margin: auto;
+    position: relative;
+}
+  
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+  
+.closebtn:hover {
+    color: black;
+}
+
 /*[--------Common Settings--------]*/
 
 .text_center{
@@ -312,21 +345,19 @@ button:hover{
 }
 
 .feed_post_comment_dark_mode{
-    margin: auto 15% auto 15%;
-    border-radius: 15px;
     background-color: rgb(75, 75, 75);
 }
 
 .comment_text_box_dark_mode{
-    width: 380%;
-    border-radius: 10px;
-    text-align: left;
-    align-items: center;
     background-color: #333333;
 }
 
 .title_text_anim_dark_mode{
     color:rgb(190, 185, 185);;
+}
+
+.subtitle_text_font_dark_mode{
+    color:rgb(223, 222, 222);;
 }
 
 .title_text_font_dark_mode{
@@ -384,7 +415,7 @@ button:hover{
     }
 
     .nav_links{
-        margin: auto 10px auto auto;
+        margin: auto 15px auto auto;
     }
 
     .wordCarousel{
