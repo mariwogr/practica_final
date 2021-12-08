@@ -158,8 +158,24 @@ function getCookie(cname){
 
 function preview2(){
     // Preview img used on Change Form
+    var img = document.getElementById("Change_form").elements['im_per'].value;
+    document.getElementById("ImgPreV2").src = img;
+    document.getElementById("ImgPreV2").style.display = "block";
+    document.getElementById("ImgPreV2").style.visibility = "visible";
+}
+
+function preview3(){
+    // Preview img used on Change Form
     var img = document.getElementById("sign_up_form").elements['im_per'].value;
     document.getElementById("ImgPreV2").src = img;
     document.getElementById("ImgPreV2").style.display = "block";
     document.getElementById("ImgPreV2").style.visibility = "visible";
+}
+
+function preview4(){
+    // Preview img used on Change Form
+    var img = document.getElementById("experience_form").elements['new_experience'].value;
+    document.getElementById("ImgPreV3").src = img;
+    document.getElementById("ImgPreV3").style.display = "block";
+    document.getElementById("ImgPreV3").style.visibility = "visible";
 }

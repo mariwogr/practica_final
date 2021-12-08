@@ -27,11 +27,11 @@
             <div id="form_body">
                 <label class = "label_text_font" for="username"><b>Username</b></label>
                 <br>
-                <input type="text" placeholder="Enter username" name="username" id="signup_uname" required class="fields">
+                <input type="text" placeholder="Enter username" maxlength=10 name="username" id="signup_uname" required class="fields">
                 <br>
                 <label class = "label_text_font" for="email"><b>Email</b></label>
                 <br>
-                <input type="text" placeholder="Enter email" name="email" required id="signup_email" required class="fields">
+                <input type="email" placeholder="Enter email" name="email" required id="signup_email" required class="fields">
                 <br>
                 <label class = "label_text_font" for="pwd"><b>Password</b></label>
                 <br>
@@ -39,7 +39,7 @@
                 <br><br>
                 <label for="im_per" class="label_text_font"><b>Profile Image</b></label>
                 <br><br>
-                <input type="url" id="im_per" placeholder="Stick the url of the image (only jpg or png)" name="im_per" onchange="preview2()" class="fields">
+                <input type="url" id="im_per" placeholder="Stick the url of the image (only jpg or png)" name="im_per" onchange="preview3()" class="fields">
                 <br><br>
                 <img src="" id="ImgPreV2">
                 <br><br>

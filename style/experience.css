@@ -28,6 +28,7 @@
     margin: auto;
 }
 
+
 #div_exp{
     display: grid;
     grid-template-columns: 1fr 1fr;

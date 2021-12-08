@@ -16,13 +16,12 @@ function set_up(){
     set up the initial feed and comments to the website. Also, it will check if the
     user is logged.*/
 
-
     var feed =      [
                         {
                             id: 0,
                             src: "https://ih1.redbubble.net/image.557168243.2784/flat,1000x1000,075,f.jpg",
-                            usr: "el pibe",
-                            descr: "finisterre",
+                            usr: "StonksBoy",
+                            descr: "Bitcoin goes brrr",
                             date: "Thu, 12 Mar 2020 12:24:29 GMT",
                             likes: 245,
                             img: "https://i.ytimg.com/vi/qCylpmEvDCg/maxresdefault.jpg",
@@ -31,12 +30,12 @@ function set_up(){
                         },
                         {
                             id: 1,
-                            src: "https://pbs.twimg.com/media/FD33F3UXIAIe2bd.jpg",
-                            usr: "hashbulla",
-                            descr: "de panafrescos",
+                            src: "https://pbs.twimg.com/media/E-IXBArVEAsG4Oy.jpg",
+                            usr: "Hasbulla",
+                            descr: "готов сразиться с Бургиром",
                             date: "Fri, 23 Oct 2020 04:21:56 GMT",
                             likes: 4524,
-                            img : "https://e00-elmundo.uecdn.es/assets/multimedia/imagenes/2021/07/16/16264514660383.jpg",
+                            img : "https://www.kolpaper.com/wp-content/uploads/2021/06/Hasbulla-Wallpaper-4.jpg",
                             comments: 0,
                             who_liked: []
                         },
@@ -44,7 +43,7 @@ function set_up(){
                             id: 2,
                             src: "https://services.meteored.com/img/article/en-saturno-llueven-diamantes-263801-1_1280.jpg",
                             usr: "pepe",
-                            descr: "D vacas por saturno",
+                            descr: "De vacas por saturnooo",
                             date: "Sat, 04 Dic 2021 00:46:12 GMT",
                             likes: 20,
                             img: "https://arc-anglerfish-arc2-prod-copesa.s3.amazonaws.com/public/Y7ITUEPBTFGQDLQKWWRQQ5C6KI.jpg",
@@ -54,18 +53,18 @@ function set_up(){
                         {
                             id: 3,
                             src: "http://www.pixelstalk.net/wp-content/uploads/2016/10/Download-Images-Disney-Computer-HD.jpg",
-                            usr: "jose",
+                            usr: "Joline",
                             descr: "Nice lil' mouse, dont ya think?",
                             date: "Sun, 05 Dic 2021 23:01:00 GMT",
                             likes: 10,
-                            img : "https://www.earlygame.com/uploads/images/_body/Jayce-Arcane-HD-splash-art.jpg",
+                            img : "https://upload.wikimedia.org/wikipedia/commons/1/1f/Woman_1.jpg",
                             comments: 0,
                             who_liked: []
                         },
                         {
                             id: 4,
                             src: "https://wallup.net/wp-content/uploads/2016/01/136128-mountain-lake-trees.jpg",
-                            usr: "juan",
+                            usr: "juan.",
                             descr: "Enjoying the mountain",
                             date: "Mon, 06 Dic 2021 15:08:43 GMT",
                             likes: 0,
@@ -75,12 +74,12 @@ function set_up(){
                         },
                         {
                             id: 5,
-                            src: "https://pbs.twimg.com/media/E-IXBArVEAsG4Oy.jpg",
-                            usr: "hashbulla",
-                            descr: "de panafresqueooooo",
+                            src: "https://pbs.twimg.com/media/FD33F3UXIAIe2bd.jpg",
+                            usr: "Hasbulla",
+                            descr: "по панафреско",
                             date: "Tue, 07 Dic 2021 07:23:39 GMT",
                             likes: 4000,
-                            img: "https://e00-elmundo.uecdn.es/assets/multimedia/imagenes/2021/07/16/16264514660383.jpg",
+                            img: "https://www.kolpaper.com/wp-content/uploads/2021/06/Hasbulla-Wallpaper-4.jpg",
                             comments: 0,
                             who_liked: []
                         },
@@ -90,7 +89,7 @@ function set_up(){
                         {
                             feed_id: 2,
                             comment_id: 0,
-                            usr: "jose",
+                            usr: "juan.",
                             date: "Sun, 05 Dec 2021 21:56:08 GMT",
                             text: "Nice trip bro",
                             img:"https://i.ytimg.com/vi/BkgA2_sB6NM/maxresdefault.jpg",
@@ -100,10 +99,10 @@ function set_up(){
                         {
                             feed_id: 2,
                             comment_id: 1,
-                            usr: "hasbulla",
+                            usr: "Hasbulla",
                             date: "Sun, 05 Dec 2021 17:01:32 GMT",
-                            text: "Cool!!",
-                            img: "https://e00-elmundo.uecdn.es/assets/multimedia/imagenes/2021/07/16/16264514660383.jpg",
+                            text: "КРУТО!",
+                            img: "https://www.kolpaper.com/wp-content/uploads/2021/06/Hasbulla-Wallpaper-4.jpg",
                             likes: 0,
                             who_liked: []
                         }
@@ -253,14 +252,14 @@ window.onclick = function(event){
 }
 
 //------------------[Cookie´s Functions]------------------
-
+/*
 function preview2(){
     // Preview img used on Change Form
     var img = document.getElementById("Change_form").elements['im_per'].value;
     document.getElementById("ImgPreV2").src = img;
     document.getElementById("ImgPreV2").style.display = "block";
     document.getElementById("ImgPreV2").style.visibility = "visible";
-}
+}*/
 
 function logOut(){
     // Funtion to log out of the session
@@ -430,7 +429,7 @@ function post_comment(id) {
     var comment_text = $(`#comment_text_box_${id}`).val();
     if(comment_text == undefined){ return; }
 
-    if (comment_text.length > 24) {
+    if (comment_text.length > 22) {
         $(`#alert_${id}`).css('display', 'block');
         return;
     }
@@ -597,7 +596,7 @@ function convert_to_html(json_info, type, mode = ""){
                         </div>
                         <div class="comment_body">
                             <img id="comment_user_img" class="comment_user_img" src=${user_img.src} alt="Profile image of ${json_info.usr}">
-                            <p class="comment_user_text_font">${json_info.usr}</p>
+                            <p class="comment_user_text_font">${getCookie("usuario")}</p>
 
                             <input id="comment_text_box_${json_info.id}" class="comment_text_box" "type="text" placeholder="Write something" required>
 
@@ -606,7 +605,7 @@ function convert_to_html(json_info, type, mode = ""){
                         <button id="feed_comment_button_${json_info.id}" onclick="post_comment(${json_info.id});" class="user_comment_button">Comment</button>
                         <div class="alert" id="alert_${json_info.id}">
                             <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-                            <strong>This comment exceedes the 24 characters maximum length</strong>
+                            <strong>This comment exceedes the 22 characters maximum length</strong>
                         </div>
                     </div>
                     <br>

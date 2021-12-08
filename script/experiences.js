@@ -163,14 +163,14 @@ function convert_to_html_exp(json_info, id){
                         <p class="text_font">${json_info.descr}</p>
                     </div>
                     <div class="trash_div">
-                        <a href="#popupdel">
+                        <a href="#popupdel_${id}">
                             <img class="img_delete" src="https://img.icons8.com/ios-glyphs/60/000000/trash--v3.png">
                         </a>
                     </div>
                 </div>
             </div>
             <!----------------------------------POP UP DELETE EXP---------------------->
-            <div id="popupdel" class="overlay">
+            <div id="popupdel_${id}" class="overlay">
                 <div id="popupBody">
                     <h2 class="title_text_font_nomargin"> Delete Experiences</h2>
                     <a id="cerrar" href="#">&times;</a>
@@ -185,7 +185,6 @@ function convert_to_html_exp(json_info, id){
 }
 
 function delete_exp(id, feed_id) {
-    console.log(id, feed_id);
 
     $(`#imageNo${id}`).css('display', "none");
 
