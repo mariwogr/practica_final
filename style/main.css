@@ -195,6 +195,7 @@
 }
 
 .title_anim_div{
+    width: 110%;
     display: flex;
     align-items: center;
     justify-content: center;

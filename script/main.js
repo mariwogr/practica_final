@@ -3,18 +3,15 @@ In feed section, there will be posts, identified by the string 'feed_post_(postI
 Inside a post there is a section for comments, where comments are appended.
 A comment is identified by the string 'feed_post_comment_(commentId)'.
 Comments have a pointer to tell which post they belong to.
-Inside comments there is a section for replies, where they are appended.
-Replies do not have identification, but class. The replies.json file have a pointer
-to identify the comment they are pointing to.
 */
 
 var top_pointer = 3;
 var bottom_pointer = 1;
 
 function set_up(){
-    /* This function will be called every time the main.html page is loaded and will
+    /* This function will be called every time the page is loaded and will
     set up the initial feed and comments to the website. Also, it will check if the
-    user is logged.*/
+    user is logged in.*/
 
     var feed =      [
                         {
@@ -194,25 +191,43 @@ function showRanking(){
 }
 
 function sortDict(dict) {
+    /* This function will sort the dictionary of [user: [likes, mostLikedPhoto, profilePhoto]] */
 
+    // It creates an empty dictionary.
     let sorted_dict = {};
 
+    // While the dictionary is not empty
     while (Object.keys(dict).length != 0){
+
+        // It stores the maximum liked user and its array [likes, mostLikedPhoto, profilePhoto]
         var max_likes_user = Object.keys(dict)[0];
         var max_likes_list = Object.values(dict)[0];
 
+        // It iterates on every user.
         for (let j=0; j<Object.keys(dict).length; j++){
+
+            // If the max_likes_user is not the j element of the dict or the length of the dict is 1 (because the max_likes_user is the same
+            // as the only element in the dict).
             if (max_likes_user != Object.keys(dict)[j] || Object.keys(dict).length == 1){
+
+                // It checks if the likes of the user is greater than the most liked user right now.
                 if (Object.values(dict)[j][0] > max_likes_list[0]) {
+
+                    // If it is, it changes the max_likes variables.
                     max_likes_user = Object.keys(dict)[j];
                     max_likes_list = Object.values(dict)[j];
                 }
             }
         }
 
+        // It deletes to the max_likes_user from the @param dict.
         delete dict[max_likes_user];
+
+        // It adds to the sorted dict the most liked user.
         sorted_dict[max_likes_user] = max_likes_list;
     }
+    
+    // It returns the sorted dictionary
     return sorted_dict;
 }
 
@@ -225,41 +240,18 @@ function myFunction(){
 
 window.onclick = function(event){
     // Checks if dropdown is clicked
-    if (event.target.matches('.dropbtn')) {
-        var dropdowns = document.getElementsByClassName("dropdown_content");
-        for (let i = 0; i < dropdowns.length; i++) {
-          var openDropdown = dropdowns[i];
-          if (openDropdown.classList.contains('show')) {
-            openDropdown.classList.remove('show');
-          }
-        }
-    }
-}
-
-
-window.onclick = function(event){
-    // Checks if dropdown is clicked
     if (!event.target.matches('.dropbtn')) {
         var dropdowns = document.getElementsByClassName("dropdown_content");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-          var openDropdown = dropdowns[i];
-          if (openDropdown.classList.contains('show')) {
+        for (let i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
             openDropdown.classList.remove('show');
-          }
+            }
         }
     }
 }
 
 //------------------[Cookie´s Functions]------------------
-/*
-function preview2(){
-    // Preview img used on Change Form
-    var img = document.getElementById("Change_form").elements['im_per'].value;
-    document.getElementById("ImgPreV2").src = img;
-    document.getElementById("ImgPreV2").style.display = "block";
-    document.getElementById("ImgPreV2").style.visibility = "visible";
-}*/
 
 function logOut(){
     // Funtion to log out of the session
@@ -267,23 +259,30 @@ function logOut(){
     time.setTime(time.getTime() + (365 * 24*60*60*1000));
     let expires = "expires=" + time.toUTCString();
 
-    document.cookie = "usuario="  + ";" + expires + ";path=/";
-    document.cookie = "pwd="  + ";" + expires + ";path=/";
-    document.cookie = "email="  + ";" + expires + ";path=/";
-    document.cookie = "imagen=" + ";" + expires + ";path=/";
+    // Borrow the elements of the cookies
+    document.cookie = "usuario=;" + expires + ";path=/";
+    document.cookie = "pwd=;" + expires + ";path=/";
+    document.cookie = "email=;" + expires + ";path=/";
+    document.cookie = "imagen=;" + expires + ";path=/";
 
+    // Return to the Main Page
     window.location.href = "main.html";
 }
 
 function checkCookie(){
-    var cookie = document.cookie;
-    //alert(cookie.length);
+    /* Function to check if there is an active cookie and if it is it will show
+     */
+
+    // If there is no any cookie active, return the func
     if(getCookie("usuario")=="" && getCookie("email")=="" && getCookie("pwd")==""){
         return;
     }
+    // In other case, start the auto login
     else{
+        // Hide log in button
         document.getElementById("signin__button").style.display="none";
 
+        // Show log in's elements
         document.getElementById("NameUser").style.visibility = "visible";
         document.getElementById("NameUser").style.display = "inline";
         document.getElementById("NameUser").innerText = getCookie("usuario");
@@ -293,7 +292,9 @@ function checkCookie(){
 
         document.getElementById("user_signin").style.width = "372.75px";
 
-        if(getCookie("imagen")!=""){
+        // If there is anyimage, set it as profile image
+
+        if(getCookie("imagen") != ""){
             document.getElementById("user_img").src = getCookie("imagen");
         }
     }
@@ -328,12 +329,14 @@ function changeData(expdays){
 }
 
 function like(id, type){
+    /* This function will allow an user to like: posts, if @param type is "post" or comment if @param type is "comment" */
 
-    if(getCookie("usuario")=="" && getCookie("pwd")=="" && getCookie("email")==""){
+    // It checks if the user is logged, if not it will throw the user to the sign in page.
+    if(getCookie("usuario") == "" && getCookie("pwd") == "" && getCookie("email") == ""){
         window.location.href = "signin.html";
-        alert("You must to be logged");
+        alert("You must to be logged in");
     }
-
+    
     if (type === "post") {
         // get stored items
         var feed = JSON.parse(localStorage.getItem("feed"));
@@ -342,7 +345,7 @@ function like(id, type){
         var current_user = getCookie("usuario");
         // traverse feed array
         for (let i = 0; i < feed.length; i++) {
-            // when we find the desired feed...
+            // when we find the desired post...
             if (feed[i]["id"] == id) {
                 // extract the list of users who liked the post and check if the current user belongs to the list
                 var who_liked = feed[i]["who_liked"];
@@ -370,28 +373,37 @@ function like(id, type){
                     new_feed.push(modified_post);
                 }
             }
-            // feeds that do not match the id are added directly to the new array
+            // posts that do not match the id are added directly to the new array
             else {
                 new_feed.push(feed[i]);
             }
         }
+        
+        // It stores again the new feed in the localStorage. Also it modifies the likes counter.
         localStorage.setItem("feed", JSON.stringify(new_feed));
         $(`#likes_${id}`).text(`${modified_post["likes"]} likes`);
-    }
-    
-    else if (type === "comment") {
+
+    } else if (type === "comment") {
+        // get stored items
         var comments = JSON.parse(localStorage.getItem("comments"));
+        // define a new array because localStorage cannot be edited, so we have to create a new array
         var new_comments = [];
         var liked_comment;
         var who_liked;
         var current_user = getCookie("usuario");
+
+        // It iterates on the comments array
         for (let i = 0; i < comments.length; i++) {
+            
+            // when we find the desired feed...
             if (comments[i]["comment_id"] == id) {
+                // extract the list of users who liked the post and check if the current user belongs to the list
                 who_liked = comments[i]["who_liked"];
                 liked_comment = comments[i];
                 if (who_liked.indexOf(current_user) > -1){
+                    // because current user is in 'likes list', change like icon to gray heart (from like to unlike)
                     $(`#like_comment_button_${id}`).attr('src', 'https://img.icons8.com/ios/50/000000/like--v1.png');
-                    // remove current user from post's likes list
+                    // remove current user from comment's likes list
                     who_liked.splice(current_user);
                     // create an updated entry for feed by changing its like list and like counter
                     var modified_comment = comments[i];
@@ -400,7 +412,7 @@ function like(id, type){
                     new_comments.push(modified_comment);
                 }
                 else {
-                    $(`#like_comment_button_${id}`).attr('src', "https://img.icons8.com/ios-filled/50/000000/like--v2.png");
+                    $(`#like_comment_button_${id}`).attr('src', 'https://img.icons8.com/ios-filled/50/000000/like--v2.png');
                     // append current user to the likes list of this post
                     who_liked.push(current_user);
                     // create an updated entry for feed by changing its like list and like counter
@@ -410,17 +422,19 @@ function like(id, type){
                     new_comments.push(modified_comment);
                 }
             }
-            else {new_comments.push(comments[i]);}
+            // comments that do not match the id are added directly to the new array
+            else { new_comments.push(comments[i]); }
         }
-        localStorage.setItem("comments", JSON.stringify(new_comments));
 
+        // It stores again the new comments in the localStorage. Also it modifies the likes counter.
+        localStorage.setItem('comments', JSON.stringify(new_comments));
         $(`#comments_likes_${id}`).text(`${liked_comment["likes"]} likes`);
     }
 }
 
 function post_comment(id) {
     // Check if user is registered
-    if(getCookie("usuario")=="" && getCookie("pwd")=="" && getCookie("email")==""){
+    if( getCookie("usuario") === '' && getCookie("pwd") === '' && getCookie("email") === ''){
         window.location.href = "signin.html";
         alert("You have to be registered!!");
         return;
@@ -433,7 +447,6 @@ function post_comment(id) {
         $(`#alert_${id}`).css('display', 'block');
         return;
     }
-
 
     // Get the comments and fill an array with this post comments ids
     var comments = JSON.parse(localStorage.getItem("comments"));
@@ -467,21 +480,21 @@ function post_comment(id) {
                     who_liked: []
                   };
 
-    if (getCookie("mode") === "dark-mode") {
-        $(`#feed_comment_section_${id}`).prepend(convert_to_html(comment, 'c', '_dark_mode'));
-    }
-    else {
-        $(`#feed_comment_section_${id}`).prepend(convert_to_html(comment, 'c'));
-    }
-    
+    getCookie("mode") === "dark-mode" ? $(`#feed_comment_section_${id}`).prepend(convert_to_html(comment, 'c', '_dark_mode')) : $(`#feed_comment_section_${id}`).prepend(convert_to_html(comment, 'c'));
+
     saveLocal("comments", comment);
 }
 
 function plus_one_comment(id) {
 
+    // It gets the feed from the localStorage.
     feed = JSON.parse(localStorage.getItem("feed"));
+
+    // It creates an empty feed to add there the new feed with the one plus comment' comment.
     new_feed = [];
     var commented_post;
+
+    // It iterates on the feed and if the id is the same it adds +1 in the number of comments.
     for (let i = 0; i < feed.length; i++) {
         if (feed[i]["id"] == id) {
             commented_post = feed[i];
@@ -492,6 +505,8 @@ function plus_one_comment(id) {
             new_feed.push(feed[i]);
         }
     }
+
+    // It saves the new feed into the localStorage. Also it updates the comments counter.
     localStorage.setItem("feed", JSON.stringify(new_feed));
     $(`#comments_${id}`).text(`see ${commented_post["comments"]} comments`);
 }
@@ -504,13 +519,7 @@ function load_older(){
     // already have bottom pointer set, now define the top of the new chunk to load
     let new_load_top = top_pointer - loaded_experiences;
 
-    if (getCookie("mode") === "dark-mode") {
-        load_feed(new_load_top, bottom_pointer, false, '_dark_mode');
-    }
-    else {
-        load_feed(new_load_top, bottom_pointer, false);
-    }
-
+    getCookie("mode") === "dark-mode" ? load_feed(new_load_top, bottom_pointer, false, '_dark_mode') : load_feed(new_load_top, bottom_pointer, false);
 }
 
 function load_new(){
@@ -524,27 +533,11 @@ function load_new(){
     // already have top pointer set, now define the bottom of the new chunk to load
     let new_load_bottom = bottom_pointer + loaded_experiences;
     
-    if (getCookie("mode") === "dark-mode") {
-        load_feed(top_pointer, new_load_bottom, true, '_dark_mode');
-    }
-    else {
-        load_feed(top_pointer, new_load_bottom, true);
-    }
-
+    getCookie("mode") === "dark-mode" ? load_feed(top_pointer, new_load_bottom, true, '_dark_mode') : load_feed(top_pointer, new_load_bottom, true);
+    
     document.getElementById("reload_icon").classList.toggle("reload_animation");
 }
 
-/*
-[6]
-[5]
-[4]
------
-[3]   <- top_i
-[2]
-[1]   <- bottom_i
------
-[0]
-*/
 function load_feed(top_i, bottom_i, want_new, mode = ""){
     /* 
         This function writes to the html posts ranging from 'top_i' to 'bottom_i', which are 
@@ -603,16 +596,14 @@ function convert_to_html(json_info, type, mode = ""){
                     <br>
                     <div class="feed_user_comment${mode}" >
                         <div class="comment_section">
-                            <img class="comment_icon_button" src="https://img.icons8.com/material-outlined/64/000000/comments--v1.png" alt="comments icon">
+                            <img class="comment_icon_button" src="https://img.icons8.com/material-outlined/64/000000/comments--v1.png" alt="comments user icon">
                         </div>
                         <div class="comment_body">
                             <img id="comment_user_img" class="comment_user_img" src=${user_img.src} alt="Profile image of ${json_info.usr}">
                             <p class="comment_user_text_font">${getCookie("usuario")}</p>
-
-                            <input id="comment_text_box_${json_info.id}" class="comment_text_box${mode}" "type="text" placeholder="Write something" required>
-
+                            <input id="comment_text_box_${json_info.id}" class="comment_text_box${mode}" type="text" placeholder="Write something" required>
+                                
                         </div>
-                        
                         <button id="feed_comment_button_${json_info.id}" onclick="post_comment(${json_info.id});" class="user_comment_button${mode}">Comment</button>
                         <div class="alert" id="alert_${json_info.id}">
                             <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
@@ -669,29 +660,29 @@ function convert_to_html(json_info, type, mode = ""){
 
 /*---------------------------------footer's icons-----------------------*/
 
-function hoverInst(element)  { element.setAttribute("src","images/Icon/instagram_icon2.png"); }
-function unhoverInst(element){ element.setAttribute("src","images/Icon/instagram_icon.png" ); }
-function hoverTwi(element)   { element.setAttribute("src","images/Icon/twitter_icon2.png"  ); }
-function unhoverTwi(element) { element.setAttribute("src","images/Icon/twitter_icon.png"   ); }
-function hoverF(element)     { element.setAttribute("src","images/Icon/question_icon2.png" ); }
-function unhoverF(element)   { element.setAttribute("src","images/Icon/question_icon.png"  ); }
-function hoverC(element)     { element.setAttribute("src","images/Icon/copyright_icon2.png"); }
-function unhoverC(element)   { element.setAttribute("src","images/Icon/copyright_icon.png" ); }
+function hoverInst(element)  { element.setAttribute('src','images/Icon/instagram_icon2.png'); }
+function unhoverInst(element){ element.setAttribute('src','images/Icon/instagram_icon.png' ); }
+function hoverTwi(element)   { element.setAttribute('src','images/Icon/twitter_icon2.png'  ); }
+function unhoverTwi(element) { element.setAttribute('src','images/Icon/twitter_icon.png'   ); }
+function hoverF(element)     { element.setAttribute('src','images/Icon/question_icon2.png' ); }
+function unhoverF(element)   { element.setAttribute('src','images/Icon/question_icon.png'  ); }
+function hoverC(element)     { element.setAttribute('src','images/Icon/copyright_icon2.png'); }
+function unhoverC(element)   { element.setAttribute('src','images/Icon/copyright_icon.png' ); }
 
-/* Scroll Animation */
+/*-------------------------- Scroll Animation ---------------------------*/
 
-$(window).on("load",function() {
+$(window).on('load', function() {
     $(window).scroll(function() {
-        var windowBottom = $(this).scrollTop() + $(this).innerHeight()+1200;
-        $(".feed_item").each(function() {
+        var windowBottom = $(this).scrollTop() + $(this).innerHeight() + 1200;
+        $('.feed_item').each(function() {
         /* Check the location of each desired element */
         var objectBottom = $(this).offset().top + $(this).outerHeight();
         
         /* If the element is completely within bounds of the window, fade it in */
         if (objectBottom < windowBottom) { //object comes into view (scrolling down)
-            if ($(this).css("opacity") == 0) {$(this).fadeTo(500,1);}
+            if ($(this).css('opacity') == 0) {$(this).fadeTo(500, 1);}
         } else { //object goes out of view (scrolling up)
-            if ($(this).css("opacity") == 1) {$(this).fadeTo(500,0);}
+            if ($(this).css('opacity') == 1) {$(this).fadeTo(500, 0);}
         }
         });
     }).scroll(); //invoke scroll-handler on page-load

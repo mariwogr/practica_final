@@ -1,6 +1,7 @@
 /* Dark Mode */
 
 function darkMode(check) {
+    /* This function will set up every element to dark when the user changes to the dark mode */
     var body = document.body;
     body.classList.toggle("body_dark_mode");
 
@@ -10,6 +11,7 @@ function darkMode(check) {
 
     var change_mode = check;
 
+    // Changes the mode in the cookie every time it changes to the dark mode
     if(getCookie("mode")=="light-mode"){
         document.cookie = "mode=" + "dark-mode" + ";" + expires + ";path=/";
         change_mode = true;
@@ -17,6 +19,9 @@ function darkMode(check) {
     if(getCookie("mode")=="dark-mode" && !change_mode){
         document.cookie = "mode=" + "light-mode" + ";" + expires + ";path=/";
     } 
+
+
+    //------------------ It saves every element of the classes that are going to be changed to the dark mode --------------------
 
     var feed_div = document.getElementsByClassName("feed_centered");
 
@@ -129,8 +134,7 @@ function darkMode(check) {
 }
 
 function checkDarkMode(){
-    var cookie = document.cookie;
-    //alert(cookie.length);
+    // This function will check if the dark mode is on or off
     if(getCookie("mode")=="dark-mode"){
         darkMode(true);
     }
@@ -140,7 +144,7 @@ function checkDarkMode(){
 }
 
 function getCookie(cname){
-    // Returns a specific cookie passed as paramete
+    // Returns a specific cookie passed as parameter
     let name = cname + "=";
     let decodeCookie = decodeURIComponent(document.cookie);
     let cake = decodeCookie.split(";");
