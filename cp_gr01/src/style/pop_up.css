@@ -45,6 +45,11 @@
     transition: all 200ms;
 }
 
+.popupContent{
+
+    text-align: center;
+}
+
 /* [Resize PopUp] */
 
 @media only screen and (max-width:768px){

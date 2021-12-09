@@ -89,6 +89,15 @@ button:hover{
     border-radius: 15px;
 }
 
+.div_background{
+    background-color: rgb(109, 109, 109);
+    text-align: center;
+    width: 50%;
+    height: 30px;
+    margin: auto;
+    border-radius: 15px;
+}
+
 /*[Buttons]*/
 
 .signin_button {
@@ -429,7 +438,6 @@ button:hover{
     background-color: rgb(216, 216, 216);;
     color: rgb(248, 75, 106);
 }
-
 
 @media only screen and (max-width:600px){
 

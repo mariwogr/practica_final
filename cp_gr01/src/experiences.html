@@ -87,7 +87,7 @@
     <div id="div_exp">
                     
     </div>
-    
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <!--[Pop-Up Add Experiences]-->
 
     <div id="popupExperiences" class="overlay">
@@ -138,18 +138,23 @@
     <!--[Change Data POP UP]-->
     <div id="popupUserInf" class="overlay">
         <div class="popupBody">
-            <h2 class="title_text_font">information about user</h2>
+            <h2 class="title_text_font">Account Information</h2>
             <a class="cerrar" href="#">&times;</a>
             <div class="popupContent">
                 <br><br>
-                <h3 class="text_font">User: </h3>
-                <p class="text_font" id="usern"></p>
+                <h3 class="subtitle_text_font_centered">User: </h3>
+                <div class="div_background">
+                    <p class="text_font" id="usern"></p>
+                </div>
                 <br>
-                <h3 class="text_font">Email: </h3>
-                <p class="text_font" id="email"></p>
+                <h3 class="subtitle_text_font_centered">Email: </h3>
+                <div class="div_background">
+                    <p class="text_font" id="email"></p>
+                </div>
                 <br>
-                <h3 class="text_font">Profile Image: </h3>
-                <img src="https://img.icons8.com/external-bearicons-glyph-bearicons/64/000000/external-User-essential-collection-bearicons-glyph-bearicons.png" alt="" class="img_settings" id="img">
+                <h3 class="subtitle_text_font_centered">Profile Image: </h3>
+
+                <img id="img" src="https://img.icons8.com/external-bearicons-glyph-bearicons/64/000000/external-User-essential-collection-bearicons-glyph-bearicons.png" alt="" class="img_settings">
                 <br><br>
                 <h1 class="title_text_font">Change User Data</h1>
                 <form class="text_center" id="Change_form">
@@ -161,7 +166,7 @@
                     <br><br>
                     <input type="url" id="im_per" name="im_per" onchange="preview2()" class="fields">
                     <br><br>
-                    <img src="https://lledogrupo.com/wp-content/uploads/2018/04/white-img.jpg" id="ImgPreV2" alt="image added by the user">
+                    <img src="https://lledogrupo.com/wp-content/uploads/2018/04/white-img.jpg" id="ImgPreV2" alt="preview profile image of the current user">
                     <br><br>
                     <div class="text_center">
                         <button onclick="changeData(365)" class="button_popups">
@@ -182,7 +187,7 @@
         </div>
 
         <div class="menu_margin">
-            <a href="main.html" class="nav_links">Privacy</a>
+            <a href="privacy.html" class="nav_links">Privacy</a>
             <a href="about_us.html" class="nav_links">About Us</a>
             <a href="help.html" class="nav_links">Help</a>
         </div>

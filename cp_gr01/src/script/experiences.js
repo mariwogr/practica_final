@@ -56,7 +56,6 @@ function set_up(){
 function myFunction(){
     // Show dropdown
     document.getElementById("myDropdown").classList.toggle("show");
-    //alert("ola");
 }
 
 window.onclick = function(event){
@@ -137,16 +136,25 @@ function changeData(expdays){
 
 
 function load_exps(){
+    /* This function will load all the experiences in the experiences page */
+
+    // Gets the user from the cookie.
     let user = getCookie("usuario");
+
+    // Sets the user experience array to an empty array.
     let user_exps = [];
 
+    // Gets the feed from the localStorage.
     let feed = JSON.parse(localStorage.getItem("feed"));
 
+    // Iterates on the feed to obtain and save all the posts from the user.
     for (let i = 0; i < feed.length; i++) {
         if (feed[i]["usr"] == user){
             user_exps.push(feed[i]);
         }
     }
+
+    // It will add all the user experiences to the page.
     for (let i = 0; i < user_exps.length; i++) {
         $('#div_exp').append(convert_to_html_exp(user_exps[i], i));
     }
@@ -154,6 +162,8 @@ function load_exps(){
 }
 
 function convert_to_html_exp(json_info, id){
+    /* This will return the html code to add the experiences in the experiences page */
+
     return `<div id="imageNo${id}" class="exp_user_div">
                 <div>
                     <img class="img_experience" src="${json_info.src}" alt="experience ${id}">
@@ -171,9 +181,9 @@ function convert_to_html_exp(json_info, id){
             </div>
             <!----------------------------------POP UP DELETE EXP---------------------->
             <div id="popupdel_${id}" class="overlay">
-                <div id="popupBody">
+                <div class="popupBody">
                     <h2 class="title_text_font_nomargin"> Delete Experiences</h2>
-                    <a id="cerrar" href="#">&times;</a>
+                    <a class="cerrar" href="#">&times;</a>
                     <div class="popupContent">
                         <br><br>
                         <h3 class="text_font">Are you sure to delete the experience: </h3>
@@ -185,35 +195,48 @@ function convert_to_html_exp(json_info, id){
 }
 
 function delete_exp(id, feed_id) {
+    /* This function will delete a experience when the user wants to */
 
+    // It will set the display of the experience to none.
     $(`#imageNo${id}`).css('display', "none");
 
+    // It gets the feed from the localStorage.
     var feed = JSON.parse(localStorage.getItem("feed"));
 
+    // It sets the new feed as an empty array.
     var new_feed = [];
 
+    // It iterates on the feed to obtain the deleted post.
     for (let i = 0; i < feed.length; i++) {
         if (feed[i]["id"] != feed_id){
             new_feed.push(feed[i]);
         }
     }
+
+    // It sets the new feed to the localStorage.
     localStorage.setItem("feed", JSON.stringify(new_feed));
 
-    //set_up();
+    // It refresh the page
     window.location.href = "experiences.html";
 }
 
 function add_experience(){
+    /* This function will add an experience */
 
     var time = new Date();
     time.setTime(time.getTime());
 
+    // It obtains from the form the new imagen and new description.
     let descr = $('#experience_description')[0].value;
     let img = $('#new_experience')[0].value;
 
+    // It obtains the feed from the localStorage.
     let feed = JSON.parse(localStorage.getItem("feed"));
+
+    // It obtains the id from the last element of the feed to add the new experience with the next id.
     let id_post = feed[feed.length - 1]["id"];
     
+    // It will set a dictionary with the new experience.
     let dict = {
                     id: id_post + 1,
                     src: img,
@@ -226,6 +249,7 @@ function add_experience(){
                     who_liked: []
                 }
 
+    // It adds the new experience to the dict in the localStorage with the saveLocal call.
     saveLocal("feed", dict);
     $('.div_exp').append(convert_to_html_exp(dict));
 
@@ -235,6 +259,11 @@ function add_experience(){
 //------------------[LocalStorage Functions]------------------
 
 function saveLocal(where, data){
+    /* This function will let us to save a json content @param data in the localStorage
+    of the session. @param where will have the value of the arrays of json content such as
+    feed, comments or user_data.*/
+
+    // If the arrays of json in @param where of localStorage is not defined it will set a empty array in it.
     if (!localStorage.getItem(where)){
         localStorage.setItem(where, "[]");
     }
